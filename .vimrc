@@ -82,8 +82,8 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 " buffer navigation
-nnoremap <S-h> <ESC>:bnext<CR>
-nnoremap <S-l> <ESC>:bprevious<CR>
+nnoremap <S-h> <ESC>:bprevious<CR>
+nnoremap <S-l> <ESC>:bnext<CR>
 " format current paragraph
 vmap Q gq
 nmap Q gqap
@@ -100,6 +100,7 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 " esc insert mode with
 inoremap jj <ESC>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 " 3rd party settings
 " pathogon plugin
@@ -123,13 +124,8 @@ let g:pymode_lint_on_write = 1
 
 " nerd tree
 map <silent> <C-s> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
+let NERDTreeIgnore=['__pycache__[[dir]]', '.db$[[file]]']
 
-" vim-move
-let g:move_map_keys = 0
-vmap <S-j> <Plug>MoveBlockDown
-vmap <S-k> <Plug>MoveBlockUp
-nmap <S-j> <Plug>MoveLineDown
-nmap <S-k> <Plug>MoveLineUp
 " python debug
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
@@ -137,3 +133,17 @@ map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/__pycache__/*     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_open_multiple_files = 'ij'
+
+" smooth scrolling
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 25, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 25, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+" ultisnippets
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]

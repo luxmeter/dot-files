@@ -165,3 +165,5 @@ source ~/scripts/bash/git-shortcuts.sh
 #        export TERM='xterm-color'
 #fi
 
+export GDK_USE_XFT=1
+

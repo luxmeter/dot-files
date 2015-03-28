@@ -33,12 +33,12 @@ syntax on
 "set t_Co=256		" 256 colors in vim
 "let g:rehash256 = 1
 colorscheme lucius
-set background=light
+set background=dark
 let mapleader=","	" map leader key from / to ,
 
 " dissables all smartness in order to paste text in insert mode
 set pastetoggle=<F2>
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 
 " vim specific settings
@@ -147,3 +147,6 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
+map <leader>a [egv
+map <leader>d ]egv

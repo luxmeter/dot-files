@@ -1,0 +1,17 @@
+[user]
+	name = luxmeter
+	email = superhans@ludete.de
+[core]
+	excludesfile = /home/mustafa/.gitignore_global
+	editor = nano
+	fileMode = off
+	filemode = false
+	editor = vim
+[push]
+	default = simple
+[color]
+	ui = true
+[alias]
+	l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+[credential]
+	helper = cache --timeout=3600

@@ -1,6 +1,20 @@
-export PATH=$PATH:~/bin:/opt/play-2.1.1
-export NODE_PATH="/usr/lib/node_modules"
-export CATALINA_HOME="/opt/tomcat-7.0.50"
-export BROWSER=firefox
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export PYTHONSTARTUP=~/.pythonrc.py
+export JAVA_HOME=/opt/jdk1.8.0_45/
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [[ -z $TMUX ]]; then
+    if [ -e /usr/share/terminfo/x/xterm+256color ]; then # may be xterm-256 depending on your distro
+        export TERM='xterm-256color'
+    else
+        export TERM='xterm'
+    fi
+else
+    if [ -e /usr/share/terminfo/s/screen-256color ]; then
+        export TERM='screen-256color'
+    else
+        export TERM='screen'
+    fi
+fi

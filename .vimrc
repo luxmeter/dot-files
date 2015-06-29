@@ -1,9 +1,20 @@
 " powerline
-set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim/
-let g:Powerline_symbols = 'fancy'
+"set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim/
+"let g:Powerline_symbols = 'unicode'
 
+" airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts=1
+"let g:airline_enable_branch=1
+"let g:airline_enable_syntastic=1
+let g:airline_detect_paste=1
 
 " general settings
+set term=screen-256color " to fix bg problem in tmux
 set encoding=utf-8
 set nocompatible  	" disable vi-compatibility
 set laststatus=2	" always show the statusline
@@ -33,11 +44,12 @@ syntax on
 "set t_Co=256		" 256 colors in vim
 "let g:rehash256 = 1
 colorscheme lucius
-set background=dark
+set background=light
 let mapleader=","	" map leader key from / to ,
 
 " dissables all smartness in order to paste text in insert mode
 set pastetoggle=<F2>
+
 set clipboard=unnamedplus
 
 
@@ -51,23 +63,10 @@ augroup END " }
 " Save your swp files to a less annoying place than the current directory.
 " If you have .vim-swap in the current directory, it'll use that.
 " Otherwise it saves it to ~/.vim/swap, ~/tmp or .
-if isdirectory($HOME . '/.vim/swap') == 0
+if isdirectory('~/.vim/swap') == 0
 	:silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
 endif
-set directory=./.vim-swap//
-set directory+=~/.vim/swap//
-set directory+=~/tmp//
-set directory+=.
-
-
-" filetype specific settings
-filetype plugin indent on
-autocmd filetype python set expandtab
-
-
-" gui settings
-set guifont=Droid\ Sans\ Mono\ for\ Powerline
-
+set directory=~/.vim/swap//
 
 " custom mappings
 " map : to ;
@@ -76,18 +75,22 @@ nnoremap ; :
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <C-n> i<CR><ESC>	" new line on Ctrl+n
+
 " window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
 " buffer navigation
 nnoremap <S-h> <ESC>:bprevious<CR>
 nnoremap <S-l> <ESC>:bnext<CR>
+
 " format current paragraph
 vmap Q gq
 nmap Q gqap
 nmap <silent> ,/ :nohlsearch<CR> " clear current search results
+
 " keeps selection when moving code blocks
 vnoremap < <gv
 vnoremap > >gv
@@ -101,6 +104,11 @@ vnoremap <F1> <ESC>
 " esc insert mode with
 inoremap jj <ESC>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+" Space to toggle folds
+nnoremap <Space> za
+vnoremap <Space> za
+
+setlocal foldmethod=syntax
 
 " 3rd party settings
 " pathogon plugin
@@ -112,6 +120,9 @@ call pathogen#helptags()
 " (python) jedi
 let g:jedi#documentation_command = "<Leader>q"
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#auto_close_doc = 1
+let g:jedi#goto_definitions_command = "<Leader>b"
+let g:jedi#usages_command = "<Leader>u"
 
 " python mode
 let g:pymode_rope = 0
@@ -121,16 +132,22 @@ let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
+let g:pymode_run_bind = ''
+
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CompleteDone * pclose
 
 " nerd tree
 map <silent> <C-s> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
-let NERDTreeIgnore=['__pycache__[[dir]]', '.db$[[file]]']
+let NERDTreeIgnore=['__pycache__[[dir]]', '.db$[[file]]', '.pyc$[[file]]']
 
 " python debug
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 " ctrlp-plugin: ignore file pattern
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/__pycache__/*     " Linux/MacOSX
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/__pycache__/*,*.pyc     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_open_multiple_files = 'ij'

@@ -45,13 +45,12 @@ ZSH_THEME="gentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found extract history mvn npm sublime systemd colored-man)
+plugins=(git command-not-found extract history mvn npm systemd colored-man)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -104,8 +103,6 @@ function livereload {
 # bashlike inline comments
 setopt interactivecomments
 
-source ~/.lscolors
-
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"  # This loads RVM
 
 function server {
@@ -157,13 +154,10 @@ alias gpu="sudo cat /sys/kernel/debug/dri/0/radeon_pm_info /sys/class/drm/card0/
 #compinit
 #eval "$(register-python-argcomplete tir-create)"
 
-source ~/scripts/bash/git-shortcuts.sh
-
 #if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 #        export TERM='xterm-256color'
 #else
 #        export TERM='xterm-color'
 #fi
 
-export GDK_USE_XFT=1
-
+stty stop undef

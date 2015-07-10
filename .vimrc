@@ -1,3 +1,4 @@
+set nocompatible  	" disable vi-compatibility
 " powerline
 "set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim/
 "let g:Powerline_symbols = 'unicode'
@@ -10,13 +11,25 @@ let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
 "let g:airline_enable_branch=1
-"let g:airline_enable_syntastic=1
+" let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_pylint_exe = 'pylint3'
+let g:syntastic_python_pyflakes_exe = 'pyflakes3'
+let g:syntastic_python_checkers = ['flake8', 'pylint']
+let g:ropevim_guess_project=1
 " general settings
 set term=screen-256color " to fix bg problem in tmux
 set encoding=utf-8
-set nocompatible  	" disable vi-compatibility
 set laststatus=2	" always show the statusline
 set colorcolumn=80	" add max column width border
 set cursorline		" highlight current line
@@ -51,7 +64,6 @@ let mapleader=","	" map leader key from / to ,
 set pastetoggle=<F2>
 
 set clipboard=unnamedplus
-
 
 " vim specific settings
 " auto reload vimrc on save
@@ -125,14 +137,15 @@ let g:jedi#goto_definitions_command = "<Leader>b"
 let g:jedi#usages_command = "<Leader>u"
 
 " python mode
-let g:pymode_rope = 0
-let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
-let g:pymode_run_bind = ''
+" let g:pymode_run = 0
+" let g:pymode_rope = 0
+" let g:pymode_breakpoint = 0
+" let g:pymode_syntax = 1
+" let g:pymode_syntax_builtin_objs = 0
+" let g:pymode_syntax_builtin_funcs = 0
+" let g:pymode_lint = 1
+" let g:pymode_lint_on_write = 1
+" let g:pymode_run_bind = ''
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
@@ -167,3 +180,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 map <leader>a [egv
 map <leader>d ]egv
+
+" fix keys
+map OH <Home>
+map OF <End>
+imap OH <Home>
+imap OF <End>
+

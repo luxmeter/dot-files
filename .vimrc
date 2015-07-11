@@ -3,7 +3,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible		" disable vi compatibility
 set encoding=utf8
-set switchbuf=usetab	" find buffers in existing windows also in tabs 
+set ttyfast
+set switchbuf=usetab	" find buffers in existing windows also in tabs
 set hidden				" hide unsaved documents in the background
 set backspace=indent,eol,start	" allow backspacing in insert mode
 set scrolloff=3			" show additional lines when scrolling at the end
@@ -23,7 +24,7 @@ syntax on
 " set number				" show line numbers
 set relativenumber		" show relative line numbers for fast movement
 set laststatus=2		" show always status line
-set colorcolumn=120		" show right marin line (at reasonable 120 col width)
+set colorcolumn=100		" show right marin line (at reasonable 120 col width)
 set cursorline			" highlight current line
 set list
 set listchars=tab:▸\ ,eol:¬ " shows symbols for tab and newline
@@ -135,7 +136,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 " Closes Jedi's preview window for docstring on selection
-autocmd CompleteDone * pclose	
+autocmd CompleteDone * pclose
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python Related (Plugin-) Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

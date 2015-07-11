@@ -137,6 +137,32 @@ call pathogen#helptags()
 
 " Closes Jedi's preview window for docstring on selection
 autocmd CompleteDone * pclose
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline Related Settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts=1
+"let g:airline_enable_branch=1
+" let g:airline_enable_syntastic=1
+let g:airline_detect_paste=1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastics
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python Related (Plugin-) Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -146,6 +172,13 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#auto_close_doc = 1
 let g:jedi#goto_definitions_command = "<Leader>b"
 let g:jedi#usages_command = "<Leader>u"
+
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_pylint_exe = 'pylint3'
+let g:syntastic_python_pyflakes_exe = 'pyflakes3'
+let g:syntastic_python_checkers = ['flake8', 'pylint']
+
+let g:ropevim_guess_project=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree Related Settings

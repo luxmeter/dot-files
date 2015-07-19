@@ -5,11 +5,13 @@ set nocompatible		" disable vi compatibility
 set encoding=utf8
 set ttyfast
 set switchbuf=usetab	" find buffers in existing windows also in tabs
+set splitright			" split the window on the right side
 set hidden				" hide unsaved documents in the background
 set backspace=indent,eol,start	" allow backspacing in insert mode
 set scrolloff=3			" show additional lines when scrolling at the end
 set pastetoggle=<F2>	" to disable all smartness when pasting text
-set clipboard=unnamed	" copy into unnamed register to paste outside from vim
+"set clipboard=unnamed	" copy into unnamed register to paste outside from vim
+set clipboard=unnamedplus	" copy into unnamed register to paste outside from vim
 " set mouse=a			" enable mouse movement - makes copy & paste hard to use
 
 set tabstop=4			" a tab is defined by four spaces
@@ -17,6 +19,7 @@ set autoindent			" copy indent of the previous line
 set copyindent			" copy the structure of the previous lines indent
 set shiftwidth=0		" use tabstop's length for autoindent
 
+set ignorecase			" ignore case during search
 set smartcase			" ignore case if search pattern is lowercase
 set hlsearch			" highlight search term
 
@@ -68,6 +71,11 @@ set background=light
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader=","	" map leader key from / to \
+
+noremap <Leader>w :BD<CR>
+noremap <Leader>s :w<CR>
+
 nnoremap ; :
 " use standard regex for the search
 nnoremap / /\v
@@ -100,9 +108,6 @@ nmap <silent> ,/ :nohlsearch<CR>	" clear current search results
 vnoremap < <gv
 vnoremap > >gv
 
-" remove trailing whitespaces on ,w
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
 " dont show help when pressing f1 accidentally
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -112,7 +117,7 @@ vnoremap <F1> <ESC>
 inoremap jj <ESC>
 
 " substitute word under the cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
 
 " use space to toggle folds
 nnoremap <Space> za
@@ -159,10 +164,10 @@ set statusline+=%*
 " Syntastics
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0		" open/close automatically
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-
+let g:syntastic_python_checker = 'pylint --rcfile=~/.pylintrc' 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python Related (Plugin-) Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -177,9 +182,8 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_python_pylint_exe = 'pylint3'
 let g:syntastic_python_pyflakes_exe = 'pyflakes3'
 let g:syntastic_python_checkers = ['flake8', 'pylint']
-
+let g:syntastic_python_flake8_args="--ignore=E501,W601"
 let g:ropevim_guess_project=1
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree Related Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

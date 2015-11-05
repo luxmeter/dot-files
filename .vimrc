@@ -207,6 +207,7 @@ let NERDTreeIgnore=['__pycache__[[dir]]', '.db$[[file]]', '.pyc$[[file]]']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_open_multiple_files = 'ij'
+let g:ctrlp_working_path_mode = 'c' " just check current dir (default ra)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltraSnippet
@@ -216,7 +217,15 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EasyClip
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap <c-v> <plug>EasyClipInsertModePaste
+cmap <c-v> <plug>EasyClipCommandModePaste
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Livedown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " should the browser window pop-up upon previewing
 let g:livedown_open = 1 
 

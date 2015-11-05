@@ -10,18 +10,22 @@ set hidden				" hide unsaved documents in the background
 set backspace=indent,eol,start	" allow backspacing in insert mode
 set scrolloff=3			" show additional lines when scrolling at the end
 set pastetoggle=<F2>	" to disable all smartness when pasting text
-"set clipboard=unnamed	" copy into unnamed register to paste outside from vim
-set clipboard=unnamedplus	" copy into unnamed register to paste outside from vim
+set clipboard=unnamed,unnamedplus	" copy into unnamed register to paste outside from vim (linux, windows)
 " set mouse=a			" enable mouse movement - makes copy & paste hard to use
 
-set tabstop=4			" a tab is defined by four spaces
-set autoindent			" copy indent of the previous line
-set copyindent			" copy the structure of the previous lines indent
-set shiftwidth=0		" use tabstop's length for autoindent
 
-set ignorecase			" ignore case during search
-set smartcase			" ignore case if search pattern is lowercase
-set hlsearch			" highlight search term
+set expandtab " use spaces instead of tabs
+set tabstop=4 " a tab is defined by the length of four spaces
+set shiftwidth=4 " use tabstop's length for autoindent
+set softtabstop=4 " number of spaces used when pressing BS or Tab
+
+set autoindent " copy indent of the previous line
+set copyindent " copy the structure of the previous lines indent
+set smartindent " smart indent for programming languages
+
+set ignorecase " ignore case during search
+set smartcase " ignore case if search pattern is lowercase
+set hlsearch " highlight search term
 
 syntax on
 " set number				" show line numbers
@@ -53,6 +57,14 @@ if isdirectory('~/.vim/swap') == 0
 endif
 set directory=~/.vim/swap//
 
+function! s:Underline(chars)
+  let chars = empty(a:chars) ? '-' : a:chars
+  let nr_columns = virtcol('$') - 1
+  let uline = repeat(chars, (nr_columns / len(chars)) + 1)
+  put =strpart(uline, 0, nr_columns)
+endfunction
+command! -nargs=? Underline call s:Underline(<q-args>)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visualization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,7 +78,7 @@ if &term =~ '256color'
 endif
 
 colorscheme lucius
-set background=light
+set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Key Bindings
@@ -204,3 +216,9 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+
+" should the browser window pop-up upon previewing
+let g:livedown_open = 1 
+
+" the port on which Livedown server will run
+let g:livedown_port = 1337

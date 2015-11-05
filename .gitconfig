@@ -3,7 +3,6 @@
 	email = superhans@ludete.de
 [core]
 	excludesfile = /home/mustafa/.gitignore_global
-	editor = nano
 	fileMode = off
 	filemode = false
 	editor = vim
@@ -13,6 +12,6 @@
 [color]
 	ui = true
 [alias]
-	l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	l = log --pretty=format:'%C(yellow)%h%C(red)%d%Creset %ad %C(green)%an%Creset: %s' --date=local
 [credential]
 	helper = cache --timeout=3600

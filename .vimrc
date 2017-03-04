@@ -23,6 +23,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'terryma/vim-smooth-scroll'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,7 +42,7 @@ set hidden
 set backspace=indent,eol,start        " allow backspacing in insert mode
 set scrolloff=3			      " show additional lines when scrolling at the end
 set pastetoggle=<F2>
-set clipboard=unnamed,unnamedplus     " copy into unnamed register to paste outside from vim (linux, windows)
+set clipboard=unnamed,unnamedplus     " copy into unnamed register to paste outside from vim (linux, windows = unnamed)
 " set mouse=a			      " enable mouse movement - makes copy & paste hard to use
 
 set smartcase " ignore case if search pattern is lowercase
@@ -116,6 +117,13 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ignores ctrl-space signal from the terminal
+imap <Nul> <Nop>
+map  <Nul> <Nop>
+vmap <Nul> <Nop>
+cmap <Nul> <Nop>
+nmap <Nul> <Nop>
+
 noremap <Leader>w :BD<CR>
 noremap <Leader>s :w<CR>
 

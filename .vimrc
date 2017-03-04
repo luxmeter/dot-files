@@ -1,29 +1,49 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
+" Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible		" disable vi compatibility
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'jnurmine/Zenburn'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible		      " disable vi compatibility
 set encoding=utf8
 set ttyfast
-set switchbuf=usetab	" find buffers in existing windows also in tabs
-set splitright			" split the window on the right side
-set hidden				" hide unsaved documents in the background
-set backspace=indent,eol,start	" allow backspacing in insert mode
-set scrolloff=3			" show additional lines when scrolling at the end
-set pastetoggle=<F2>	" to disable all smartness when pasting text
-set clipboard=unnamed,unnamedplus	" copy into unnamed register to paste outside from vim (linux, windows)
-" set mouse=a			" enable mouse movement - makes copy & paste hard to use
+set switchbuf=usetab
+set splitright
+set hidden
+set backspace=indent,eol,start        " allow backspacing in insert mode
+set scrolloff=3			      " show additional lines when scrolling at the end
+set pastetoggle=<F2>
+set clipboard=unnamed,unnamedplus     " copy into unnamed register to paste outside from vim (linux, windows)
+" set mouse=a			      " enable mouse movement - makes copy & paste hard to use
 
-
-set expandtab " use spaces instead of tabs
-set tabstop=4 " a tab is defined by the length of four spaces
-set shiftwidth=4 " use tabstop's length for autoindent
-set softtabstop=4 " number of spaces used when pressing BS or Tab
-
-set autoindent " copy indent of the previous line
-set copyindent " copy the structure of the previous lines indent
-set smartindent " smart indent for programming languages
-
-set ignorecase " ignore case during search
 set smartcase " ignore case if search pattern is lowercase
 set hlsearch " highlight search term
 
@@ -31,19 +51,22 @@ syntax on
 " set number				" show line numbers
 set relativenumber		" show relative line numbers for fast movement
 set laststatus=2		" show always status line
-set colorcolumn=100		" show right marin line (at reasonable 120 col width)
+set statusline+=%#warningmsg#
+set statusline+=%*
+set colorcolumn=120		" show right marin line (at reasonable 120 col width)
 set cursorline			" highlight current line
 set list
 set listchars=tab:▸\ ,eol:¬ " shows symbols for tab and newline
 
-set foldenable			" enable folding
-set foldlevelstart=10	" open most folds by default (up to 10)
-set foldnestmax=10		" 10 nested folds max
-set foldmethod=indent	" fold based on indent level
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
 
 " wildcard ignore pattern
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/__pycache__/*,*.pyc  " Unix
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe						" Windows
+
+colorscheme zenburn
 
 " auto reload vimrc on save
 augroup reload_vimrc " {
@@ -57,13 +80,26 @@ if isdirectory('~/.vim/swap') == 0
 endif
 set directory=~/.vim/swap//
 
-function! s:Underline(chars)
-  let chars = empty(a:chars) ? '-' : a:chars
-  let nr_columns = virtcol('$') - 1
-  let uline = repeat(chars, (nr_columns / len(chars)) + 1)
-  put =strpart(uline, 0, nr_columns)
-endfunction
-command! -nargs=? Underline call s:Underline(<q-args>)
+"define BadWhitespace before using in a match
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Python Indentation
+au BufNewFile,BufRead *.py:
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Other Indentation
+au BufNewFile,BufRead *.js, *.html, *.css:
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visualization
@@ -77,23 +113,14 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-colorscheme lucius
-set background=dark
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader=","	" map leader key from / to \
-
 noremap <Leader>w :BD<CR>
 noremap <Leader>s :w<CR>
 
 nnoremap ; :
-" use standard regex for the search
-nnoremap / /\v
-vnoremap / /\v
 
-nnoremap <C-n> A<CR><ESC>	" new line on C-n
 
 " smooth scrolling
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 25, 2)<CR>
@@ -106,15 +133,13 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-" buffer navigation
-nnoremap <S-h> <ESC>:bprevious<CR>
-nnoremap <S-l> <ESC>:bnext<CR>
 
 " buffer navigation
 nnoremap <S-h> <ESC>:bprevious<CR>
 nnoremap <S-l> <ESC>:bnext<CR>
 
-nmap <silent> ,/ :nohlsearch<CR>	" clear current search results
+" clear current search results
+nmap <silent> ,/ :nohlsearch<CR>
 
 " keeps selection when moving code blocks
 vnoremap < <gv
@@ -136,7 +161,8 @@ nnoremap <Space> za
 vnoremap <Space> za
 
 " keep visual selection when moving lines
-map <leader>a [egv		" egv is from vim-unimpaired
+" egv is from vim-unimpaired
+map <leader>a [egv
 map <leader>d ]egv
 
 " fix keys since tmux likes to break things
@@ -146,18 +172,10 @@ imap OH <Home>
 imap OF <End>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General Plugin Settings
+" Variables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen - makes it easier to install/ remove 3rd party plugins
-call pathogen#infect()
-call pathogen#helptags()
+let mapleader=","
 
-" Closes Jedi's preview window for docstring on selection
-autocmd CompleteDone * pclose
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline Related Settings 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -165,69 +183,23 @@ let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
 "let g:airline_enable_branch=1
-" let g:airline_enable_syntastic=1
+"let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
+let g:airline_theme='luna'
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastics
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0		" open/close automatically
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_python_checker = 'pylint --rcfile=~/.pylintrc' 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python Related (Plugin-) Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Jedi
-let g:jedi#documentation_command = "<Leader>q"
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#auto_close_doc = 1
-let g:jedi#goto_definitions_command = "<Leader>b"
-let g:jedi#usages_command = "<Leader>u"
-
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:syntastic_python_pylint_exe = 'pylint3'
-let g:syntastic_python_pyflakes_exe = 'pyflakes3'
-let g:syntastic_python_checkers = ['flake8', 'pylint']
-let g:syntastic_python_flake8_args="--ignore=E501,W601"
-let g:ropevim_guess_project=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree Related Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <C-s> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
-let NERDTreeIgnore=['__pycache__[[dir]]', '.db$[[file]]', '.pyc$[[file]]']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTRL-P
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_open_multiple_files = 'ij'
-let g:ctrlp_working_path_mode = 'c' " just check current dir (default ra)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UltraSnippet
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EasyClip
+" Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap <c-v> <plug>EasyClipInsertModePaste
-cmap <c-v> <plug>EasyClipCommandModePaste
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Livedown
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" should the browser window pop-up upon previewing
-let g:livedown_open = 1 
-
-" the port on which Livedown server will run
-let g:livedown_port = 1337
+function! s:Underline(chars)
+  let chars = empty(a:chars) ? '-' : a:chars
+  let nr_columns = virtcol('$') - 1
+  let uline = repeat(chars, (nr_columns / len(chars)) + 1)
+  put =strpart(uline, 0, nr_columns)
+endfunction
+command! -nargs=? Underline call s:Underline(<q-args>)

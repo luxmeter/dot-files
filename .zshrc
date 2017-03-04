@@ -166,3 +166,7 @@ alias gpu="sudo cat /sys/kernel/debug/dri/0/radeon_pm_info /sys/class/drm/card0/
 TERM=xterm-256color
 
 stty stop undef
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff

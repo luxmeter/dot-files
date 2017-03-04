@@ -24,6 +24,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-unimpaired'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -117,6 +119,11 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_auto_trigger=0
+
+nnoremap <leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " Ignores ctrl-space signal from the terminal
 imap <Nul> <Nop>
 map  <Nul> <Nop>
@@ -196,8 +203,8 @@ let g:airline_detect_paste=1
 let g:airline_theme='luna'
 
 let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1

@@ -170,3 +170,8 @@ stty stop ''
 stty start ''
 stty -ixon
 stty -ixoff
+
+bindkey "^[OH" beginning-of-line
+bindkey "^[[1~" beginning-of-line
+bindkey "^[OF"  end-of-line
+bindkey "^[[4~" end-of-line

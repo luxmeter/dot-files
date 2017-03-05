@@ -26,6 +26,9 @@ Plugin 'honza/vim-snippets'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,7 +50,8 @@ set pastetoggle=<F2>
 set clipboard=unnamed,unnamedplus     " copy into unnamed register to paste outside from vim (linux, windows = unnamed)
 " set mouse=a			      " enable mouse movement - makes copy & paste hard to use
 
-set smartcase " ignore case if search pattern is lowercase
+set ignorecase 			      " case insensitive
+set smartcase  			      " use case if any caps used 
 set hlsearch " highlight search term
 
 syntax on

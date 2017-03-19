@@ -29,6 +29,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-repeat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,7 +56,7 @@ set smartcase  			      " use case if any caps used
 set hlsearch " highlight search term
 
 syntax on
-" set number				" show line numbers
+set number				" show line numbers
 set relativenumber		" show relative line numbers for fast movement
 set laststatus=2		" show always status line
 set statusline+=%#warningmsg#
@@ -64,6 +65,8 @@ set colorcolumn=120		" show right marin line (at reasonable 120 col width)
 set cursorline			" highlight current line
 set list
 set listchars=tab:▸\ ,eol:¬ " shows symbols for tab and newline
+set noswapfile			" helps if u want to use somekind of filesystem watcher
+set nowritebackup
 
 " Enable folding
 set foldmethod=indent

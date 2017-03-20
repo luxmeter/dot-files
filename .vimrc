@@ -76,6 +76,8 @@ set foldlevel=99
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/__pycache__/*,*.pyc  " Unix
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe						" Windows
 
+let mapleader = ","
+
 colorscheme zenburn
 
 " auto reload vimrc on save
@@ -129,7 +131,7 @@ endif
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_auto_trigger=0
 
-nnoremap <leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Ignores ctrl-space signal from the terminal
 imap <Nul> <Nop>
@@ -196,8 +198,6 @@ imap OF <End>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader=","
-
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif

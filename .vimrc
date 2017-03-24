@@ -31,6 +31,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-repeat'
+Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -135,6 +136,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_auto_trigger=0
 

@@ -53,7 +53,7 @@ set clipboard=unnamed,unnamedplus     " copy into unnamed register to paste outs
 " set mouse=a			      " enable mouse movement - makes copy & paste hard to use
 
 set ignorecase 			      " case insensitive
-set smartcase  			      " use case if any caps used 
+set smartcase  			      " use case if any caps used
 set hlsearch " highlight search term
 
 syntax on
@@ -68,6 +68,9 @@ set list
 set listchars=tab:▸\ ,eol:¬ " shows symbols for tab and newline
 set noswapfile			" helps if u want to use somekind of filesystem watcher
 set nowritebackup
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " Enable folding
 set foldmethod=indent
@@ -87,6 +90,9 @@ augroup reload_vimrc " {
 	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
+" remove trailing white spaces on save
+autocmd BufWritePre * %s/\s\+$//e
+
 " Save your swp files to a less annoying place than the current directory.
 if isdirectory('~/.vim/swap') == 0
 	:silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
@@ -99,18 +105,18 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Python Indentation
 au BufNewFile,BufRead *.py:
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+			\ set tabstop=4
+			\ set softtabstop=4
+			\ set shiftwidth=4
+			\ set expandtab
+			\ set autoindent
+			\ set fileformat=unix
 
 " Other Indentation
-au BufNewFile,BufRead *.js, *.html, *.css:
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+au BufNewFile,BufRead *.html:
+			\ set tabstop=2
+			\ set softtabstop=2
+			\ set shiftwidth=2
 
 
 
@@ -120,10 +126,10 @@ au BufNewFile,BufRead *.js, *.html, *.css:
 " fix for background color bug in tmux
 " see also http://sunaku.github.io/vim-256color-bce.html
 if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
+	" disable Background Color Erase (BCE) so that color schemes
+	" render properly when inside 256-color tmux and GNU screen.
+	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+	set t_ut=
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -200,7 +206,7 @@ imap OF <End>
 " Variables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
@@ -219,19 +225,19 @@ let python_highlight_all = 1
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+\ 'file': '\v\.(exe|so|dll)$',
+\ 'link': 'some_bad_symbolic_links',
+\ }
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! s:Underline(chars)
-  let chars = empty(a:chars) ? '-' : a:chars
-  let nr_columns = virtcol('$') - 1
-  let uline = repeat(chars, (nr_columns / len(chars)) + 1)
-  put =strpart(uline, 0, nr_columns)
+	let chars = empty(a:chars) ? '-' : a:chars
+	let nr_columns = virtcol('$') - 1
+	let uline = repeat(chars, (nr_columns / len(chars)) + 1)
+	put =strpart(uline, 0, nr_columns)
 endfunction
 command! -nargs=? Underline call s:Underline(<q-args>)

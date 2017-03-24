@@ -78,25 +78,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias pdflatex="pdflatex -interaction=nonstopmode -halt-on-error"
+function explorer {
+	dolphin "file://$(pwd)"
+}
 
 function usage {
  find $1 -maxdepth 1 -type d -exec du -sh {} \; | sort -h
-}
-
-function livereload {
-	if [ -e "Gemfile" ]; then
-		echo "Starting livereload..."
-		bundle exec guard
-	else
-		echo "Couldn't find Gemfile. Initiating livereload..."
-		bundle init
-		echo "gem 'guard'" >> Gemfile
-		echo "gem 'guard-livereload'" >> Gemfile
-		echo "gem 'guard-sass'" >> Gemfile
-		bundle exec guard init livereload sass
-		echo "Initiating complete, but you should check Guardfile and its properties!"
-		livereload
-	fi
 }
 
 # Customize to your needs...

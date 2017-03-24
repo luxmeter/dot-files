@@ -1,7 +1,7 @@
 #export TERM=xterm-256color
 export PYTHONSTARTUP=~/.pythonrc.py
-export JAVA_HOME=/opt/jdk1.8.0_45/
-export M2_HOME=/opt/maven3
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+export M2_HOME=/usr/share/maven
 export PATH=$PATH:/opt/maven3/bin
 
 if [ -d "$HOME/.local/bin" ]; then

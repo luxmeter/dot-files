@@ -13,5 +13,11 @@
 	ui = true
 [alias]
 	l = log --pretty=format:'%C(yellow)%h%C(red)%d%Creset %ad %C(green)%an%Creset: %s' --date=local
+	d = =
+	m = =
 [credential]
 	helper = cache --timeout=3600
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff

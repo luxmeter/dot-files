@@ -130,31 +130,31 @@ augroup indentation " {
 	" execute command whenever vim sets the filetype to python
 	" Python Indentation
 	autocmd FileType python:
-				\ set tabstop=4
-				\ set softtabstop=4
-				\ set shiftwidth=4
-				\ set expandtab
-				\ set autoindent
-				\ set fileformat=unix
+		\ set tabstop=4 |
+		\ set softtabstop=4 |
+		\ set shiftwidth=4 |
+		\ set expandtab |
+		\ set autoindent |
+		\ set fileformat=unix
 
 	" shell
-	autocmd FileType sh:
-				\ set tabstop=2
-				\ set softtabstop=2
-				\ set shiftwidth=2
-				\ set expandtab
+	autocmd FileType sh,shell:
+		\ set tabstop=2 |
+		\ set softtabstop=2 |
+		\ set shiftwidth=2 |
+		\ set expandtab
 
 	" Java
 	autocmd FileType java:
-				\ set tabstop=4
-				\ set softtabstop=4
-				\ set shiftwidth=4
-				\ set expandtab
+		\ set tabstop=4 |
+		\ set softtabstop=4 |
+		\ set shiftwidth=4 |
+		\ set expandtab
 
 	autocmd BufNewFile,BufRead *.html,*.xml:
-				\ set tabstop=2
-				\ set softtabstop=2
-				\ set shiftwidth=2
+		\ set tabstop=2 |
+		\ set softtabstop=2 |
+		\ set shiftwidth=2
 augroup END " }
 
 

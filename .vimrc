@@ -123,41 +123,47 @@ set directory=~/.vim/swap//
 
 "define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=darkred
-autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" entering insert mode changes the current dir to the current dir of the
+" opened file --> comes handy when using c-x-f for file completion
+augroup autocd " {
+	autocmd!
+	autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+	autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+	autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+augroup END " }
 
 augroup indentation " {
 	autocmd!
 	" execute command whenever vim sets the filetype to python
 	" Python Indentation
-	autocmd FileType python:
-		\ set tabstop=4 |
-		\ set softtabstop=4 |
-		\ set shiftwidth=4 |
-		\ set expandtab |
-		\ set autoindent |
-		\ set fileformat=unix
+	autocmd FileType python
+				\ setlocal tabstop=4 |
+				\ setlocal softtabstop=4 |
+				\ setlocal shiftwidth=4 |
+				\ setlocal expandtab |
+				\ setlocal autoindent |
+				\ setlocal fileformat=unix
 
 	" shell
-	autocmd FileType sh,shell:
-		\ set tabstop=2 |
-		\ set softtabstop=2 |
-		\ set shiftwidth=2 |
-		\ set expandtab
+	autocmd FileType sh,shell
+				\ setlocal tabstop=2 |
+				\ setlocal softtabstop=2 |
+				\ setlocal shiftwidth=2 |
+				\ setlocal expandtab
 
 	" Java
-	autocmd FileType java:
-		\ set tabstop=4 |
-		\ set softtabstop=4 |
-		\ set shiftwidth=4 |
-		\ set expandtab
+	autocmd FileType java,groovy
+				\ setlocal expandtab |
+				\ setlocal tabstop=4 |
+				\ setlocal softtabstop=4 |
+				\ setlocal shiftwidth=4
 
-	autocmd BufNewFile,BufRead *.html,*.xml:
-		\ set tabstop=2 |
-		\ set softtabstop=2 |
-		\ set shiftwidth=2
+	autocmd FileType html,xhtml,xml
+				\ setlocal tabstop=2 |
+				\ setlocal softtabstop=2 |
+				\ setlocal shiftwidth=2
 augroup END " }
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visualization

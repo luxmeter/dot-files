@@ -141,17 +141,6 @@ alias gpu="sudo cat /sys/kernel/debug/dri/0/radeon_pm_info /sys/class/drm/card0/
 #compinit
 #eval "$(register-python-argcomplete tir-create)"
 
-#if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-#	export TERM='xterm-256color'
-#else
-#	export TERM='xterm-color'
-#fi
-#
-# introduces strange symbols on each execution of a command
-#TERM=screen-256color
-#
-TERM=xterm-256color
-
 stty stop undef
 stty stop ''
 stty start ''

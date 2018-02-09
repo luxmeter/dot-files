@@ -302,6 +302,8 @@ command! -nargs=? Underline call s:Underline(<q-args>)
 command! -range FormatJson <line1>,<line2>!python -m json.tool
 command! -range FormatXml <line1>,<line2>!xmllint --format -
 
+command! -range FormatStacktrace silent! <line1>,<line2>s/\\tat/	/g | silent! <line1>,<line2>s/\\n//g
+
 " Escape/unescape & < > HTML entities in range (default current line).
 function! HtmlEntities(line1, line2, action)
 	let search = @/

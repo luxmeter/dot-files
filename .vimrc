@@ -8,6 +8,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.fzf
 call vundle#begin()
+set rtp+=/usr/local/opt/fzf
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -25,14 +26,21 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'terryma/vim-smooth-scroll'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'mattn/emmet-vim'
-Plugin 'junegunn/fzf.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-fugitive'		" wrapper around git cmds
+Plugin 'airblade/vim-gitgutter' " shows quickdiffs
+Plugin 'tpope/vim-commentary'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,6 +64,7 @@ set clipboard=unnamed,unnamedplus     " copy into unnamed register to paste outs
 
 set ignorecase 			      " case insensitive
 set smartcase  			      " use case if any caps used
+set smarttab
 set hlsearch " highlight search term
 
 syntax on
@@ -63,6 +72,7 @@ set number				" show line numbers
 set relativenumber		" show relative line numbers for fast movement
 set laststatus=2		" show always status line
 set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set colorcolumn=120		" show right marin line (at reasonable 120 col width)
 set cursorline			" highlight current line
@@ -82,18 +92,26 @@ set foldlevel=99
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/__pycache__/*,*.pyc  " Unix
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe						" Windows
 
+set grepprg=ag\ --vimgrep\ $*
+set grepformat=%f:%l:%c:%m
+
 let mapleader = ","
 
-colorscheme zenburn
+" colorscheme zenburn
+colorscheme Monokai
 
-" auto reload vimrc on save
+" augroup: http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
 augroup reload_vimrc " {
 	autocmd!
+	" auto reload vimrc on save
 	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
 " remove trailing white spaces on save
-autocmd BufWritePre * %s/\s\+$//e
+augroup whitespaces " {
+	autocmd!
+	autocmd BufWritePre * %s/\s\+$//e
+augroup END " }
 
 " Save your swp files to a less annoying place than the current directory.
 if isdirectory('~/.vim/swap') == 0
@@ -102,28 +120,51 @@ endif
 set directory=~/.vim/swap//
 
 " highlight cursor line
-hi cursorline cterm=none ctermbg=darkgray ctermfg=white
+" hi cursorline cterm=none ctermbg=darkgray ctermfg=white
 
 "define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" Python Indentation
-au BufNewFile,BufRead *.py:
-			\ set tabstop=4
-			\ set softtabstop=4
-			\ set shiftwidth=4
-			\ set expandtab
-			\ set autoindent
-			\ set fileformat=unix
+" entering insert mode changes the current dir to the current dir of the
+" opened file --> comes handy when using c-x-f for file completion
+augroup autocd " {
+	autocmd!
+	autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+	autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+	autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+augroup END " }
 
-" Other Indentation
-au BufNewFile,BufRead *.html:
-			\ set tabstop=2
-			\ set softtabstop=2
-			\ set shiftwidth=2
+augroup indentation " {
+	autocmd!
+	" execute command whenever vim sets the filetype to python
+	" Python Indentation
+	autocmd FileType python
+				\ setlocal tabstop=4 |
+				\ setlocal softtabstop=4 |
+				\ setlocal shiftwidth=4 |
+				\ setlocal expandtab |
+				\ setlocal autoindent |
+				\ setlocal fileformat=unix
 
+	" shell
+	autocmd FileType sh,shell
+				\ setlocal tabstop=2 |
+				\ setlocal softtabstop=2 |
+				\ setlocal shiftwidth=2 |
+				\ setlocal expandtab
 
+	" Java
+	autocmd FileType java,groovy
+				\ setlocal expandtab |
+				\ setlocal tabstop=4 |
+				\ setlocal softtabstop=4 |
+				\ setlocal shiftwidth=4
+
+	autocmd FileType html,xhtml,xml
+				\ setlocal tabstop=2 |
+				\ setlocal softtabstop=2 |
+				\ setlocal shiftwidth=2
+augroup END " }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visualization
@@ -148,6 +189,8 @@ let g:ycm_auto_trigger=0
 
 nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+map <F7> mzgg=G`z
+
 " Ignores ctrl-space signal from the terminal
 imap <Nul> <Nop>
 map  <Nul> <Nop>
@@ -160,6 +203,11 @@ noremap <Leader>s :w<CR>
 
 nnoremap ; :
 
+" remap increase and decrease
+nnoremap <C-s> <C-x>
+
+" delete line without copying the content to the yank register
+nnoremap <C-X> "_dd
 
 " smooth scrolling
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 25, 2)<CR>
@@ -213,14 +261,19 @@ imap OF <End>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Variables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts=1
-"let g:airline_enable_branch=1
-"let g:airline_enable_syntastic=1
+let g:airline_enable_branch=1
+let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
 let g:airline_theme='luna'
 
@@ -232,13 +285,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let python_highlight_all = 1
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-\ 'file': '\v\.(exe|so|dll)$',
-\ 'link': 'some_bad_symbolic_links',
-\ }
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -254,21 +306,23 @@ command! -nargs=? Underline call s:Underline(<q-args>)
 command! -range FormatJson <line1>,<line2>!python -m json.tool
 command! -range FormatXml <line1>,<line2>!xmllint --format -
 
+command! -range FormatStacktrace silent! <line1>,<line2>s/\\tat/	/g | silent! <line1>,<line2>s/\\n//g
+
 " Escape/unescape & < > HTML entities in range (default current line).
 function! HtmlEntities(line1, line2, action)
-  let search = @/
-  let range = 'silent ' . a:line1 . ',' . a:line2
-  if a:action == 0  " must convert &amp; last
-    execute range . 'sno/&lt;/</eg'
-    execute range . 'sno/&gt;/>/eg'
-    execute range . 'sno/&amp;/&/eg'
-  else              " must convert & first
-    execute range . 'sno/&/&amp;/eg'
-    execute range . 'sno/</&lt;/eg'
-    execute range . 'sno/>/&gt;/eg'
-  endif
-  nohl
-  let @/ = search
+	let search = @/
+	let range = 'silent ' . a:line1 . ',' . a:line2
+	if a:action == 0  " must convert &amp; last
+		execute range . 'sno/&lt;/</eg'
+		execute range . 'sno/&gt;/>/eg'
+		execute range . 'sno/&amp;/&/eg'
+	else              " must convert & first
+		execute range . 'sno/&/&amp;/eg'
+		execute range . 'sno/</&lt;/eg'
+		execute range . 'sno/>/&gt;/eg'
+	endif
+	nohl
+	let @/ = search
 endfunction
 command! -range -nargs=1 Entities call HtmlEntities(<line1>, <line2>, <args>)
 noremap <silent> <Leader>h :Entities 0<CR>

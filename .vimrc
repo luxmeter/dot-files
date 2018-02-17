@@ -26,7 +26,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'terryma/vim-smooth-scroll'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
@@ -94,6 +94,9 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe						" Windows
 
 set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
+
+" to search for help for the word under the cursor
+setlocal keywordprg=:help
 
 let mapleader = ","
 
@@ -181,24 +184,42 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Key Bindings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" When F5 is pressed, a numbered list of file names is printed, and the user
+" needs to type a single number based on the 'menu' and press enter.
+:nnoremap <F5> :Buffers<CR>:buffer<Space>
+
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-let g:ycm_autoclose_preview_window_after_completion=1
+" python3 completion
+let g:ycm_python_binary_path="python3"
 let g:ycm_auto_trigger=0
+" YCM will auto-close the 'preview' window after the user accepts the offered completion string.
+let g:ycm_autoclose_preview_window_after_completion=1
+" Defines where GoTo* commands result should be opened. Can take one of the
+" following values: [ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab', 'new-or-existing-tab' ]
+let g:ycm_goto_buffer_command = 'same-buffer'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>
 
 map <F7> mzgg=G`z
 
+" ycm related // to enable auto completion with c-space
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+imap <Nul> <C-Space>
+
+noremap <Leader>w :BD<CR>
 " Ignores ctrl-space signal from the terminal
-imap <Nul> <Nop>
+" imap <Nul> <Nop> " needs to be commented out if you want to use ctrl-space
+" for completion
 map  <Nul> <Nop>
 vmap <Nul> <Nop>
 cmap <Nul> <Nop>
 nmap <Nul> <Nop>
 
-noremap <Leader>w :BD<CR>
 noremap <Leader>s :w<CR>
 
 nnoremap ; :
@@ -277,6 +298,7 @@ let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
 let g:airline_theme='luna'
 
+" Unforunately ultisnip is not showing in ycm suggestion list :(
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"

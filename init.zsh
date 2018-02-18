@@ -21,5 +21,6 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s -f "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
-mkdir "${HOME}/.vim" 2> /dev/null
+mkdir -p "${HOME}/.vim/bundle" 2> /dev/null
 ln -s -f "${DOT_FILES}/vim/"^bundle "${HOME}/.vim"
+ln -s -f "${DOT_FILES}/vim/bundle/Vundle.vim" "${HOME}/.vim/bundle/"

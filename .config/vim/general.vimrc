@@ -83,10 +83,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup filetype_detection " {
 	autocmd!
-	" shell
-	autocmd FileType sh,shell
-				\ set filetype=shell
-
 	" Java
 	autocmd FileType java,groovy
 				\ filetype=java

@@ -1,6 +1,7 @@
 #!/bin/zsh
-export DOT_FILES="${0:h}"
-echo "$DOT_FILES"
+
+SOURCE="${(%):-%N}"
+export DOT_FILES="$( cd "$( dirname "${SOURCE}" )" && pwd )"
 
 (cd "$DOT_FILES"; git submodule update --depth 1 --init --recursive)
 (cd "$DOT_FILES/prezto"; git submodule update --depth 1 --init --recursive)

@@ -2,6 +2,10 @@
 export DOT_FILES="${0:h}"
 echo "$DOT_FILES"
 
+(cd "$DOT_FILES"; git submodule update --depth 1 --init --recursive)
+(cd "$DOT_FILES/prezto"; git submodule update --depth 1 --init --recursive)
+
+ln -s -f "${DOT_FILES}/fzf" "${HOME}/.fzf"
 ln -s -f "${DOT_FILES}/prezto" "${HOME}/.zprezto"
 ln -s -f "${DOT_FILES}/gitignore_global" "${HOME}/.gitignore_global"
 ln -s -f "${DOT_FILES}/pythonrc.py" "${HOME}/.pythonrc"

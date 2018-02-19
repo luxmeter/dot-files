@@ -1,8 +1,5 @@
-[user]
-	name = luxmeter
-	email = superhans@ludete.de
 [core]
-	excludesfile = /home/mustafa/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	fileMode = off
 	filemode = false
 	editor = vim
@@ -13,8 +10,6 @@
 	ui = true
 [alias]
 	l = log --pretty=format:'%C(yellow)%h%C(red)%d%Creset %ad %C(green)%an%Creset: %s' --date=local
-	d = =
-	m = =
 [credential]
 	helper = cache --timeout=3600
 [diff]

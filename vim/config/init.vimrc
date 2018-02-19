@@ -4,11 +4,16 @@
 set nocompatible              " required
 filetype off                  " required
 
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Darwin"
+	set rtp+=/usr/local/opt/fzf
+else
+	let s:fzf_path = system("echo -n \"$(brew --prefix)/opt/fzf/install\"")
+	set rtp+=s:fzf_path
+endif
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
 call vundle#begin()
-set rtp+=/usr/local/opt/fzf
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')

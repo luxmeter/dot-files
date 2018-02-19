@@ -84,10 +84,10 @@ endif
 augroup filetype_detection " {
 	autocmd!
 	" Java
-	autocmd FileType java,groovy
+	autocmd FileType groovy
 				\ filetype=java
 
-	autocmd FileType html,xhtml,xml
+	autocmd FileType html,xhtml
 				\ set filetype=xml
 augroup END " }
 
@@ -102,6 +102,10 @@ augroup END " }
 augroup whitespaces " {
 	autocmd!
 	autocmd BufWritePre * %s/\s\+$//e
+	" query, ag options, fzf#run options, fullscreen
+	autocmd VimEnter *
+	\ command! -bang -nargs=* Ag
+	\ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-a:select-all,ctrl-d:deselect-all' }, <bang>0)
 augroup END " }
 
 " entering insert mode changes the current dir to the current dir of the
@@ -112,7 +116,3 @@ augroup autocd " {
 	autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 	autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 augroup END " }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visualization
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

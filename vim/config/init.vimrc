@@ -5,11 +5,11 @@ set nocompatible              " required
 filetype off                  " required
 
 let s:uname = system("echo -n \"$(uname)\"")
-if !v:shell_error && s:uname == "Darwin"
-	set rtp+=/usr/local/opt/fzf
+if !v:shell_error && s:uname == "Linux"
+	set rtp+=~/.fzf
 else
 	let s:fzf_path = system("echo -n \"$(brew --prefix)/opt/fzf/install\"")
-	set rtp+=s:fzf_path
+	exe 'set rtp+=' . expand(s:fzf_path)
 endif
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim

@@ -83,10 +83,6 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup filetype_detection " {
 	autocmd!
-	" Java
-	autocmd FileType groovy
-				\ filetype=java
-
 	autocmd FileType html,xhtml
 				\ set filetype=xml
 augroup END " }

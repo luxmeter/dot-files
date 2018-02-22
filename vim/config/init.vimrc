@@ -8,7 +8,7 @@ let s:uname = system("echo -n \"$(uname)\"")
 if !v:shell_error && s:uname == "Linux"
 	set rtp+=~/.fzf
 else
-	let s:fzf_path = system("echo -n \"$(brew --prefix)/opt/fzf/install\"")
+	let s:fzf_path = system("echo -n \"$(brew --prefix)/opt/fzf\"")
 	exe 'set rtp+=' . expand(s:fzf_path)
 endif
 " set the runtime path to include Vundle and initialize

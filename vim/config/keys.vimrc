@@ -22,6 +22,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>q v<S-f>(:YcmCompleter GetDoc<CR>`>
 
 map <F7> mzgg=G`z
 

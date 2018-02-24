@@ -12,7 +12,7 @@ set backspace=indent,eol,start        " allow backspacing in insert mode
 set scrolloff=3			      " show additional lines when scrolling at the end
 set pastetoggle=<F2>
 set clipboard=unnamed,unnamedplus     " copy into unnamed register to paste outside from vim (linux, windows = unnamed)
-" set mouse=a			      " enable mouse movement - makes copy & paste hard to use
+set mouse=a			      " enable mouse movement - makes copy & paste hard to use
 
 set ignorecase 			      " case insensitive
 set smartcase  			      " use case if any caps used
@@ -28,6 +28,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set colorcolumn=120		" show right marin line (at reasonable 120 col width)
 " set cursorline			" highlight current line
+set termguicolors     " enable true colors support
 set list
 set listchars=tab:▸\ ,eol:¬ " shows symbols for tab and newline
 set noswapfile			" helps if u want to use somekind of filesystem watcher
@@ -50,8 +51,11 @@ set grepformat=%f:%l:%c:%m
 " to search for help for the word under the cursor
 setlocal keywordprg=:help
 
-" colorscheme zenburn
-colorscheme Monokai
+" let ayucolor="light"
+let ayucolor="mirage"
+" let ayucolor="dark"
+" colorscheme Monokai
+colorscheme ayu
 
 " highlight cursor line
 " hi cursorline cterm=none ctermbg=darkgray ctermfg=white

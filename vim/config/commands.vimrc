@@ -35,3 +35,5 @@ function! s:Underline(chars)
 	put =strpart(uline, 0, nr_columns)
 endfunction
 command! -nargs=? Underline call s:Underline(<q-args>)
+command! Difft windo diffthis
+command! Diffo windo diffoff

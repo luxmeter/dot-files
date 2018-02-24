@@ -43,6 +43,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'Yggdroot/indentLine'
+Plugin 'ayu-theme/ayu-vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'		" wrapper around git cmds
 Plugin 'airblade/vim-gitgutter' " shows quickdiffs

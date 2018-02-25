@@ -112,6 +112,7 @@ augroup END " }
 " opened file --> comes handy when using c-x-f for file completion
 augroup autocd " {
 	autocmd!
+	autocmd BufWritePre *.py ImpSort!
 	autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
 	autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 	autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/

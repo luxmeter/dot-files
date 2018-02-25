@@ -23,6 +23,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'plytophogy/vim-virtualenv'
+Plugin 'tweekmonster/impsort.vim'
 Plugin 'vim-scripts/indentpython.vim'
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'

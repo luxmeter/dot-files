@@ -30,7 +30,6 @@ done
 mkdir -p "${HOME}/.vim/bundle" 2> /dev/null
 ln -s -f "${DOT_FILES}/vim/"^bundle "${HOME}/.vim"
 ln -s -f "${DOT_FILES}/vim/bundle/Vundle.vim" "${HOME}/.vim/bundle/Vundle.vim"
-ln -s -f "${DOT_FILES}/vim/config/" "${HOME}/.vim/config/"
 
 cat<<EOF
 Don't forget to install these dependencies for smooth user experience:

@@ -26,7 +26,6 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'plytophogy/vim-virtualenv'
 Plugin 'tweekmonster/impsort.vim'
 Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
 Plugin 'jnurmine/Zenburn'
 Plugin 'vim-airline/vim-airline'
@@ -39,7 +38,6 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'mattn/emmet-vim'
@@ -51,6 +49,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'		" wrapper around git cmds
 Plugin 'airblade/vim-gitgutter' " shows quickdiffs
 Plugin 'tpope/vim-commentary'
+Plugin 'bronson/vim-visual-star-search'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

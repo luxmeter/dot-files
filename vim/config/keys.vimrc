@@ -61,6 +61,10 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" move cursor up/down also in wrapped lines
+nnoremap j gj
+nnoremap k gk
+
 " buffer navigation
 nnoremap <S-h> <ESC>:bprevious<CR>
 nnoremap <S-l> <ESC>:bnext<CR>

@@ -50,6 +50,7 @@ Plugin 'tpope/vim-fugitive'		" wrapper around git cmds
 Plugin 'airblade/vim-gitgutter' " shows quickdiffs
 Plugin 'tpope/vim-commentary'
 Plugin 'bronson/vim-visual-star-search'
+Plugin 'jiangmiao/auto-pairs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

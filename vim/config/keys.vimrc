@@ -6,9 +6,9 @@ let mapleader = ","
 " When F5 is pressed, a numbered list of file names is printed, and the user
 " needs to type a single number based on the 'menu' and press enter.
 :nnoremap <F5> :Buffers<CR>:buffer<Space>
+:nnoremap <C-P> :Files<CR>
 
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
 
 " python3 completion
 let g:ycm_python_binary_path="python3"
@@ -22,7 +22,6 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>
-nnoremap <Leader>q v<S-f>(:YcmCompleter GetDoc<CR>`>
 
 map <F7> mzgg=G`z
 
@@ -118,3 +117,11 @@ let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
 			\ 'ctrl-v': 'vsplit' }
+
+" Let Omnicompletion behave like you are used to from IDEs
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"

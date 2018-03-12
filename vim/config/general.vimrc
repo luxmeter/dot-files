@@ -80,7 +80,6 @@ if &term =~ '256color'
 	" render properly when inside 256-color tmux and GNU screen.
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 	set t_ut=
-	set t_Co=256
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,4 +117,5 @@ augroup autocd " {
 	autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
 	autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 	autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+	autocmd FileType html,css EmmetInstall
 augroup END " }

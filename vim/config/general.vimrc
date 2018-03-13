@@ -49,7 +49,8 @@ set grepprg=ag\ --vimgrep\ $*
 set grepformat=%f:%l:%c:%m
 
 " to search for help for the word under the cursor
-setlocal keywordprg=:help
+set keywordprg=:help
+set omnifunc=syntaxcomplete#Complete
 
 " let ayucolor="light"
 let ayucolor="mirage"

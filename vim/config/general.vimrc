@@ -124,3 +124,15 @@ augroup autocd " {
 	autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 	autocmd FileType html,css EmmetInstall
 augroup END " }
+
+" fix newtr buffer bug
+" https://vi.stackexchange.com/questions/14622/how-can-i-close-the-netrw-buffer
+set nohidden
+augroup netrw_buf_hidden_fix
+    autocmd!
+    " Set all non-netrw buffers to bufhidden=hide
+    autocmd BufWinEnter *
+                \  if &ft != 'netrw'
+                \|     set bufhidden=hide
+                \| endif
+augroup end

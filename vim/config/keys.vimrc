@@ -41,6 +41,7 @@ nmap <Nul> <Nop>
 
 noremap <Leader>s :w<CR>
 
+nnoremap ;; ;
 nnoremap ; :
 
 " remap increase and decrease

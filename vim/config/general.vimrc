@@ -50,7 +50,9 @@ set grepformat=%f:%l:%c:%m
 
 " to search for help for the word under the cursor
 set keywordprg=:help
+
 set omnifunc=syntaxcomplete#Complete
+" set completeopt-=preview
 
 " let ayucolor="light"
 let ayucolor="mirage"
@@ -117,6 +119,8 @@ augroup autocd " {
 	autocmd BufWritePre *.py ImpSort!
 	autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
 	autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 	autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 	autocmd FileType html,css EmmetInstall
 augroup END " }

@@ -30,7 +30,7 @@ inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 imap <Nul> <C-Space>
 
-noremap <Leader>w :BD<CR>
+noremap <Leader>w :bwipeout<CR>
 " Ignores ctrl-space signal from the terminal
 " imap <Nul> <Nop> " needs to be commented out if you want to use ctrl-space
 " for completion

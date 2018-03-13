@@ -45,3 +45,12 @@ let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_char = '┆'
 let g:indentLine_setColors = 0
 " }}
+
+" Netrw {{
+let g:netrw_banner = 0
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+" don't use since buffer keeps alive after opening a file
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" }}

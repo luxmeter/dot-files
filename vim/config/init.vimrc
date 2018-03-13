@@ -22,35 +22,38 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'plytophogy/vim-virtualenv'
-Plugin 'tweekmonster/impsort.vim'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'w0rp/ale'
-Plugin 'jnurmine/Zenburn'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'SirVer/ultisnips'
+Plugin 'Yggdroot/indentLine'
+Plugin 'airblade/vim-gitgutter' " shows quickdiffs
+Plugin 'ayu-theme/ayu-vim'
+Plugin 'bronson/vim-visual-star-search'
+Plugin 'ervandew/supertab'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'honza/vim-snippets'
-Plugin 'terryma/vim-smooth-scroll'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'moll/vim-bbye'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'jnurmine/Zenburn'
 Plugin 'junegunn/fzf.vim'
-Plugin 'tpope/vim-repeat'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'Yggdroot/indentLine'
-Plugin 'ayu-theme/ayu-vim'
+Plugin 'moll/vim-bbye'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-fugitive'		" wrapper around git cmds
-Plugin 'airblade/vim-gitgutter' " shows quickdiffs
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
-Plugin 'bronson/vim-visual-star-search'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'		" wrapper around git cmds
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'w0rp/ale'
+
+" Python plugins
+Plugin 'plytophogy/vim-virtualenv'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'tweekmonster/impsort.vim'
+Plugin 'vim-scripts/indentpython.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

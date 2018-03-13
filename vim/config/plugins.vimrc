@@ -33,6 +33,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsListSnippets="<c-f>"
 " }}
 
 " CtrlP {{
@@ -53,4 +54,8 @@ let g:netrw_winsize = 25
 " don't use since buffer keeps alive after opening a file
 " let g:netrw_liststyle = 3
 " let g:netrw_browse_split = 4
+" }}
+
+" Supertab {{
+let g:SuperTabDefaultCompletionType = "context"
 " }}

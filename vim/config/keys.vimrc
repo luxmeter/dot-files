@@ -22,10 +22,11 @@ noremap <Leader>w :bwipeout<CR>
 " Ignores ctrl-space signal from the terminal
 " needs to be commented out if you want to use ctrl-space for completion
 " imap <Nul> <Nop>
-map  <Nul> <Nop>
-vmap <Nul> <Nop>
-cmap <Nul> <Nop>
-nmap <Nul> <Nop>
+
+" map  <Nul> <Nop>
+" vmap <Nul> <Nop>
+" cmap <Nul> <Nop>
+" nmap <Nul> <Nop>
 noremap <Leader>s :w<CR>
 
 

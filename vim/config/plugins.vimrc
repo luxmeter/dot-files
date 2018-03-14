@@ -3,6 +3,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+" }}
+
+" Emet {{
+let g:user_emmet_install_global = 0
 " }}
 
 " Airline {{
@@ -59,3 +64,42 @@ let g:netrw_winsize = 25
 " Supertab {{
 let g:SuperTabDefaultCompletionType = "context"
 " }}
+
+" Smoothscroll {{
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 25, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 25, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" }}
+
+" YouCompleteMe {{
+" python3 completion
+let g:ycm_python_binary_path="python3"
+let g:ycm_auto_trigger=0
+" YCM will auto-close the 'preview' window after the user accepts the offered completion string.
+let g:ycm_autoclose_preview_window_after_completion=1
+" Defines where GoTo* commands result should be opened. Can take one of the
+" following values: [ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab', 'new-or-existing-tab' ]
+let g:ycm_goto_buffer_command = 'same-buffer'
+" }}
+
+" fzf {{
+" This is the default extra key bindings
+let g:fzf_action = {
+			\ 'ctrl-t': 'tab split',
+			\ 'ctrl-x': 'split',
+			\ 'ctrl-v': 'vsplit' }
+
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+	call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+	copen
+	cc
+endfunction
+
+let g:fzf_action = {
+			\ 'ctrl-q': function('s:build_quickfix_list'),
+			\ 'ctrl-t': 'tab split',
+			\ 'ctrl-x': 'split',
+			\ 'ctrl-v': 'vsplit' }
+"} }

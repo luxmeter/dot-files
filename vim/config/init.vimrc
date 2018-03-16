@@ -22,15 +22,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'Yggdroot/indentLine'
 Plugin 'airblade/vim-gitgutter' " shows quickdiffs
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'bronson/vim-visual-star-search'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'honza/vim-snippets'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'jnurmine/Zenburn'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mattn/emmet-vim'

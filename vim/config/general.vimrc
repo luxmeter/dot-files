@@ -21,8 +21,6 @@ set hlsearch " highlight search term
 
 syntax on
 set number				" show line numbers
-set relativenumber		" show relative line numbers for fast movement
-set laststatus=2		" show always status line
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -40,6 +38,11 @@ set shiftwidth=4
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" performance improvement
+set lazyredraw
+" set relativenumber		" show relative line numbers for fast movement
+set laststatus=2		" show always status line
 
 " wildcard ignore pattern
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/__pycache__/*,*.pyc  " Unix

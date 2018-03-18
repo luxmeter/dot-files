@@ -39,9 +39,9 @@ set shiftwidth=4
 set foldmethod=indent
 set foldlevel=99
 
-" performance improvement
 set lazyredraw
-" set relativenumber		" show relative line numbers for fast movement
+
+set relativenumber		" let the  menu flicker
 set laststatus=2		" show always status line
 
 " wildcard ignore pattern

@@ -76,8 +76,9 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " python3 completion
 let g:ycm_python_binary_path="python3"
 let g:ycm_auto_trigger=0
-" YCM will auto-close the 'preview' window after the user accepts the offered completion string.
-let g:ycm_autoclose_preview_window_after_completion=1
+" below settings are already handled by CursorMovedI and InsertLeave commands
+" let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_autoclose_preview_window_after_insertion=1
 " Defines where GoTo* commands result should be opened. Can take one of the
 " following values: [ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab', 'new-or-existing-tab' ]
 let g:ycm_goto_buffer_command = 'same-buffer'

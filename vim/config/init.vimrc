@@ -46,6 +46,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'w0rp/ale'
 
 " Python plugins

@@ -7,6 +7,7 @@ set encoding=utf8
 set ttyfast
 set switchbuf=usetab
 set splitright
+set splitbelow
 set hidden
 set backspace=indent,eol,start        " allow backspacing in insert mode
 set scrolloff=3			      " show additional lines when scrolling at the end
@@ -54,8 +55,10 @@ set grepformat=%f:%l:%c:%m
 " to search for help for the word under the cursor
 set keywordprg=:help
 
+set completeopt=longest,menuone,preview,noinsert
 set omnifunc=syntaxcomplete#Complete
-" set completeopt-=preview
+set completefunc=syntaxcomplete#Complete
+set complete=.,w,b,u,U,t,i,d
 
 " let ayucolor="light"
 let ayucolor="mirage"
@@ -95,6 +98,8 @@ augroup filetype_detection " {
 	autocmd!
 	autocmd FileType html,xhtml
 				\ set filetype=xml
+    autocmd BufNewFile,BufRead *.md,*.markdown
+				\ setlocal filetype=ghmarkdown
 augroup END " }
 
 " augroup: http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
@@ -139,3 +144,14 @@ augroup netrw_buf_hidden_fix
                 \|     set bufhidden=hide
                 \| endif
 augroup end
+
+augroup omni_complete
+  " clear commands before resetting
+  autocmd!
+  " Enable omnicomplete for supported filetypes
+  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END

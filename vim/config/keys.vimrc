@@ -13,7 +13,7 @@ nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>
 
 noremap <F7> mzgg=G`z
 
-noremap <Leader>w :bwipeout<CR>
+noremap <Leader>w :Bdelete!<CR>
 
 " ycm related // to enable auto completion with c-space
 " inoremap <C-Space> <C-x><C-o>
@@ -71,11 +71,6 @@ nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
 " use space to toggle folds
 nnoremap <Space> za
 vnoremap <Space> za
-
-" keep visual selection when moving lines
-" egv is from vim-unimpaired
-noremap <leader>a [egv
-noremap <leader>d ]egv
 
 " fix keys since tmux likes to break things
 map OH <Home>

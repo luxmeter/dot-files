@@ -1,11 +1,3 @@
-" syntastic {{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-" }}
-
 " Emet {{
 let g:user_emmet_install_global = 0
 " }}
@@ -14,6 +6,7 @@ let g:user_emmet_install_global = 0
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
+let g:airline_extensions = ['ale']
 let g:airline_symbols.space = "\ua0"
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts=1
@@ -39,11 +32,7 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsListSnippets="<c-f>"
-" }}
-
-" CtrlP {{
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:UltiSnipsUsePythonVersion=3
 " }}
 
 " IndentLine {{
@@ -61,10 +50,6 @@ let g:netrw_winsize = 25
 " let g:netrw_browse_split = 4
 " }}
 
-" Supertab {{
-let g:SuperTabDefaultCompletionType = "context"
-" }}
-
 " Smoothscroll {{
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 25, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 25, 2)<CR>
@@ -79,13 +64,10 @@ let g:ycm_auto_trigger=0
 " below settings are already handled by CursorMovedI and InsertLeave commands
 " let g:ycm_autoclose_preview_window_after_completion=1
 " let g:ycm_autoclose_preview_window_after_insertion=1
-" Defines where GoTo* commands result should be opened. Can take one of the
-" following values: [ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab', 'new-or-existing-tab' ]
 let g:ycm_goto_buffer_command = 'same-buffer'
 " }}
 
 " fzf {{
-" This is the default extra key bindings
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
@@ -103,4 +85,4 @@ let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-x': 'split',
 			\ 'ctrl-v': 'vsplit' }
-"} }
+" }}

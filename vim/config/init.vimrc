@@ -1,6 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " required
 filetype off                  " required
 
@@ -29,8 +26,10 @@ Plugin 'airblade/vim-gitgutter' " shows quickdiffs
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'bronson/vim-visual-star-search'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
 Plugin 'jnurmine/Zenburn'
+Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
@@ -46,7 +45,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'w0rp/ale'
 
 " Python plugins

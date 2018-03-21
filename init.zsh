@@ -9,7 +9,7 @@ export DOT_FILES="$( cd "$( dirname "${SOURCE}" )" && pwd )"
 
 ln -s -f "${DOT_FILES}/prezto" "${HOME}/.zprezto"
 ln -s -f "${DOT_FILES}/gitignore_global" "${HOME}/.gitignore_global"
-ln -s -f "${DOT_FILES}/pythonrc.py" "${HOME}/.pythonrc.py"
+ln -s -f "${DOT_FILES}/pythonrc" "${HOME}/.pythonrc"
 ln -s -f "${DOT_FILES}/config" "${HOME}/.config"
 ln -s -f "${DOT_FILES}/pylintrc" "${HOME}/.pylintrc"
 ln -s -f "${DOT_FILES}/zprofile" "${HOME}/.zprofile"

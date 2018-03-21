@@ -6,8 +6,24 @@ except ImportError:
     # Taken from http://docs.python.org/2/library/rlcompleter.html
     print("Jedi is not installed, falling back to readline")
     try:
+        import os
         import readline
         import rlcompleter
+        import atexit
+
+        history_file = os.path.join(os.environ['HOME'], '.python_history')
+        try:
+            readline.read_history_file(history_file)
+        except IOError:
+            pass
         readline.parse_and_bind("tab: complete")
+        readline.set_history_length(1000)
+        atexit.register(readline.write_history_file, history_file)
+        del readline, rlcompleter, atexit, history_file
     except ImportError:
         print("Readline is not installed either. No tab completion is enabled.")
+
+# In addition to os, import some useful things:
+import re
+from collections import *
+from itertools import *

@@ -6,7 +6,8 @@ let g:user_emmet_install_global = 0
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
-let g:airline_extensions = ['ale']
+" By default, airline will attempt to load any extension it can find in the 'runtimepath'
+" let g:airline_extensions = ['ale']
 let g:airline_symbols.space = "\ua0"
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts=1
@@ -59,7 +60,9 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " YouCompleteMe {{
 " python3 completion
-let g:ycm_python_binary_path="python3"
+" virtualenv will set python interpreter
+let g:ycm_python_binary_path = 'python3'
+" let g:ycm_server_python_interpreter = 'python3'
 let g:ycm_auto_trigger=0
 " below settings are already handled by CursorMovedI and InsertLeave commands
 " let g:ycm_autoclose_preview_window_after_completion=1

@@ -16,7 +16,6 @@ set mouse=a                                  " enable mouse movement - makes cop
 set noeol
 set noswapfile                               " helps if u want to use somekind of filesystem watcher
 set nowritebackup
-set number                                   " show line numbers
 set pastetoggle=<F2>
 set relativenumber                           " let the  menu flicker
 set scrolloff=3                              " show additional lines when scrolling at the end
@@ -61,4 +60,17 @@ if &term =~ '256color'
 	" render properly when inside 256-color tmux and GNU screen.
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 	set t_ut=
+endif
+
+if has('gui_macvim')
+	set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+	set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
+	set pythonthreehome=/Users/caylak/.pyenv/versions/3.6.4
+	set pythonthreedll=/Users/caylak/.pyenv/versions/3.6.4/lib/libpython3.6m.dylib
+	" test python2 and python3 in this order, otherwise a segmentfault will happen.
+	silent! python print("+python2")
+	silent! python3 print("+python3")
+elseif has('nvim')
+	let g:python2_host_prog = 'python2'
+	let g:python3_host_prog = 'python3'
 endif

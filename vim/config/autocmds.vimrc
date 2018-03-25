@@ -38,6 +38,7 @@ augroup omni_complete " {
 	autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	" only availble with +python, can lead to segmentfault with python2 and 3 enabled
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END " }

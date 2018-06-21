@@ -25,7 +25,23 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme='papercolor'
 " }}
+
+" PaperColor
+let g:PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
 
 " UltiSnips {{
 " Unforunately ultisnip is not showing in ycm suggestion list :(

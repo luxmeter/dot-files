@@ -5,6 +5,17 @@ augroup END " }
 
 augroup general " {
 	autocmd!
+	" follow symlink and set working directory
+	autocmd BufRead *
+	  \ call FollowSymlink() |
+	  \ call SetProjectRoot()
+	" netrw: follow symlink and set working directory
+	autocmd CursorMoved silent *
+	  " short circuit for non-netrw files
+	  \ if &filetype == 'netrw' |
+	  \   call FollowSymlink() |
+	  \   call SetProjectRoot() |
+	  \ endif
 	" entering ins-mode changes the cwd to the parent dir of the opened file
 	" handy for ctrl-x-f
 	autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
@@ -15,6 +26,9 @@ augroup general " {
 	autocmd BufRead,BufNewFile *yaml,*.md,*.txt,gitcommit setlocal spell | setlocal complete+=kspell
 	autocmd BufWritePre *.py ImpSort!
 	autocmd FileType html,css EmmetInstall
+	" disable ALE on java files
+	autocmd BufNewFile,BufRead,BufEnter *.java ALEDisable
+	autocmd BufLeave *.java ALEEnable
 augroup END " }
 
 " fix newtr buffer bug

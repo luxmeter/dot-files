@@ -2,11 +2,14 @@ let mapleader = ","
 
 " When F5 is pressed, a numbered list of file names is printed, and the user
 " needs to type a single number based on the 'menu' and press enter.
-:nnoremap <F5> :Buffers<CR>:buffer<Space>
-:nnoremap <C-P> :Files<CR>
+nnoremap <F5> :Buffers<CR>:buffer<Space>
+nnoremap <C-N> :Files<CR>
+nnoremap <C-P> "0p
+nnoremap <C-S-P> "0P
 
 nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>z :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
 
 noremap <F7> mzgg=G`z
 
@@ -14,16 +17,10 @@ noremap <Leader>w :Bdelete!<CR>
 
 " ycm related // to enable auto completion with c-space
 " inoremap <C-Space> <C-x><C-o>
-" inoremap <C-@> <C-Space>
+" imap <leader><space> <c-space>
+" imap <C-@> <C-Space>
 " imap <Nul> <C-Space>
-" Ignores ctrl-space signal from the terminal
-" needs to be commented out if you want to use ctrl-space for completion
-" imap <Nul> <Nop>
 
-" map  <Nul> <Nop>
-" vmap <Nul> <Nop>
-" cmap <Nul> <Nop>
-" nmap <Nul> <Nop>
 noremap <Leader>s :w<CR>
 
 
@@ -31,7 +28,7 @@ nnoremap ;; ;
 nnoremap ; :
 
 " delete line without copying the content to the yank register
-nnoremap <C-X> "_dd
+" nnoremap <C-X> "_dd
 
 " window navigation
 map <C-h> <C-w>h

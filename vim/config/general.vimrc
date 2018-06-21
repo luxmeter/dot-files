@@ -1,6 +1,6 @@
 set backspace=indent,eol,start               " allow backspacing in insert mode
 set clipboard=unnamed,unnamedplus            " copy into unnamed register to paste outside from vim (linux, windows = unnamed)
-set colorcolumn=120                          " show right marin line (at reasonable 120 col width)
+" set colorcolumn=120                          " show right marin line (at reasonable 120 col width)
 set encoding=utf8
 set foldlevel=99
 set foldmethod=indent
@@ -17,7 +17,8 @@ set noeol
 set noswapfile                               " helps if u want to use somekind of filesystem watcher
 set nowritebackup
 set pastetoggle=<F2>
-set relativenumber                           " let the  menu flicker
+set norelativenumber                           " let the  menu flicker
+set number
 set scrolloff=3                              " show additional lines when scrolling at the end
 set shiftwidth=4
 set smartcase                                " use case if any caps used
@@ -31,6 +32,7 @@ set switchbuf=usetab
 set tabstop=4
 set termguicolors                            " enable true colors support
 set ttyfast
+set cursorline
 syntax on
 
 set completeopt=longest,menuone,preview,noinsert
@@ -38,8 +40,11 @@ set omnifunc=syntaxcomplete#Complete
 set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
 
-let ayucolor="mirage"
-colorscheme ayu
+" let ayucolor="mirage"
+" let ayucolor="light"
+" colorscheme ayu
+set background=light
+colorscheme PaperColor
 
 if executable('ag')
 	set grepprg=ag\ --vimgrep\ $*
@@ -71,6 +76,8 @@ if has('gui_macvim')
 	silent! python print("+python2")
 	silent! python3 print("+python3")
 elseif has('nvim')
-	let g:python2_host_prog = 'python2'
-	let g:python3_host_prog = 'python3'
+	let g:python2_host_prog = '/Users/caylak/.pyenv/versions/3.6.4/bin/python3'
+	let g:python3_host_prog = '/usr/local/Frameworks/Python.framework/Versions/2.7/bin/python'
+	silent! python print("+python2")
+	silent! python3 print("+python3")
 endif

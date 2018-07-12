@@ -79,11 +79,17 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " virtualenv will set python interpreter
 let g:ycm_python_binary_path = 'python3'
 " let g:ycm_server_python_interpreter = 'python3'
-let g:ycm_auto_trigger=0
+let g:ycm_auto_trigger=0 " if enabled, sometimes the return key doesn't do anything
 " below settings are already handled by CursorMovedI and InsertLeave commands
 " let g:ycm_autoclose_preview_window_after_completion=1
 " let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_goto_buffer_command = 'same-buffer'
+let g:jedi#completions_command = "<C-N>"
+" }}
+
+" Smoothscroll {{
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 50
 " }}
 
 " fzf {{

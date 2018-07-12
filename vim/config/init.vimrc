@@ -21,9 +21,11 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter' " shows quickdiffs
+Plugin 'airblade/vim-rooter'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'bronson/vim-visual-star-search'
 Plugin 'flazz/vim-colorschemes'

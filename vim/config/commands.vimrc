@@ -50,6 +50,7 @@ endfunction
 " or directory of current file if not git project
 function! SetProjectRoot()
   " default to the current file's directory
+  " echom 'Path: '.expand('%:p:h')
   lcd %:p:h
   let git_dir = system("git rev-parse --show-toplevel")
   " See if the command output starts with 'fatal' (if it does, not in a git repo)

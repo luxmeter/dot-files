@@ -76,8 +76,9 @@ if has('gui_macvim')
 	silent! python print("+python2")
 	silent! python3 print("+python3")
 elseif has('nvim')
-	let g:python2_host_prog = '/Users/caylak/.pyenv/versions/3.6.4/bin/python3'
-	let g:python3_host_prog = '/usr/local/Frameworks/Python.framework/Versions/2.7/bin/python'
+	" let g:python3_host_prog = '/Users/caylak/.pyenv/versions/3.6.4/bin/python3'
+	let g:python3_host_prog = 'python3'
+	let g:python2_host_prog = '/usr/local/Frameworks/Python.framework/Versions/2.7/bin/python'
 	silent! python print("+python2")
 	silent! python3 print("+python3")
 endif

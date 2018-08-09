@@ -60,3 +60,12 @@ function! SetProjectRoot()
     lcd `=git_dir`
   endif
 endfunction
+
+function! MarkdownLevel()
+	let h = matchstr(getline(v:lnum), '^#\+')
+	if empty(h)
+		return "="
+	else
+		return ">" . len(h)
+	endif
+endfunction

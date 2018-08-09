@@ -18,6 +18,8 @@ augroup general " {
 	" disable ALE on java files
 	autocmd BufNewFile,BufRead,BufEnter *.java ALEDisable
 	autocmd BufLeave *.java ALEEnable
+	autocmd BufEnter *.md setlocal foldexpr=MarkdownLevel()
+	autocmd BufEnter *.md setlocal foldmethod=expr
 augroup END " }
 
 " fix newtr buffer bug

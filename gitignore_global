@@ -4,6 +4,7 @@
 .settings
 .classpath
 *~
+html
 
 target
 ###################
@@ -49,3 +50,6 @@ __pycache__
 *.iml
 *.aux
 .env
+.ctags
+*.pem
+.tags

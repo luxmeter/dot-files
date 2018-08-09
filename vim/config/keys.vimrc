@@ -2,7 +2,7 @@ let mapleader = ","
 
 " When F5 is pressed, a numbered list of file names is printed, and the user
 " needs to type a single number based on the 'menu' and press enter.
-nnoremap <F5> :Buffers<CR>:buffer<Space>
+nnoremap <F5> :Buffers<CR><Space>
 nnoremap <C-N> :Files<CR>
 nnoremap <C-P> "0p
 nnoremap <C-S-P> "0P
@@ -25,6 +25,7 @@ noremap <Leader>w :Bdelete!<CR>
 noremap <Leader>s :w<CR>
 
 
+nnoremap <F8> :setlocal spell! spell?<CR>
 nnoremap ;; ;
 nnoremap ; :
 
@@ -74,10 +75,10 @@ imap OH <Home>
 imap OF <End>
 
 " Let Omnicompletion behave like you are used to from IDEs
-" inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
 " inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-" inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-" inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-" inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-" inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"

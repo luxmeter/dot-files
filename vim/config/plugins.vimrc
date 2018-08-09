@@ -2,12 +2,15 @@
 let g:user_emmet_install_global = 0
 " }}
 
+" ALE {{
+let g:ale_linters_sh_shellcheck_exclusions='SC2181,SC1117,SC2155,SC2006'
+
 " Airline {{
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 " By default, airline will attempt to load any extension it can find in the 'runtimepath'
-" let g:airline_extensions = ['ale']
+let g:airline_extensions = ['ale']
 let g:airline_symbols.space = "\ua0"
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts=1

@@ -53,3 +53,5 @@ __pycache__
 .ctags
 *.pem
 .tags
+.pytest_cache
+*.eg-info

@@ -16,3 +16,6 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[user]
+	email = mustafa.caylak@web.de
+	name = Mustafa Caylak

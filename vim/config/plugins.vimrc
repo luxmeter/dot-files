@@ -10,9 +10,10 @@ if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 " By default, airline will attempt to load any extension it can find in the 'runtimepath'
-let g:airline_extensions = ['ale']
+let g:airline_extensions = ['ale', 'virtualenv']
 let g:airline_symbols.space = "\ua0"
 let g:airline_skip_empty_sections = 1
+let g:airline_section_b = airline#section#create('%{virtualenv#statusline()}')
 let g:airline_powerline_fonts=1
 let g:airline_enable_branch=1
 let g:airline_enable_syntastic=1
@@ -114,3 +115,8 @@ let g:fzf_action = {
 			\ 'ctrl-x': 'split',
 			\ 'ctrl-v': 'vsplit' }
 " }}
+"
+let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
+" https://github.com/palantir/python-language-server/issues/515
+let g:LanguageClient_hasSnippetsSupport = 0
+let g:LanguageClient_serverCommands = {'python': ['pyls']}

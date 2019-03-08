@@ -20,6 +20,9 @@ augroup general " {
 	autocmd BufLeave *.java ALEEnable
 	autocmd BufEnter *.md setlocal foldexpr=MarkdownLevel()
 	autocmd BufEnter *.md setlocal foldmethod=expr
+    autocmd FileType * call LC_maps()
+	" enable ncm2 for all buffers
+	autocmd BufEnter * call ncm2#enable_for_buffer()
 augroup END " }
 
 " fix newtr buffer bug

@@ -3,58 +3,62 @@ filetype off                  " required
 
 let s:uname = system("echo -n \"$(uname)\"")
 if !v:shell_error && s:uname == "Linux"
-	set rtp+=~/.fzf
+	set rtp+=~/fzf
 else
 	let s:fzf_path = system("echo -n \"$(brew --prefix)/opt/fzf\"")
 	exe 'set rtp+=' . expand(s:fzf_path)
 endif
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'SirVer/ultisnips'
-Plugin 'airblade/vim-gitgutter' " shows quickdiffs
-Plugin 'airblade/vim-rooter'
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'bronson/vim-visual-star-search'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'godlygeek/tabular'
-Plugin 'honza/vim-snippets'
-Plugin 'jnurmine/Zenburn'
-Plugin 'jtratner/vim-flavored-markdown' " must come before vim-markdown
-Plugin 'junegunn/fzf.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'moll/vim-bbye'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'		" wrapper around git cmds
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'w0rp/ale'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter' " shows quickdiffs
+Plug 'airblade/vim-rooter'
+Plug 'ayu-theme/ayu-vim'
+Plug 'bronson/vim-visual-star-search'
+Plug 'flazz/vim-colorschemes'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'jnurmine/Zenburn'
+Plug 'jtratner/vim-flavored-markdown' " must come before vim-markdown
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
+Plug 'mileszs/ack.vim'
+Plug 'moll/vim-bbye'
+Plug 'sheerun/vim-polyglot'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'		" wrapper around git cmds
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
 
 " Python plugins
-Plugin 'plytophogy/vim-virtualenv'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'tweekmonster/impsort.vim'
-Plugin 'vim-scripts/indentpython.vim'
+Plug 'plytophogy/vim-virtualenv'
+Plug 'tmhedberg/SimpylFold'
+Plug 'tweekmonster/impsort.vim'
+Plug 'vim-scripts/indentpython.vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" NCM2
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+
+call plug#end()
 filetype plugin indent on    " required

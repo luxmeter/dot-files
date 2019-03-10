@@ -12,6 +12,7 @@ fi
 autoload -Uz promptinit
 promptinit
 prompt pure
+fpath+=~/.zfunc
 
 # interactive terminal specific variables
 # konsole didn't set this value
@@ -36,3 +37,5 @@ if type pipenv &> /dev/null; then
 fi
 
 export PATH=$PATH:/Users/caylak/.rhino/bin
+# zsh completion init
+compinit

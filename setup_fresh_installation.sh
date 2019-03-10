@@ -105,6 +105,21 @@ install_virtualenvwrapper() {
 	fi
 }
 
+install_poetry() {
+	if ! command_exists poetry; then
+		echo "poetry not found. Installing..."
+		curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+	fi
+}
+
+install_npm() {
+	if ! command_exists npm; then
+		echo "npm not found. Installing..."
+		sudo apt install npm
+		sudo npm install -g npm@latest
+	fi
+}
+
 install_fd() {
 	if ! command_exists fd; then
 		echo "fd not found. Installing..."
@@ -129,6 +144,34 @@ install_tpm() {
 	fi
 }
 
+install_docker() {
+	sudo apt install \
+		apt-transport-https \
+		ca-certificates \
+		curl \
+		gnupg-agent \
+		software-properties-common
+
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+	sudo add-apt-repository \
+	   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+	   $(lsb_release -cs) \
+	   stable"
+
+	sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+	sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+	sudo chmod +x /usr/local/bin/docker-compose
+
+	if ! grep -q docker /etc/group; then
+		sudo groupadd docker
+	fi
+
+	sudo usermod -aG docker $USER
+}
+
 cd "${_root}"
 
 install_git
@@ -137,13 +180,16 @@ install_fonts
 install_tmux
 install_zsh
 install_neovim
-install_python3
 install_ag
 install_fzf
+install_python3
 install_virtualenvwrapper
+install_poetry
+install_npm
 install_fd
 install_prezto
 install_tpm
+install_docker
 
 
 _files=(ideavimrc aliases.sh flake8 functions.sh general.zsh gitconfig gitignore_global gitmodules init.zsh keys.sh pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)

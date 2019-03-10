@@ -98,7 +98,13 @@ function! Update_Python_Path(...)
 		execute ':VirtualEnvActivate ' .name
 	endif
 
-	let python_path = $VIRTUAL_ENV
+	let ver = system($VIRTUAL_ENV. '/bin/python --version | grep -Po ''(\d\.?)+''')
+	if ver =~ "\^3."
+		let python_path = $HOME. '/.virtualenvs/nvimpy3'
+	else
+		let python_path =  $HOME. '/.virtualenvs/nvimpy2'
+	endif
+
 	if len(python_path) == 0
 		echom 'No VirtualEnv set'
 	else

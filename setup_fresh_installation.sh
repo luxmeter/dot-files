@@ -194,7 +194,8 @@ install_docker
 
 _files=(ideavimrc aliases.sh flake8 functions.sh general.zsh gitconfig gitignore_global gitmodules init.zsh keys.sh pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)
 
-for file in ${_files[@]}; do
+echo "${_files[@]}"
+for file in "${_files[@]}"; do
 	echo "Linking "${_dir}/${file}" to ${HOME}/.${file}"
 	if [[ "${file}" =~ "vimrc" ]]; then
 		mkdir -p ~/.config/nvim > /dev/null 2>&1

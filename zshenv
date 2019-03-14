@@ -21,6 +21,10 @@ if [[ -d "$HOME/miniconda3/bin" ]]; then
 	export PATH="$HOME/miniconda3/bin:$PATH"
 fi
 
+if [[ -f "$HOME/.confidential" ]]; then
+	source "$HOME/.confidential"
+fi
+
 export WORKON_HOME=$HOME/.virtualenvs
 if [[ ! -d "WORKON_HOME" ]]; then
 	mkdir -p $WORKON_HOME

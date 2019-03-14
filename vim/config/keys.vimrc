@@ -6,6 +6,10 @@ nnoremap <F5> :Buffers<CR><Space>
 nnoremap <C-N> :Files<CR>
 nnoremap <C-P> "0p
 nnoremap <C-S-P> "0P
+nnoremap <Leader>d "0d
+nnoremap <Leader><S-d> "0D
+vnoremap <Leader>d "0d
+vnoremap <Leader><S-d> "0D
 
 nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>

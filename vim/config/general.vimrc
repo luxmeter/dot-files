@@ -1,3 +1,4 @@
+set autowrite
 set backspace=indent,eol,start               " allow backspacing in insert mode
 set clipboard=unnamed,unnamedplus            " copy into unnamed register to paste outside from vim (linux, windows = unnamed)
 " set colorcolumn=120                          " show right marin line (at reasonable 120 col width)
@@ -33,6 +34,7 @@ set tabstop=4
 set termguicolors                            " enable true colors support
 set ttyfast
 set cursorline
+set shortmess=aOItT
 syntax on
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
@@ -42,14 +44,17 @@ set completefunc=syntaxcomplete#Complete
 set complete=.,w,b,u,U,t,i,d
 
 set tags=./tags;,tags,./.tags;,.tags
-" let ayucolor="mirage"
-" let ayucolor="light"
-" colorscheme ayu
-set background=light
-colorscheme PaperColor
+" set background=light
+" colorscheme PaperColor
+set background=dark " or light if you prefer the light version
+if !exists("g:two_firewatch_italics")
+	let g:two_firewatch_italics = 0
+endif
+colo two-firewatch
 
 if executable('ag')
-	set grepprg=ag\ --vimgrep\ $*
+	" set grepprg=ag\ --vimgrep\ $*
+	let &grepprg="ag --vimgrep $*"
 	set grepformat=%f:%l:%c:%m
 	let g:ackprg = 'ag --vimgrep'
 endif

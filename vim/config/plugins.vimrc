@@ -3,7 +3,7 @@ let g:user_emmet_install_global = 0
 " }}
 
 " ALE {{
-let g:ale_linters_sh_shellcheck_exclusions='SC2181,SC1117,SC2155,SC2006'
+let g:ale_linters_sh_shellcheck_exclusions='SC2181,SC1117,SC2155,SC2006,SC2039'
 
 " Airline {{
 if !exists('g:airline_symbols')
@@ -29,7 +29,8 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_theme='papercolor'
+" let g:airline_theme='papercolor'
+let g:airline_theme='twofirewatch'
 " }}
 
 " PaperColor

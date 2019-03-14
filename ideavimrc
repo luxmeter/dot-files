@@ -7,6 +7,7 @@ set showmode
 set smartcase
 set surround                      " vim-surround
 set visualbell
+let mapleader = ","
 
 nnoremap [<space> O<c-[>j
 nnoremap ]<space> o<c-[>k
@@ -24,6 +25,10 @@ noremap <C-Q> :action QuickJavaDoc<CR>
 noremap <C-H> :action TypeHierarchy<CR>
 nnoremap <C-P> "0p
 nnoremap <C-S-P> "0P
+nnoremap <Leader>d "0d
+nnoremap <Leader><S-d> "0D
+vnoremap <Leader> "0d
+vnoremap <Leader><S-d> "0D
 
 inoremap jj <c-[>
 

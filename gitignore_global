@@ -55,3 +55,6 @@ __pycache__
 .tags
 .pytest_cache
 *.eg-info
+cookies.js
+sonar-project.properties
+.confidential

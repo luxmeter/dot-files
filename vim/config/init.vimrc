@@ -11,18 +11,15 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
+Plug 'airblade/vim-gitgutter' " shows quickdiffs
+Plug 'airblade/vim-rooter'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'Raimondi/delimitMate'
-Plug 'SirVer/ultisnips'
-Plug 'airblade/vim-gitgutter' " shows quickdiffs
-Plug 'airblade/vim-rooter'
 Plug 'ayu-theme/ayu-vim'
 Plug 'bronson/vim-visual-star-search'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
@@ -33,8 +30,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'Raimondi/delimitMate'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -56,7 +56,6 @@ Plug 'vim-scripts/indentpython.vim'
 " NCM2
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
-
 " NOTE: you need to install completion sources to get completions. Check
 " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
 Plug 'ncm2/ncm2-bufword'

@@ -1,7 +1,7 @@
 dolphin() {
 	local path="$1"
 	if [[ "${path:-x}" == "x" ]]; then
-		dolphin $(pwd) > /dev/null 2>&1
+		(/usr/bin/dolphin $(pwd) 2> /dev/null >&1 &)
 	fi
 }
 
@@ -30,9 +30,9 @@ vimrc() {
 
 zshrc() {
 	local names="$@"
-	names="$(find $DOT_FILES/prezto/runcoms -type f -name "*sh")"
-	names="$names\n$DOT_FILES/prezto/runcoms/zshenv"
-	names="$names\n$DOT_FILES/prezto/runcoms/zshrc"
+	names="$(find $DOT_FILES -type f -name "*sh")"
+	names="$names\n$DOT_FILES/zshenv"
+	names="$names\n$DOT_FILES/zshrc"
 	echo $(echo $names | fzf) | xargs -o vim
 	source ~/.zshrc
 }

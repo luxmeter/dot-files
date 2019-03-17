@@ -207,7 +207,7 @@ install_prezto
 install_tpm
 install_docker
 install_jump
-install_java
+install_jdk
 
 
 _files=(ideavimrc aliases.sh flake8 functions.sh general.zsh gitconfig gitignore_global gitmodules init.zsh keys.sh pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)

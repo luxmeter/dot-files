@@ -36,6 +36,10 @@ if type pipenv &> /dev/null; then
 	eval "$(pipenv --completion)"
 fi
 
+if type jump &> /dev/null; then
+	eval "$(jump shell)"
+fi
+
 export PATH=$PATH:/Users/caylak/.rhino/bin
 # zsh completion init
 compinit

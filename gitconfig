@@ -1,9 +1,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
-	fileMode = off
-	filemode = false
 	editor = vim
-	fileMode = off
+	fileMode = false
 [push]
 	default = simple
 [color]
@@ -21,7 +19,7 @@
 	name = Mustafa Caylak
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

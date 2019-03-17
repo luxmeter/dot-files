@@ -1,0 +1,23 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+w",
+        "mac": "cmd+w",
+        "command": "workbench.action.closeActiveEditor",
+        "jetbrains": "Close active editor tab"
+    },
+    {
+      "key": "ctrl+shift+d",
+      "mac": "ctrl+shift+d",
+      "command": "editor.action.copyLinesDownAction",
+      "when": "editorTextFocus && !editorReadonly",
+      "jetbrains": "Duplicate Line or Selection"
+    },
+    {
+      "key": "ctrl+d",
+      "mac": "cmd+d",
+      "command": "editor.action.deleteLines",
+      "when": "editorTextFocus && !editorReadonly",
+      "jetbrains": "Delete line at caret"
+    },
+]

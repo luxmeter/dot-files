@@ -3,6 +3,7 @@ augroup rm_trailing_whitespaces " {
 	autocmd BufWritePre * %s/\s\+$//e
 augroup END " }
 
+" execute('!npx tsc '.expand("%").' && node '.substitute(expand('%'), ".tsx", ".js", ""))
 augroup general " {
 	autocmd!
 	" entering ins-mode changes the cwd to the parent dir of the opened file

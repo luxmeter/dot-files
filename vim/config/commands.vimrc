@@ -85,6 +85,7 @@ command! -register CopyMatches call CopyMatches(<q-reg>)
 
 function! LC_maps()
 	if has_key(g:LanguageClient_serverCommands, &filetype)
+		nnoremap <F1> :call LanguageClient_contextMenu()<CR>
 		nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
 		nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
 		nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
@@ -112,4 +113,41 @@ function! Update_Python_Path(...)
 		:LanguageClientStop
 		:LanguageClientStart
 	endif
+endfunction
+
+function! RunFile()
+	let l:file = escape(escape(expand("%"), ' '), '\ ')
+	let l:wd = escape(escape(expand("%:p:h"), ' '), '\ ')
+	if &filetype =~ "typescript"
+		echom "Filetype is ". &filetype
+		" execute('!cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
+		execute('silent Shell cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
+	else
+		echom "No routine for filetype ". &filetype ." found"
+	endif
+endfunction
+
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  echo a:cmdline
+  let expanded_cmdline = a:cmdline
+  for part in split(a:cmdline, ' ')
+     if part[0] =~ '\v[%#<]'
+        let expanded_part = fnameescape(expand(part))
+        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+     endif
+  endfor
+  execute "pclose!"
+  execute "normal! mm"
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, 'You entered:    ' . a:cmdline)
+  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+  call setline(3,substitute(getline(2),'.','=','g'))
+  execute 'silent $read !'. expanded_cmdline
+  setlocal nomodifiable
+  execute ":set pvw"
+  execute "normal! \<C-W>p"
+  execute "normal! gg"
+  execute "normal! `m"
 endfunction

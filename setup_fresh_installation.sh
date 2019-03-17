@@ -47,6 +47,21 @@ install_zsh() {
 	fi
 }
 
+install_jump() {
+	if ! command_exists jump; then
+		echo "jump not found. Installing..."
+		wget https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb
+		sudo dpkg -i jump_0.22.0_amd64.deb
+	fi
+}
+
+install_jdk() {
+	if ! command_exists java; then
+		echo "Java not found. Installing..."
+		sudo apt install openjdk-11-jdk openjdk-11-source
+	fi
+}
+
 install_neovim() {
 	if ! command_exists nvim; then
 		echo "NeoVim not found. Installing..."
@@ -117,6 +132,7 @@ install_npm() {
 		echo "npm not found. Installing..."
 		sudo apt install npm
 		sudo npm install -g npm@latest
+		sudo npm install -g typescript webpack util @types/node
 	fi
 }
 
@@ -190,6 +206,8 @@ install_fd
 install_prezto
 install_tpm
 install_docker
+install_jump
+install_java
 
 
 _files=(ideavimrc aliases.sh flake8 functions.sh general.zsh gitconfig gitignore_global gitmodules init.zsh keys.sh pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)

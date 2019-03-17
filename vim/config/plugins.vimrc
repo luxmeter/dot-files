@@ -120,4 +120,7 @@ let g:fzf_action = {
 let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
 " https://github.com/palantir/python-language-server/issues/515
 let g:LanguageClient_hasSnippetsSupport = 0
-let g:LanguageClient_serverCommands = {'python': ['pyls']}
+let g:LanguageClient_serverCommands = {
+			\ 'python': ['pyls'],
+			\ 'typescript.jsx': ['npx', 'typescript-language-server', '--stdio']
+			\ }

@@ -13,7 +13,7 @@ if [[ "$(uname -s)" =~ "Darwin" ]]; then
 	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
 	export M2_HOME=/usr/local/maven/3.5.0/bin
 else
-	export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 	export M2_HOME=/usr/share/maven
 fi
 

@@ -29,8 +29,16 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 let g:airline#extensions#tabline#right_sep = ' '
 let g:airline#extensions#tabline#right_alt_sep = ' '
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-" let g:airline_theme='papercolor'
 let g:airline_theme='twofirewatch'
+" let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_fixers = {
+	\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+	\   'javascript': ['prettier'],
+	\   'typescript.jsx': ['prettier', 'tslint'],
+	\   'css': ['prettier'],
+\}
 " }}
 
 " PaperColor
@@ -120,6 +128,8 @@ let g:fzf_action = {
 let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
 " https://github.com/palantir/python-language-server/issues/515
 let g:LanguageClient_hasSnippetsSupport = 0
+" we have ALE for linting
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
 			\ 'python': ['pyls'],
 			\ 'typescript.jsx': ['npx', 'typescript-language-server', '--stdio']

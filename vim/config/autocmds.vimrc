@@ -1,8 +1,3 @@
-augroup rm_trailing_whitespaces " {
-	autocmd!
-	autocmd BufWritePre * %s/\s\+$//e
-augroup END " }
-
 " execute('!npx tsc '.expand("%").' && node '.substitute(expand('%'), ".tsx", ".js", ""))
 augroup general " {
 	autocmd!
@@ -15,6 +10,7 @@ augroup general " {
 	autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 	autocmd BufRead,BufNewFile *yaml,*.md,*.txt,gitcommit setlocal spell | setlocal complete+=kspell
 	autocmd BufWritePre *.py ImpSort!
+	autocmd BufWritePre *.js,*.jsx,*.tsx,*.ts Neoformat
 	autocmd FileType html,css EmmetInstall
 	" disable ALE on java files
 	autocmd BufNewFile,BufRead,BufEnter *.java ALEDisable
@@ -50,6 +46,9 @@ augroup omni_complete " {
 	" only availble with +python, can lead to segmentfault with python2 and 3 enabled
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	autocmd FileType javascript,typescript,typescript.jsx setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5
+	" Use formatprg when available
+	let g:neoformat_try_formatprg = 1
 augroup END " }
 
 augroup fzf " {

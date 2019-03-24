@@ -1,0 +1,141 @@
+{
+    "[javascript]": {},
+    "window.zoomLevel": 0,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.minimap.enabled": false,
+    "terminal.integrated.rendererType": "dom",
+    "explorer.confirmDelete": false,
+    "editor.detectIndentation": true,
+    "editor.tabSize": 2,
+    "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "p",
+            ],
+            "after": [
+                "\"",
+                "_",
+                "d",
+                "P",
+            ]
+        },
+        {
+            "before": [
+                "<",
+            ],
+            "after": [
+                "<",
+                "g",
+                "v",
+            ]
+        },
+        {
+            "before": [
+                ">",
+            ],
+            "after": [
+                ">",
+                "g",
+                "v",
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "<space>"
+            ],
+            "after": [
+                "O",
+                "<c-[>",
+                "<j>",
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "<space>"
+            ],
+            "after": [
+                "O",
+                "<c-[>",
+                "<j>",
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "e"
+            ],
+            "after": [
+                "d",
+                "d",
+                "k",
+                "P",
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "e"
+            ],
+            "after": [
+                "d",
+                "d",
+                "p",
+            ]
+        },
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "breadcrumbs.enabled": true,
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "workbench.sideBar.location": "left",
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "default",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false
+}

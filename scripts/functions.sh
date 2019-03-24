@@ -29,8 +29,7 @@ vimrc() {
 }
 
 zshrc() {
-	local names="$@"
-	names="$(find $DOT_FILES -type f -name "*sh")"
+	names="$(find $DOT_FILES/scripts -type f)"
 	names="$names\n$DOT_FILES/zshenv"
 	names="$names\n$DOT_FILES/zshrc"
 	echo $(echo $names | fzf) | xargs -o vim

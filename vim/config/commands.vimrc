@@ -151,3 +151,7 @@ function! s:RunShellCommand(cmdline)
   execute "normal! gg"
   execute "normal! `m"
 endfunction
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? Vimrc
+  \ call fzf#vim#files($DOT_FILES.'/vim/config')

@@ -75,7 +75,7 @@ install_neovim() {
 		sudo update-alternatives --config editor
 
 		curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	fi
 }
 
@@ -171,9 +171,9 @@ install_docker() {
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 	sudo add-apt-repository \
-	   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-	   $(lsb_release -cs) \
-	   stable"
+		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+		$(lsb_release -cs) \
+		stable"
 
 	sudo apt-get install docker-ce docker-ce-cli containerd.io
 
@@ -210,7 +210,7 @@ install_jump
 install_jdk
 
 
-_files=(ideavimrc aliases.sh flake8 functions.sh general.zsh gitconfig gitignore_global gitmodules init.zsh keys.sh pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)
+_files=(ideavimrc flake8 gitconfig gitignore_global pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)
 
 echo "${_files[@]}"
 for file in "${_files[@]}"; do
@@ -218,6 +218,9 @@ for file in "${_files[@]}"; do
 	if [[ "${file}" =~ "vimrc" ]]; then
 		mkdir -p ~/.config/nvim > /dev/null 2>&1
 		ln -s -f "${_dir}/${file}" "${HOME}/.config/nvim/init.vim"
+	elif [[ "${file}" =~ "flake8" ]]; then
+		mkdir ~/.config > /dev/null 2>&1
+		ln -s -f "${_dir}/${file}" "${HOME}/.config/flake8"
 	else
 		ln -s -f "${_dir}/${file}" "${HOME}/.${file}"
 	fi
@@ -231,4 +234,3 @@ if [[ ! -d ~/.vim/config ]]; then
 	mkdir -p ~/.vim > /dev/null 2>&1
 	ln -s -f ${_dir}/vim/config ~/.vim/config
 fi
-

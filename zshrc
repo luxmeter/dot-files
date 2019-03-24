@@ -12,7 +12,7 @@ fi
 autoload -Uz promptinit
 promptinit
 prompt pure
-fpath+=~/.zfunc
+fpath=( $DOT_FILES/zfunc "${fpath[@]}" )
 
 # interactive terminal specific variables
 # konsole didn't set this value
@@ -20,9 +20,9 @@ TERM=xterm-256color
 
 source "$DOT_FILES/general.zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source "$DOT_FILES/keys.sh"
-source "$DOT_FILES/aliases.sh"
-source "$DOT_FILES/functions.sh"
+source "$DOT_FILES/scripts/keys.sh"
+source "$DOT_FILES/scripts/aliases.sh"
+source "$DOT_FILES/scripts/functions.sh"
 source "$DOT_FILES/zshenv"
 [ -f "${HOME}/Projects/scripts/caylak_adobe_scripts.sh" ] && source "${HOME}/Projects/scripts/caylak_adobe_scripts.sh"
 source virtualenvwrapper.sh
@@ -40,7 +40,6 @@ if type jump &> /dev/null; then
 	eval "$(jump shell)"
 fi
 
-export PATH=$PATH:/Users/caylak/.rhino/bin
 # zsh completion init
 compinit
 

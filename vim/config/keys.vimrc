@@ -11,6 +11,9 @@ nnoremap <Leader><S-d> "0D
 vnoremap <Leader>d "0d
 vnoremap <Leader><S-d> "0D
 
+vnoremap p "_dP
+xnoremap p "_dP
+
 nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>
 nnoremap <Leader>q :YcmCompleter GetDoc<CR>

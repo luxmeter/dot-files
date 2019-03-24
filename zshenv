@@ -10,8 +10,8 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 if [[ "$(uname -s)" =~ "Darwin" ]]; then
-	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
-	export M2_HOME=/usr/local/maven/3.5.0/bin
+	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
+	export M2_HOME=/usr/local/Cellar/maven/3.5.4
 else
 	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 	export M2_HOME=/usr/share/maven

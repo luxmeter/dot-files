@@ -17,4 +17,5 @@ if [[ "$(uname -s)" =~ "Darwin" ]]; then
 	alias ctags="`brew --prefix`/bin/ctags"
 	alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 	alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
+	alias java11-0-1='export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.1)'
 fi

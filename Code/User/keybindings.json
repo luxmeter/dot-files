@@ -3,37 +3,37 @@
   {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft",
-    "when": "vim.active && vim.mode != 'Insert'"
+    "when": "vim.mode != 'Insert'"
   },
   {
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight",
-    "when": "vim.active && vim.mode != 'Insert'"
+    "when": "vim.mode != 'Insert'"
   },
   {
     "key": "ctrl+k",
     "command": "workbench.action.navigateUp",
-    "when": "vim.active && vim.mode != 'Insert'"
+    "when": "vim.mode != 'Insert'"
   },
   {
     "key": "ctrl+j",
     "command": "workbench.action.navigateDown",
-    "when": "vim.active && vim.mode != 'Insert'"
+    "when": "vim.mode != 'Insert'"
   },
   {
     "key": "shift+l",
     "command": "workbench.action.nextEditor",
-    "when": "vim.active && vim.mode != 'Insert'"
+    "when": "vim.mode != 'Insert'"
   },
   {
     "key": "shift+h",
     "command": "workbench.action.previousEditor",
-    "when": "vim.active && vim.mode != 'Insert'"
+    "when": "vim.mode != 'Insert'"
   },
   {
-    "key": "ctrl+r",
-    "command": "redo",
-    "when": "editorFocus && vim.active && vim.mode != 'Insert'"
+    "key": "ctrl+n",
+    "mac": "cmd+n",
+    "command": "workbench.action.files.newUntitledFile"
   },
   {
     "key": "ctrl+w",
@@ -56,244 +56,9 @@
     "jetbrains": "Delete line at caret"
   },
   {
-    "key": "alt+numpad9",
-    "command": "workbench.view.scm",
-    "when": "editorFocus"
-  },
-  // {
-  //     "key": "u",
-  //     "command": "undo",
-  //     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-  // },
-  {
     "key": "ctrl+q",
     "command": "editor.action.showHover",
     "when": "vim.active && vim.mode != 'Insert'"
-  },
-  {
-    "key": "ctrl+shift+a",
-    "mac": "shift+cmd+a",
-    "command": "workbench.action.showCommands",
-    "jetbrains": "Find Action"
-  },
-  {
-    "key": "ctrl+n",
-    "mac": "cmd+o",
-    "command": "workbench.action.showAllSymbols",
-    "jetbrains": "Go to Symbol"
-  },
-  {
-    "key": "ctrl+shift+n",
-    "mac": "cmd+shift+o",
-    "command": "workbench.action.quickOpen",
-    "jetbrains": "Go to File"
-  },
-  {
-    "key": "ctrl+alt+shift+n",
-    "mac": "cmd+alt+o",
-    "command": "workbench.action.gotoSymbol",
-    "jetbrains": "Go to Symbol"
-  },
-  {
-    "key": "ctrl+e",
-    "mac": "cmd+e",
-    "command": "workbench.action.quickOpenNavigateNext",
-    "when": "inQuickOpen",
-    "jetbrains": "Recent Files"
-  },
-  {
-    "key": "ctrl+e",
-    "mac": "cmd+e",
-    "command": "-actions.find"
-  },
-  {
-    "key": "ctrl+e",
-    "mac": "cmd+e",
-    "command": "-workbench.action.openRecent"
-  },
-  {
-    "key": "ctrl+e",
-    "mac": "cmd+e",
-    "command": "workbench.action.openRecent"
-  },
-  {
-    "key": "ctrl+tab",
-    "mac": "ctrl+tab",
-    "command": "workbench.action.quickOpenNavigateNext",
-    "when": "inQuickOpen",
-    "jetbrains": "Switch between tabs and tool window"
-  },
-  {
-    "key": "ctrl+enter",
-    "mac": "cmd+enter",
-    "command": "lineBreakInsert",
-    "when": "editorTextFocus && !editorReadonly",
-    "jetbrains": "Smart line split"
-  },
-  {
-    "key": "shift+ctrl+up",
-    "mac": "shift+alt+up",
-    "command": "editor.action.moveLinesUpAction",
-    "when": "editorTextFocus && !editorReadonly",
-    "jetbrains": "Move Line Up"
-  },
-  {
-    "key": "shift+ctrl+down",
-    "mac": "shift+alt+down",
-    "command": "editor.action.moveLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly",
-    "jetbrains": "Move Line Down"
-  },
-  {
-    "key": "ctrl+-",
-    "mac": "cmd+-",
-    "command": "editor.fold",
-    "when": "editorFocus",
-    "jetbrains": "Collapse"
-  },
-  {
-    "key": "ctrl+shift+-",
-    "mac": "cmd+shift+-",
-    "command": "editor.foldAll",
-    "when": "editorFocus",
-    "jetbrains": "Collapse All"
-  },
-  {
-    "key": "ctrl+shift+numpad_subtract",
-    "mac": "cmd+shift+numpad_subtract",
-    "command": "editor.foldAll",
-    "when": "editorFocus",
-    "jetbrains": "Collapse all"
-  },
-  {
-    "key": "ctrl+shift+=",
-    "mac": "cmd+shift+=",
-    "command": "editor.unfoldAll",
-    "when": "editorFocus",
-    "jetbrains": "Expand All"
-  },
-  {
-    "key": "ctrl+alt+l",
-    "mac": "cmd+alt+l",
-    "command": "editor.action.formatDocument",
-    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly",
-    "jetbrains": "Reformat code"
-  },
-  {
-    "key": "ctrl+b",
-    "mac": "cmd+b",
-    "command": "editor.action.goToDeclaration",
-    "when": "editorHasDefinitionProvider && editorTextFocus",
-    "jetbrains": "Go to Declaration"
-  },
-  {
-    "key": "ctrl+alt+b",
-    "mac": "cmd+alt+b",
-    "command": "editor.action.goToImplementation",
-    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor",
-    "jetbrains": "Go to Implementation(s)"
-  },
-  {
-    "key": "cmd+.",
-    "command": "editor.action.quickFix",
-    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "alt+enter",
-    "mac": "alt+enter",
-    "command": "editor.action.quickFix",
-    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly",
-    "jetbrains": "Show intention actions and quick-fixes"
-  },
-  {
-    "key": "alt+f7",
-    "mac": "alt+f7",
-    "command": "editor.action.referenceSearch.trigger",
-    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor",
-    "jetbrains": "Find Usages"
-  },
-  {
-    "key": "ctrl+f9",
-    "mac": "cmd+f9",
-    "command": "workbench.action.tasks.build",
-    "jetbrains": "Build Project"
-  },
-  {
-    "key": "alt+shift+f10",
-    "mac": "ctrl+alt+r",
-    "command": "workbench.action.tasks.runTask",
-    "jetbrains": "Select Configuration and Run"
-  },
-  {
-    "key": "alt+shift+f9",
-    "mac": "ctrl+alt+d",
-    "command": "workbench.view.debug",
-    "jetbrains": "Select Configuration and Debug"
-  },
-  {
-    "key": "shift+f9",
-    "mac": "ctrl+d",
-    "command": "workbench.action.debug.run",
-    "when": "!inDebugMode && !terminalFocus",
-    "jetbrains": "Debug"
-  },
-  {
-    "key": "shift+f6",
-    "mac": "shift+f6",
-    "command": "editor.action.rename",
-    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly",
-    "jetbrains": "Rename Symbol"
-  },
-  {
-    "key": "shift+f6",
-    "mac": "shift+f6",
-    "command": "renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus",
-    "jetbrains": "Rename File"
-  },
-  {
-    "key": "ctrl+g",
-    "mac": "cmd+l",
-    "command": "workbench.action.gotoLine",
-    "jetbrains": "Go to Line"
-  },
-  {
-    "key": "ctrl+shift+j",
-    "mac": "ctrl+shift+j",
-    "command": "editor.action.joinLines",
-    "when": "editorTextFocus && !editorReadonly",
-    "jetbrains": "Smart line join"
-  },
-  {
-    "key": "ctrl+f12",
-    "mac": "cmd+f12",
-    "command": "workbench.action.gotoSymbol",
-    "when": "editorTextFocus",
-    "jetbrains": "File Structure Popup"
-  },
-  {
-    "key": "alt+left",
-    "mac": "ctrl+left",
-    "command": "workbench.action.previousEditor",
-    "jetbrains": "Go to previous editor tab"
-  },
-  {
-    "key": "alt+right",
-    "mac": "ctrl+right",
-    "command": "workbench.action.nextEditor",
-    "jetbrains": "Go to next editor tab"
-  },
-  {
-    "key": "alt+left",
-    "mac": "ctrl+left",
-    "command": "workbench.action.previousEditor",
-    "jetbrains": "Go to previous editor tab"
-  },
-  {
-    "key": "alt+right",
-    "mac": "ctrl+right",
-    "command": "workbench.action.nextEditor",
-    "jetbrains": "Go to next editor tab"
   },
   {
     "key": "f9",
@@ -308,20 +73,6 @@
     "command": "workbench.action.debug.stepInto",
     "when": "inDebugMode",
     "jetbrains": "Step Into"
-  },
-  {
-    "key": "f7",
-    "mac": "f7",
-    "command": "workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible",
-    "jetbrains": "Next difference"
-  },
-  {
-    "key": "shift+f7",
-    "mac": "shift+f7",
-    "command": "workbench.action.compareEditor.previousChange",
-    "when": "textCompareEditorVisible",
-    "jetbrains": "Previous difference"
   },
   {
     "key": "shift+f8",
@@ -365,18 +116,6 @@
     "jetbrains": "Step Over"
   },
   {
-    "key": "cmd+f2",
-    "command": "workbench.action.debug.stop",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "ctrl+f1",
-    "mac": "cmd+f1",
-    "command": "workbench.action.showErrorsWarnings",
-    "when": "editorTextFocus",
-    "jetbrains": "Error Description"
-  },
-  {
     "key": "ctrl+shift+enter",
     "mac": "cmd+shift+enter",
     "command": "acceptSelectedSuggestion",
@@ -389,20 +128,6 @@
     "command": "editor.action.insertLineAfter",
     "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible",
     "jetbrains": "Start new line"
-  },
-  {
-    "key": "ctrl+alt+shift+up",
-    "mac": "ctrl+alt+shift+up",
-    "command": "editor.action.dirtydiff.previous",
-    "when": "editorTextFocus",
-    "jetbrains": "Previous Change"
-  },
-  {
-    "key": "ctrl+alt+shift+down",
-    "mac": "ctrl+alt+shift+down",
-    "command": "editor.action.dirtydiff.next",
-    "when": "editorTextFocus",
-    "jetbrains": "Next Change"
   },
   {
     "key": "ctrl+alt+m",
@@ -427,29 +152,9 @@
     }
   },
   {
-    "key": "ctrl+alt+shift+t",
-    "mac": "ctrl+t",
-    "command": "editor.action.refactor",
-    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly",
-    "jetbrains": "Refactor this (selected expressions or statements)"
-  },
-  {
     "key": "alt+1",
     "mac": "cmd+1",
     "command": "workbench.action.toggleSidebarVisibility",
     "jetbrains": "Close corresponding tool window (Explorer)"
   },
-  {
-    "key": "ctrl+alt+s",
-    "mac": "cmd+numpad_separator",
-    "command": "workbench.action.openGlobalSettings",
-    "jetbrains": "Open Settings dialog"
-  },
-  {
-    "key": "enter",
-    "mac": "enter",
-    "command": "list.select",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder",
-    "jetbrains": "Open Highlighted File (Explorer)"
-  }
 ]

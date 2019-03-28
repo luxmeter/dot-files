@@ -42,20 +42,6 @@
     "jetbrains": "Close active editor tab"
   },
   {
-    "key": "ctrl+shift+d",
-    "mac": "ctrl+shift+d",
-    "command": "editor.action.copyLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly",
-    "jetbrains": "Duplicate Line or Selection"
-  },
-  {
-    "key": "ctrl+d",
-    "mac": "cmd+d",
-    "command": "editor.action.deleteLines",
-    "when": "editorTextFocus && !editorReadonly",
-    "jetbrains": "Delete line at caret"
-  },
-  {
     "key": "ctrl+q",
     "command": "editor.action.showHover",
     "when": "vim.active && vim.mode != 'Insert'"

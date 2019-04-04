@@ -113,3 +113,7 @@ _git_checkout ()
 		;;
 	esac
 }
+
+gbf() {
+	git branch  --format='%(refname:short)'| fzf | xargs -I{} git checkout {}
+}

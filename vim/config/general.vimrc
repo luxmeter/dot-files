@@ -52,6 +52,10 @@ if !exists("g:two_firewatch_italics")
 endif
 colo two-firewatch
 
+if &diff
+    colorscheme jellybeans
+endif
+
 if executable('ag')
 	" set grepprg=ag\ --vimgrep\ $*
 	let &grepprg="ag --vimgrep $*"

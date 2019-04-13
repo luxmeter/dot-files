@@ -1,161 +1,92 @@
-function! s:CompleteVirtualEnv(arg_lead, cmd_line, cursor_pos)
-    return virtualenv#names(a:arg_lead)
-endfunction
-
 command! Hclose helpclose
 
+" Diff commands {{{
+command! Difft windo diffthis
+command! Diffo windo diffoff
+" }}}
+
+" FollowSymLink {{{
+" follow symlinked file
+function! FollowSymlink()
+    let current_file = expand('%:p')
+    " check if file type is a symlink
+    if getftype(current_file) == 'link'
+        " if it is a symlink resolve to the actual file path
+        "   and open the actual file
+        let actual_file = resolve(current_file)
+        silent! execute 'file ' . actual_file
+    end
+endfunction
+" }}}
+
+" Format commands {{{
 command! -range FormatXml <line1>,<line2>!xmllint --format -
 command! -range FormatStacktrace silent! <line1>,<line2>s/\\tat/	/g | silent! <line1>,<line2>s/\\n//g
 command! -range FormatJson silent! <line1>,<line2>!python3 -m json.tool
-command! -nargs=? -complete=customlist,s:CompleteVirtualEnv UpdatePythonPath call Update_Python_Path(<q-args>)
+" }}}
 
+" HtmlEntities {{{
 " Escape/unescape & < > HTML entities in range (default current line).
 function! HtmlEntities(line1, line2, action)
-	let search = @/
-	let range = 'silent ' . a:line1 . ',' . a:line2
-	if a:action == 0  " must convert &amp; last
-		execute range . 'sno/&lt;/</eg'
-		execute range . 'sno/&gt;/>/eg'
-		execute range . 'sno/&amp;/&/eg'
-	else              " must convert & first
-		execute range . 'sno/&/&amp;/eg'
-		execute range . 'sno/</&lt;/eg'
-		execute range . 'sno/>/&gt;/eg'
-	endif
-	nohl
-	let @/ = search
+    let search = @/
+    let range = 'silent ' . a:line1 . ',' . a:line2
+    if a:action == 0  " must convert &amp; last
+        execute range . 'sno/&lt;/</eg'
+        execute range . 'sno/&gt;/>/eg'
+        execute range . 'sno/&amp;/&/eg'
+    else              " must convert & first
+        execute range . 'sno/&/&amp;/eg'
+        execute range . 'sno/</&lt;/eg'
+        execute range . 'sno/>/&gt;/eg'
+    endif
+    nohl
+    let @/ = search
 endfunction
-command! -range -nargs=1 Entities call HtmlEntities(<line1>, <line2>, <args>)
-noremap <silent> <Leader>h :Entities 0<CR>
-noremap <silent> <Leader>H :Entities 1<CR>
+command! -range -nargs=1 HtmlEntities call HtmlEntities(<line1>, <line2>, <args>)
+" }}}
 
-function! s:Underline(chars)
-	let chars = empty(a:chars) ? '-' : a:chars
-	let nr_columns = virtcol('$') - 1
-	let uline = repeat(chars, (nr_columns / len(chars)) + 1)
-	put =strpart(uline, 0, nr_columns)
-endfunction
-command! -nargs=? Underline call s:Underline(<q-args>)
-command! Difft windo diffthis
-command! Diffo windo diffoff
-
-" follow symlinked file
-function! FollowSymlink()
-	let current_file = expand('%:p')
-	" check if file type is a symlink
-	if getftype(current_file) == 'link'
-		" if it is a symlink resolve to the actual file path
-		"   and open the actual file
-		let actual_file = resolve(current_file)
-		silent! execute 'file ' . actual_file
-	end
-endfunction
-
-" set working directory to git project root
-" or directory of current file if not git project
-function! SetProjectRoot()
-	" default to the current file's directory
-	" echom 'Path: '.expand('%:p:h')
-	lcd %:p:h
-	let git_dir = system("git rev-parse --show-toplevel")
-	" See if the command output starts with 'fatal' (if it does, not in a git repo)
-	let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
-	" if git project, change local directory to git project root
-	if empty(is_not_git_dir)
-		lcd `=git_dir`
-	endif
-endfunction
-
-function! MarkdownLevel()
-	let h = matchstr(getline(v:lnum), '^#\+')
-	if empty(h)
-		return "="
-	else
-		return ">" . len(h)
-	endif
-endfunction
-
-function! CopyMatches(reg)
-	let hits = []
-	%s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
-	let reg = empty(a:reg) ? '+' : a:reg
-	execute 'let @'.reg.' = join(hits, "\n") . "\n"'
-endfunction
-command! -register CopyMatches call CopyMatches(<q-reg>)
-
-function! LC_maps()
-	if has_key(g:LanguageClient_serverCommands, &filetype)
-		nnoremap <F1> :call LanguageClient_contextMenu()<CR>
-		nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
-		nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-		nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-	endif
-endfunction
-
-function! Update_Python_Path(...)
-	if a:0 > 0
-		let name = a:1
-		echom 'Activating virtual env ' .name
-		execute ':VirtualEnvActivate ' .name
-	endif
-
-	let ver = system($VIRTUAL_ENV. '/bin/python --version | grep -Po ''(\d\.?)+''')
-	if ver =~ "\^3."
-		let python_path = $HOME. '/.virtualenvs/nvimpy3'
-	else
-		let python_path =  $HOME. '/.virtualenvs/nvimpy2'
-	endif
-
-	if len(python_path) == 0
-		echom 'No VirtualEnv set'
-	else
-		let g:LanguageClient_serverCommands['python'] = [python_path . '/bin/pyls']
-		:LanguageClientStop
-		:LanguageClientStart
-	endif
-endfunction
-
+" RunFile {{{
 function! RunFile()
-	let l:file = escape(escape(expand("%"), ' '), '\ ')
-	let l:wd = escape(escape(expand("%:p:h"), ' '), '\ ')
-	if &filetype =~ "typescript"
-		echom "Filetype is ". &filetype
-		" execute('!cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
-		execute('silent Shell cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
-	else
-		echom "No routine for filetype ". &filetype ." found"
-	endif
+    let l:file = escape(escape(expand("%"), ' '), '\ ')
+    let l:wd = escape(escape(expand("%:p:h"), ' '), '\ ')
+    if &filetype =~ "typescript"
+        echom "Filetype is ". &filetype
+        " execute('!cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
+        execute('silent Shell cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
+    else
+        echom "No routine for filetype ". &filetype ." found"
+    endif
 endfunction
+" }}}
 
+" RunShellCommand {{{
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
-  echo a:cmdline
-  let expanded_cmdline = a:cmdline
-  for part in split(a:cmdline, ' ')
-     if part[0] =~ '\v[%#<]'
-        let expanded_part = fnameescape(expand(part))
-        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-     endif
-  endfor
-  execute "pclose!"
-  execute "normal! mm"
-  botright new
-  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-  call setline(1, 'You entered:    ' . a:cmdline)
-  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-  call setline(3,substitute(getline(2),'.','=','g'))
-  execute 'silent $read !'. expanded_cmdline
-  setlocal nomodifiable
-  execute ":set pvw"
-  execute "normal! \<C-W>p"
-  execute "normal! gg"
-  execute "normal! `m"
+    echo a:cmdline
+    let expanded_cmdline = a:cmdline
+    for part in split(a:cmdline, ' ')
+        if part[0] =~ '\v[%#<]'
+            let expanded_part = fnameescape(expand(part))
+            let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+        endif
+    endfor
+    execute "pclose!"
+    execute "normal! mm"
+    botright vnew
+    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+    call setline(1, 'You entered:    ' . a:cmdline)
+    call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+    call setline(3,substitute(getline(2),'.','=','g'))
+    execute 'silent $read !'. expanded_cmdline
+    setlocal nomodifiable
+    execute ":set pvw"
+    execute "normal! \<C-W>p"
+    execute "normal! gg"
+    execute "normal! `m"
 endfunction
+" }}}
 
-" Likewise, Files command with preview window
-command! -bang -nargs=? Vimrc
-  \ call fzf#vim#files($DOT_FILES.'/vim/config')
-
+" Text Modifications {{{
 " modify selected text using combining diacritics
 command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
 command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
@@ -163,6 +94,55 @@ command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2
 command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
 
 function! s:CombineSelection(line1, line2, cp)
-  execute 'let char = "\u'.a:cp.'"'
-  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+    execute 'let char = "\u'.a:cp.'"'
+    execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
 endfunction
+" }}}
+
+" Ulti-Snippet expandsion on autocomplection {{{
+function! ExpandOrClosePopup()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        echom snippet
+        return snippet
+    else
+        return ncm2_ultisnips#expand_or("\<CR>", 'n')
+    endif
+endfunction
+" }}}
+
+" UpdatePythonPath {{{
+function! s:CompleteVirtualEnv(arg_lead, cmd_line, cursor_pos)
+    return virtualenv#names(a:arg_lead)
+endfunction
+
+command! -nargs=? -complete=customlist,s:CompleteVirtualEnv UpdatePythonPath call Update_Python_Path(<q-args>)
+function! Update_Python_Path(...)
+    if a:0 > 0
+        let name = a:1
+        echom 'Activating virtual env ' .name
+        execute ':VirtualEnvActivate ' .name
+    endif
+
+    let ver = system($VIRTUAL_ENV. '/bin/python --version | grep -Po ''(\d\.?)+''')
+    if ver =~ "\^3."
+        let python_path = $HOME. '/.virtualenvs/nvimpy3'
+    else
+        let python_path =  $HOME. '/.virtualenvs/nvimpy2'
+    endif
+
+    if len(python_path) == 0
+        echom 'No VirtualEnv set'
+    else
+        let g:LanguageClient_serverCommands['python'] = [python_path . '/bin/pyls']
+        :LanguageClientStop
+        :LanguageClientStart
+    endif
+endfunction
+" }}}
+
+" Vimrc {{{
+" Likewise, Files command with preview window
+command! -bang -nargs=? Vimrc
+            \ call fzf#vim#files($DOT_FILES.'/vim/config')
+" }}}

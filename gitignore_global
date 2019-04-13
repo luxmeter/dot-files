@@ -58,3 +58,4 @@ __pycache__
 cookies.js
 sonar-project.properties
 .confidential
+globalConfig.json

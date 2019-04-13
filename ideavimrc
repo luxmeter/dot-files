@@ -30,8 +30,8 @@ nnoremap <Leader><S-d> "0D
 vnoremap <Leader> "0d
 vnoremap <Leader><S-d> "0D
 
-vnoremap p "_dP
-xnoremap p "_dP
+vnoremap p pgvy
+xnoremap p pgvy
 
 inoremap jj <c-[>
 

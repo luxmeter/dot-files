@@ -4,30 +4,20 @@ let mapleader = ","
 " needs to type a single number based on the 'menu' and press enter.
 nnoremap <F5> :Buffers<CR><Space>
 nnoremap <C-N> :Files<CR>
-nnoremap <C-P> "0p
-nnoremap <C-S-P> "0P
 nnoremap <Leader>d "0d
 nnoremap <Leader><S-d> "0D
 vnoremap <Leader>d "0d
 vnoremap <Leader><S-d> "0D
+nnoremap <Leader>e :Buffers<CR>
 
-vnoremap p "_dP
-xnoremap p "_dP
-
-nnoremap <Leader>b :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <Leader><F7> :YcmCompleter GoToReferences<CR>
-nnoremap <Leader>q :YcmCompleter GetDoc<CR>
-nnoremap <Leader>z :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
+vnoremap p pgvy
+xnoremap p pgvy
+vnoremap P Pgvy
+xnoremap P Pgvy
 
 noremap <F7> mzgg=G`z
 
-noremap <Leader>w :Bdelete!<CR>
-
-" ycm related // to enable auto completion with c-space
-" inoremap <C-Space> <C-x><C-o>
-" imap <leader><space> <c-space>
-" imap <C-@> <C-Space>
-" imap <Nul> <C-Space>
+noremap <Leader>w :Bwipeout!<CR>
 
 noremap <Leader>s :w<CR>
 
@@ -37,13 +27,24 @@ nnoremap ;; ;
 nnoremap ; :
 
 " delete line without copying the content to the yank register
-" nnoremap <C-X> "_dd
+" c-s-d does not work in neovim :(
+" map ^[[68;5u>   :echo "ctrl-shift-d received"<CR>
+" map <C-d> "_dd
+noremap <Leader>d "_dd
+noremap <Leader>y yyp
+noremap <Leader>h H
+noremap <Leader>l L
+noremap <Leader>m M
+noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " move cursor up/down also in wrapped lines
 nnoremap j gj
@@ -81,17 +82,18 @@ map OF <End>
 imap OH <Home>
 imap OF <End>
 
+
 " Let Omnicompletion behave like you are used to from IDEs
-inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-" inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
+inoremap <expr> <Esc>       pumvisible() ? "\<C-e>" : "\<Esc>"
+" inoremap <expr> <CR>      pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <silent><expr><CR> pumvisible() ? "<C-R>=ExpandOrClosePopup()<CR>" : "\<Cr>"
+inoremap <expr> <Down>      pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>        pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown>  pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>    pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 " Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab>     pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab>       pumvisible() ? "\<C-n>" : "\<Tab>"
 
 nnoremap <F9> :w<CR>:call RunFile()<CR>
 inoremap <F9> <C-[>:call RunFile()<CR>

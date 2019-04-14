@@ -42,6 +42,7 @@ Plug 'tpope/vim-eunuch'                  " file commands (move, delete...)
 Plug 'tpope/vim-fugitive'                " wrapper around git cmds
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'                     " allows you to move the cursor in command line mode
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'

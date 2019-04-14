@@ -1,6 +1,5 @@
 #!  /usr/bin/env bash
 
-set -e # exit on failing cmd
 set -u # exit on usage of undeclared variables
 # set -x # debug
 
@@ -215,7 +214,7 @@ _files=(ideavimrc flake8 gitconfig gitignore_global pylintrc pythonrc tmux-macos
 echo "${_files[@]}"
 for file in "${_files[@]}"; do
 	echo "Linking "${_dir}/${file}" to ${HOME}/.${file}"
-	if [[ "${file}" =~ "vimrc" ]]; then
+	if [[ "${file}" == "vimrc" ]]; then
 		mkdir -p ~/.config/nvim > /dev/null 2>&1
 		ln -s -f "${_dir}/${file}" "${HOME}/.config/nvim/init.vim"
 	elif [[ "${file}" =~ "flake8" ]]; then

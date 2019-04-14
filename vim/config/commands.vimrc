@@ -118,10 +118,24 @@ endfunction
 
 command! -nargs=? -complete=customlist,s:CompleteVirtualEnv UpdatePythonPath call Update_Python_Path(<q-args>)
 function! Update_Python_Path(...)
-    if a:0 > 0
-        let name = a:1
-        echom 'Activating virtual env ' .name
-        execute ':VirtualEnvActivate ' .name
+    let virtual_env = a:1
+    if empty(virtual_env)
+        " try to guess virtual env
+        let root_dir = fnamemodify(FindRootDirectory(), ':t')
+        let guess_virtual_env = system(
+                    \ 'cd '.$WORKON_HOME.'
+                    \ && find . -type d -maxdepth 1 
+                    \ | grep -i "'.root_dir.'" 
+                    \ | head -1
+                    \ | sed "s|^\./||"')
+        if v:shell_error == 0
+            let virtual_env = guess_virtual_env
+        endif
+    endif
+
+    if !empty(virtual_env)
+        echom 'Activating virtual env '.virtual_env
+        execute ':VirtualEnvActivate '.virtual_env
     endif
 
     let ver = system($VIRTUAL_ENV. '/bin/python --version | grep -Po ''(\d\.?)+''')

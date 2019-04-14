@@ -1,260 +1,266 @@
 // Place your key bindings in this file to override the defaults
 [
-  {
-    "key": "alt+h",
-    "command": "workbench.action.navigateLeft",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
-  },
-  {
-    "key": "alt+l",
-    "command": "workbench.action.navigateRight",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
-  },
-  {
-    "key": "alt+k",
-    "command": "workbench.action.navigateUp",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
-  },
-  {
-    "key": "alt+j",
-    "command": "workbench.action.navigateDown",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
-  },
-  {
-    "key": "shift+l",
-    "command": "workbench.action.nextEditor",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
-  },
-  {
-    "key": "shift+h",
-    "command": "workbench.action.previousEditor",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
-  },
-  {
-    "key": "alt+n",
-    "mac": "cmd+n",
-    "command": "workbench.action.files.newUntitledFile"
-  },
-  {
-    "key": "ctrl+w",
-    "mac": "cmd+w",
-    "command": "workbench.action.closeActiveEditor",
-    "jetbrains": "Close active editor tab"
-  },
-  {
-    "key": "ctrl+q",
-    "command": "editor.action.showHover",
-    "when": "vim.active && vim.mode != 'Insert'"
-  },
-  {
-    "key": "f4",
-    "mac": "f4",
-    "command": "editor.action.goToDeclaration",
-    "when": "editorHasDefinitionProvider && editorTextFocus",
-    "intellij": "Edit source"
-  },
-  {
-    "key": "ctrl+enter",
-    "mac": "cmd+down",
-    "command": "editor.action.goToDeclaration",
-    "when": "editorHasDefinitionProvider && editorTextFocus",
-
     {
-      "key": "f9",
-      "mac": "f9",
-      "command": "workbench.action.debug.continue",
-      "when": "inDebugMode",
-      "jetbrains": "Resume Program"
+        "key": "alt+h",
+        "mac": "alt+h",
+        "command": "workbench.action.navigateLeft",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     {
-      "key": "f7",
-      "mac": "f7",
-      "command": "workbench.action.debug.stepInto",
-      "when": "inDebugMode",
-      "jetbrains": "Step Into"
+        "key": "alt+l",
+        "mac": "alt+l",
+        "command": "workbench.action.navigateRight",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     {
-      "key": "shift+f8",
-      "mac": "shift+f8",
-      "command": "workbench.action.debug.stepOut",
-      "when": "inDebugMode",
-      "jetbrains": "Step Out"
+        "key": "alt+k",
+        "mac": "alt+k",
+        "command": "workbench.action.navigateUp",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     {
-      "key": "alt+f8",
-      "mac": "alt+f8",
-      "command": "workbench.debug.action.toggleRepl",
-      "jetbrains": "Evaluate Expression..."
+        "key": "alt+j",
+        "mac": "alt+j",
+        "command": "workbench.action.navigateDown",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     {
-      "key": "alt+f8",
-      "mac": "alt+f8",
-      "command": "editor.debug.action.selectionToRepl",
-      "when": "editorTextFocus && editorHasSelection",
-      "jetbrains": "Evaluate expression (selection)"
+        "key": "shift+l",
+        "mac": "shift+l",
+        "command": "workbench.action.nextEditor",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     {
-      "key": "alt+f9",
-      "mac": "alt+f9",
-      "command": "editor.debug.action.runToCursor",
-      "when": "inDebugMode",
-      "jetbrains": "Run to Cursor"
+        "key": "shift+h",
+        "mac": "shift+h",
+        "command": "workbench.action.previousEditor",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     {
-      "key": "f9",
-      "mac": "cmd+alt+r",
-      "command": "workbench.action.debug.continue",
-      "when": "inDebugMode",
-      "jetbrains": "Resume program"
+        "key": "ctrl+q",
+        "mac": "ctrl+q",
+        "command": "editor.action.showHover",
+        "when": "vim.active && vim.mode != 'Insert'"
     },
     {
-      "key": "f8",
-      "mac": "f8",
-      "command": "workbench.action.debug.stepOver",
-      "when": "inDebugMode",
-      "jetbrains": "Step Over"
+        "key": "alt+n",
+        "mac": "alt+n",
+        "command": "workbench.action.files.newUntitledFile"
     },
     {
-      "key": "ctrl+shift+enter",
-      "mac": "cmd+shift+enter",
-      "command": "acceptSelectedSuggestion",
-      "when": "editorFocus && suggestWidgetVisible",
-      "jetbrains": "Complete Current Statement"
+        "key": "ctrl+w",
+        "mac": "cmd+w",
+        "command": "workbench.action.closeActiveEditor",
+        "jetbrains": "Close active editor tab"
     },
     {
-      "key": "shift+ctrl+enter",
-      "mac": "shift+cmd+enter",
-      "command": "editor.action.insertLineAfter",
-      "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible",
-      "jetbrains": "Start new line"
+        "key": "f4",
+        "mac": "f4",
+        "command": "editor.action.goToDeclaration",
+        "when": "editorHasDefinitionProvider && editorTextFocus",
+        "intellij": "Edit source"
     },
     {
-      "key": "ctrl+alt+m",
-      "mac": "cmd+alt+m",
-      "command": "editor.action.codeAction",
-      "when": "editorTextFocus",
-      "jetbrains": "Extract Method",
-      "args": {
-        "kind": "refactor.extract.function",
-        "apply": "ifSingle"
-      }
+        "key": "f9",
+        "mac": "f9",
+        "command": "workbench.action.debug.continue",
+        "when": "inDebugMode",
+        "jetbrains": "Resume Program"
     },
     {
-      "key": "ctrl+alt+v",
-      "mac": "cmd+alt+v",
-      "command": "editor.action.codeAction",
-      "when": "editorTextFocus",
-      "jetbrains": "Extract Variable",
-      "args": {
-        "kind": "refactor.extract.constant",
-        "apply": "ifSingle"
-      }
+        "key": "f7",
+        "mac": "f7",
+        "command": "workbench.action.debug.stepInto",
+        "when": "inDebugMode",
+        "jetbrains": "Step Into"
     },
     {
-      "key": "ctrl+e",
-      "mac": "cmd+e",
-      "command": "-actions.find"
+        "key": "shift+f8",
+        "mac": "shift+f8",
+        "command": "workbench.action.debug.stepOut",
+        "when": "inDebugMode",
+        "jetbrains": "Step Out"
     },
     {
-      "key": "ctrl+e",
-      "mac": "cmd+e",
-      "command": "-workbench.action.openRecent"
+        "key": "alt+f8",
+        "mac": "alt+f8",
+        "command": "workbench.debug.action.toggleRepl",
+        "jetbrains": "Evaluate Expression..."
     },
     {
-      "key": "ctrl+e",
-      "mac": "cmd+e",
-      "command": "workbench.action.quickOpenNavigateNext",
-      "when": "inQuickOpen",
-      "intellij": "Recent files popup"
+        "key": "alt+f8",
+        "mac": "alt+f8",
+        "command": "editor.debug.action.selectionToRepl",
+        "when": "editorTextFocus && editorHasSelection",
+        "jetbrains": "Evaluate expression (selection)"
     },
     {
-      "key": "ctrl+e",
-      "mac": "cmd+e",
-      "command": "workbench.action.openRecent"
+        "key": "alt+f9",
+        "mac": "alt+f9",
+        "command": "editor.debug.action.runToCursor",
+        "when": "inDebugMode",
+        "jetbrains": "Run to Cursor"
     },
     {
-      "key": "ctrl+shift+backspace",
-      "mac": "cmd+shift+backspace",
-      "command": "workbench.action.navigateToLastEditLocation",
-      "intellij": "Navigate to last edit location"
+        "key": "f9",
+        "mac": "f9",
+        "command": "workbench.action.debug.continue",
+        "when": "inDebugMode",
+        "jetbrains": "Resume program"
     },
     {
-      "key": "alt+1",
-      "mac": "cmd+1",
-      "command": "workbench.action.toggleSidebarVisibility",
-      "jetbrains": "Close corresponding tool window (Explorer)"
+        "key": "f8",
+        "mac": "f8",
+        "command": "workbench.action.debug.stepOver",
+        "when": "inDebugMode",
+        "jetbrains": "Step Over"
     },
     {
-      "key": "alt+left",
-      "mac": "ctrl+left",
-      "command": "workbench.action.previousEditor",
-      "intellij": "Go to previous editor tab"
+        "key": "ctrl+shift+enter",
+        "mac": "cmd+shift+enter",
+        "command": "acceptSelectedSuggestion",
+        "when": "editorFocus && suggestWidgetVisible",
+        "jetbrains": "Complete Current Statement"
     },
     {
-      "key": "alt+right",
-      "mac": "ctrl+right",
-      "command": "workbench.action.nextEditor",
-      "intellij": "Go to next editor tab"
+        "key": "shift+ctrl+enter",
+        "mac": "shift+cmd+enter",
+        "command": "editor.action.insertLineAfter",
+        "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible",
+        "jetbrains": "Start new line"
     },
     {
-      "key": "ctrl+b",
-      "mac": "cmd+b",
-      "command": "editor.action.goToDeclaration",
-      "when": "editorHasDefinitionProvider && editorTextFocus",
-      "intellij": "Go to declaration"
+        "key": "ctrl+alt+m",
+        "mac": "cmd+alt+m",
+        "command": "editor.action.codeAction",
+        "when": "editorTextFocus",
+        "jetbrains": "Extract Method",
+        "args": {
+            "kind": "refactor.extract.function",
+            "apply": "ifSingle"
+        }
     },
     {
-      "key": "ctrl+alt+b",
-      "mac": "cmd+alt+b",
-      "command": "editor.action.goToImplementation",
-      "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor",
-      "intellij": "Go to implementation(s)"
+        "key": "ctrl+alt+v",
+        "mac": "cmd+alt+v",
+        "command": "editor.action.codeAction",
+        "when": "editorTextFocus",
+        "jetbrains": "Extract Variable",
+        "args": {
+            "kind": "refactor.extract.constant",
+            "apply": "ifSingle"
+        }
     },
     {
-      "key": "ctrl+shift+i",
-      "mac": "alt+space",
-      "command": "editor.action.previewDeclaration",
-      "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor",
-      "intellij": "Open quick definition lookup"
+        "key": "ctrl+e",
+        "mac": "cmd+e",
+        "command": "-actions.find"
     },
     {
-      "key": "ctrl+shift+b",
-      "mac": "ctrl+shift+b",
-      "command": "editor.action.goToTypeDefinition",
-      "when": "editorTextFocus",
-      "intellij": "Go to type declaration",
-      "todo": "not working"
+        "key": "ctrl+e",
+        "mac": "cmd+e",
+        "command": "-workbench.action.openRecent"
     },
     {
-      "key": "ctrl+p",
-      "mac": "cmd+p",
-      "command": "editor.action.triggerParameterHints",
-      "when": "editorHasSignatureHelpProvider && editorTextFocus",
-      "intellij": "Parameter info (within method call arguments)"
+        "key": "ctrl+e",
+        "mac": "cmd+e",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen",
+        "intellij": "Recent files popup"
     },
     {
-      "key": "alt+r",
-      "mac": "alt+r",
-      "command": "editor.action.startFindReplaceAction",
-      "intellij": "Replace"
+        "key": "ctrl+e",
+        "mac": "cmd+e",
+        "command": "workbench.action.openRecent"
     },
     {
-      "key": "alt+shift+r",
-      "mac": "alt+shift+r",
-      "command": "workbench.action.replaceInFiles",
-      "intellij": "Replace in path"
+        "key": "ctrl+shift+backspace",
+        "mac": "cmd+shift+backspace",
+        "command": "workbench.action.navigateToLastEditLocation",
+        "intellij": "Navigate to last edit location"
     },
     {
-      "key": "alt+f",
-      "mac": "alt+f",
-      "command": "actions.find",
-      "intellij": "Find"
+        "key": "alt+1",
+        "mac": "cmd+1",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "jetbrains": "Close corresponding tool window (Explorer)"
     },
     {
-      "key": "alt+shift+f",
-      "mac": "alt+shift+f",
-      "command": "workbench.view.search",
-      "when": "!searchViewletVisible",
-      "intellij": "Find in path"
+        "key": "ctrl+b",
+        "mac": "cmd+b",
+        "command": "editor.action.goToDeclaration",
+        "when": "editorHasDefinitionProvider && editorTextFocus",
+        "intellij": "Go to declaration"
+    },
+    {
+        "key": "ctrl+n",
+        "mac": "cmd+n",
+        "command": "workbench.action.showAllSymbols",
+        "intellij": "Go to class",
+        "todo": "not only class"
+    },
+    {
+        "key": "ctrl+shift+n",
+        "mac": "cmd+shift+n",
+        "command": "workbench.action.quickOpen",
+        "intellij": "Go to file"
+    },
+    {
+        "key": "ctrl+alt+shift+n",
+        "mac": "cmd+alt+shift+n",
+        "command": "workbench.action.gotoSymbol",
+        "intellij": "Go to symbol"
+    },
+    {
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a",
+        "command": "workbench.action.showCommands",
+        "intellij": "Find Action"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "mac": "cmd+alt+b",
+        "command": "editor.action.goToImplementation",
+        "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor",
+        "intellij": "Go to implementation(s)"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "mac": "alt+space",
+        "command": "editor.action.previewDeclaration",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor",
+        "intellij": "Open quick definition lookup"
+    },
+    {
+        "key": "ctrl+p",
+        "mac": "cmd+p",
+        "command": "editor.action.triggerParameterHints",
+        "when": "editorHasSignatureHelpProvider && editorTextFocus",
+        "intellij": "Parameter info (within method call arguments)"
+    },
+    {
+        "key": "alt+r",
+        "mac": "alt+r",
+        "command": "editor.action.startFindReplaceAction",
+        "intellij": "Replace"
+    },
+    {
+        "key": "alt+shift+r",
+        "mac": "alt+shift+r",
+        "command": "workbench.action.replaceInFiles",
+        "intellij": "Replace in path"
+    },
+    {
+        "key": "alt+f",
+        "mac": "alt+f",
+        "command": "actions.find",
+        "intellij": "Find"
+    },
+    {
+        "key": "alt+shift+f",
+        "mac": "alt+shift+f",
+        "command": "workbench.view.search",
+        "when": "!searchViewletVisible",
+        "intellij": "Find in path"
     }
 ]

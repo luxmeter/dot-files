@@ -144,7 +144,9 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " Press enter key to trigger snippet expansion (leverages snippet auto completion)
 " inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 let g:UltiSnipsExpandTrigger = "<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-f>"
 " }}}

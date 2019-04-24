@@ -91,15 +91,16 @@ let g:LanguageClient_serverCommands = {
             \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
             \ 'typescript.jsx': ['npx', 'typescript-language-server', '--stdio']
             \ }
+
 function! s:LC_maps()
     if has_key(g:LanguageClient_serverCommands, &filetype)
         nnoremap <F1> :call LanguageClient_contextMenu()<CR>
         nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
         nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+        nnoremap <buffer> <silent> <F1> :call LanguageClient#textDocument_rename()<CR>
     endif
-
 endfunction
+
 augroup languageClient
     autocmd!
     autocmd FileType * call <SID>LC_maps()
@@ -116,7 +117,7 @@ augroup END
 
 " NeoFormat {{{
 let g:neoformat_try_formatprg = 1
-let g:neoformat_basic_format_align = 1 " Enable alignment globally
+let g:neoformat_basic_format_align = 0 " Enable alignment globally
 let g:neoformat_basic_format_retab = 0 " Enable tab to spaces conversion globally
 " }}}
 
@@ -143,6 +144,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " UltiSnips {{{
 " Press enter key to trigger snippet expansion (leverages snippet auto completion)
 " inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.snippets', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = "<c-e>"
 " let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-k>"

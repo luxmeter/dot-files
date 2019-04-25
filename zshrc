@@ -40,6 +40,11 @@ if type jump &> /dev/null; then
 	eval "$(jump shell)"
 fi
 
+if type pyenv &> /dev/null; then
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
+
 # zsh completion init
 compinit
 

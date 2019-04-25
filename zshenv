@@ -32,7 +32,7 @@ fi
 export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
-export PATH="$HOME/.local/bin:$HOME/go/bin:/usr/local/bin:$PATH"
+export PATH="/home/mustafac/.pyenv/bin:$HOME/.local/bin:$HOME/go/bin:/usr/local/bin:$PATH"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS -m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all"
 export FZF_DEFAULT_COMMAND='fd --follow'
 

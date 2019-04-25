@@ -15,14 +15,16 @@ command_exists() {
 install_git() {
 	if ! command_exists git; then
 		echo "Git not found. Installing..."
-		sudo apt -q install git
+		command_exists apt && sudo apt -q install git
+		command_exists pacman && sudo pacman -qS --noconfirm git
 	fi
 }
 
 install_curl() {
 	if ! command_exists curl; then
 		echo "curl not found. Installing..."
-		sudo apt -q install curl
+		command_exists apt && sudo apt -q install curl
+		command_exists pacman && sudo pacman -qS --noconfirm curl
 	fi
 }
 
@@ -41,65 +43,84 @@ install_fonts() {
 install_zsh() {
 	if ! command_exists zsh; then
 		echo "ZSH not found. Installing..."
-		sudo apt -q install zsh
+		command_exists apt && sudo apt -q install zsh
+		command_exists pacman && sudo pacman -qS --noconfirm zsh
 		chsh -s $(which zsh)
 	fi
 }
 
 install_jump() {
 	if ! command_exists jump; then
-		echo "jump not found. Installing..."
-		wget https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb
-		sudo dpkg -i jump_0.22.0_amd64.deb
+		if command_exists dpkg; then
+			echo "jump not found. Installing..."
+			wget https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb
+			type dpkg && sudo dpkg -i jump_0.22.0_amd64.deb
+		fi
 	fi
 }
 
 install_jdk() {
 	if ! command_exists java; then
 		echo "Java not found. Installing..."
-		sudo apt install openjdk-11-jdk openjdk-11-source
+		command_exists apt && sudo apt -q install openjdk-11-jdk openjdk-11-source
+		command_exists pacman && sudo pacman -qS --noconfirm jdk-openjdk jdk-openjdk-src		
 	fi
 }
 
 install_neovim() {
 	if ! command_exists nvim; then
 		echo "NeoVim not found. Installing..."
-		sudo apt -q install neovim
+		
+		if command_exists apt; then
+			sudo apt -q install neovim
 
-		sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-		sudo update-alternatives --config vi
-		sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-		sudo update-alternatives --config vim
-		sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
-		sudo update-alternatives --config editor
-
+			sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+			sudo update-alternatives --config vi
+			sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+			sudo update-alternatives --config vim
+			sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+			sudo update-alternatives --config editor
+		fi
+		command_exists pacman && sudo pacman -qS --noconfirm neovim
 		curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		
+		mkvirtualenv --python python2 nvimpy2
+		mkvirtualenv --python python3 nvimpy3
+		~/.virtualenvs/nvimpy2/bin/python -m pip install neovim jedi pylint isort python-language-server
+		~/.virtualenvs/nvimpy3/bin/python -m pip install neovim jedi pylint isort python-language-server
+		nvim -c 'PlugInstall | qa!'		
 	fi
 }
 
 install_tmux() {
 	if ! command_exists tmux; then
 		echo "Tmux not found. Installing..."
-		sudo apt -q install tmux
+		command_exists apt && sudo apt -q install tmux
+		command_exists pacman && sudo pacman -qS --noconfirm tmux		
 	fi
 }
 
-install_python3() {
-	if ! command_exists python3.7; then
+install_python() {
+	if ! command_exists python3.7 || ! command_exists pip; then
 		echo "python3.7 not found. Installing..."
-		sudo apt -q install python3.7 python3.7-dev python3-pip python python-dev python-pip
-		pip2 install neovim
-		python3.7 -m pip install neovim
-		sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-		sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
+		if command_exists apt; then
+			sudo apt -q install python3.7 python3.7-dev python3-pip python python-dev python-pip
+
+			sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+			sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
+		elif command_exists pacman; then
+			sudo pacman -qS --noconfirm python python-pip python2 python2-pip
+			sudo python3 -m pyenv
+		fi
 	fi
 }
 
 install_ag() {
 	if ! command_exists ag; then
 		echo "ag not found. Installing..."
-		sudo apt -q install 'silversearcher-ag'
+		command_exists apt && sudo apt -q install 'silversearcher-ag'
+		command_exists pacman && sudo pacman -qS --noconfirm the_silver_searcher	
 	fi
 }
 
@@ -115,7 +136,7 @@ install_fzf() {
 install_virtualenvwrapper() {
 	if ! command_exists virtualenvwrapper.sh; then
 		echo "virtualenvwrapper not found. Installing..."
-		python3.7 -m pip install virtualenvwrapper
+		sudo python3 -m pip install virtualenvwrapper
 	fi
 }
 
@@ -129,7 +150,8 @@ install_poetry() {
 install_npm() {
 	if ! command_exists npm; then
 		echo "npm not found. Installing..."
-		sudo apt install npm
+		command_exists apt && sudo apt -q install npm
+		command_exists pacman && sudo pacman -qS --noconfirm npm
 		sudo npm install -g npm@latest
 		sudo npm install -g typescript webpack util @types/node
 	fi
@@ -138,9 +160,8 @@ install_npm() {
 install_fd() {
 	if ! command_exists fd; then
 		echo "fd not found. Installing..."
-		local file="fd-musl_7.3.0_amd64.deb"
-		wget https://github.com/sharkdp/fd/releases/download/v7.3.0/${file}
-		sudo dpkg -i ${file}
+		command_exists apt && sudo apt -q install fd-find
+		command_exists pacman && pacman -qS --noconfirm fd
 	fi
 }
 
@@ -160,31 +181,33 @@ install_tpm() {
 }
 
 install_docker() {
-	sudo apt install \
-		apt-transport-https \
-		ca-certificates \
-		curl \
-		gnupg-agent \
-		software-properties-common
+	if command_exists apt; then
+		sudo apt -q install \
+			apt-transport-https \
+			ca-certificates \
+			curl \
+			gnupg-agent \
+			software-properties-common
 
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+		curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-	sudo add-apt-repository \
-		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-		$(lsb_release -cs) \
-		stable"
+		sudo add-apt-repository \
+			"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+			$(lsb_release -cs) \
+			stable"
 
-	sudo apt-get install docker-ce docker-ce-cli containerd.io
+		sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-	sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-	sudo chmod +x /usr/local/bin/docker-compose
+		sudo chmod +x /usr/local/bin/docker-compose
 
-	if ! grep -q docker /etc/group; then
-		sudo groupadd docker
+		if ! grep -q docker /etc/group; then
+			sudo groupadd docker
+		fi
+
+		sudo usermod -aG docker $USER
 	fi
-
-	sudo usermod -aG docker $USER
 }
 
 cd "${_root}"
@@ -194,12 +217,12 @@ install_curl
 install_fonts
 install_tmux
 install_zsh
+install_python
+install_virtualenvwrapper
+install_poetry
 install_neovim
 install_ag
 install_fzf
-install_python3
-install_virtualenvwrapper
-install_poetry
 install_npm
 install_fd
 install_prezto

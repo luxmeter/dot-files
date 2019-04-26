@@ -18,6 +18,7 @@ Plug 'autozimu/LanguageClient-neovim', {
             \ 'do': 'bash install.sh',
             \ }
 Plug 'ayu-theme/ayu-vim'                 " color scheme
+Plug 'bling/vim-bufferline'
 Plug 'bronson/vim-visual-star-search'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ekalinin/Dockerfile.vim'

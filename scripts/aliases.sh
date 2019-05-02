@@ -18,4 +18,6 @@ if [[ "$(uname -s)" =~ "Darwin" ]]; then
 	alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 	alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
 	alias java11-0-1='export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.1)'
+else
+	alias pbcopy='xsel -i -p && xsel -o -p | xsel -i -b'
 fi

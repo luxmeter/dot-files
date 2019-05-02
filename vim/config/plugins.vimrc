@@ -86,24 +86,24 @@ let g:LanguageClient_hasSnippetsSupport = 1
 " we have ALE for linting
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
-            \ 'python': ['pyls'],
+            \ 'python': ['tcp://127.0.0.1:2087'],
             \ 'javascript': ['tcp://127.0.0.1:2089'],
             \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
             \ 'typescript.jsx': ['npx', 'typescript-language-server', '--stdio']
             \ }
 
-function! s:LC_maps()
+function! LC_maps()
     if has_key(g:LanguageClient_serverCommands, &filetype)
         nnoremap <F1> :call LanguageClient_contextMenu()<CR>
         nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
         nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <buffer> <silent> <F1> :call LanguageClient#textDocument_rename()<CR>
+        nnoremap <buffer> <silent> <F6> :call LanguageClient#textDocument_rename()<CR>
     endif
 endfunction
 
 augroup languageClient
     autocmd!
-    autocmd FileType * call <SID>LC_maps()
+    autocmd VimEnter,BufNewFile,BufRead,BufEnter,Filetype * call LC_maps()
 augroup end
 " }}}
 

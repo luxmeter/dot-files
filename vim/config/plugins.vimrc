@@ -44,7 +44,7 @@ let g:airline_mode_map = {
 function! AirlineInit()
     let g:airline_section_b = airline#section#create(['branch','%{virtualenv#statusline()}'])
     let g:airline_section_c = airline#section#create(['hunks','%f'])
-endfunction                                                                                                                                                                                   
+endfunction
 autocmd VimEnter * call AirlineInit()
 " }}}
 
@@ -117,8 +117,10 @@ augroup END
 
 " NeoFormat {{{
 let g:neoformat_try_formatprg = 1
+" let b:neoformat_run_all_formatters = 0
 let g:neoformat_basic_format_align = 0 " Enable alignment globally
 let g:neoformat_basic_format_retab = 0 " Enable tab to spaces conversion globally
+let g:neoformat_basic_format_trim = 1
 " }}}
 
 " Netrw {{{

@@ -20,6 +20,7 @@ TERM=xterm-256color
 
 source "$DOT_FILES/general.zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source "$DOT_FILES/scripts/keys.sh"
 source "$DOT_FILES/scripts/aliases.sh"
 source "$DOT_FILES/scripts/functions.sh"

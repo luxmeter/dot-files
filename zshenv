@@ -42,3 +42,4 @@ export VIRTUALENVWRAPPER_PYTHON="$(which python3)"
 export VIRTUALENV_PYTHON="$(which python3)"
 export DOT_FILES="$HOME/dot-files"
 export SLH_SKIP_UPDATE=true
+export SHELL=/bin/zsh

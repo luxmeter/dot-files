@@ -63,7 +63,7 @@ install_jdk() {
 	if ! command_exists java; then
 		echo "Java not found. Installing..."
 		command_exists apt && sudo apt -q install openjdk-11-jdk openjdk-11-source
-		command_exists pacman && sudo pacman -qS --noconfirm jdk-openjdk jdk-openjdk-src		
+		command_exists pacman && sudo pacman -qS --noconfirm openjdk-src jdk-openjdk
 	fi
 }
 
@@ -180,6 +180,13 @@ install_tpm() {
 	fi
 }
 
+install_sdk() {
+	if ! command_exists sdk; then
+		echo "SDKMAN! not found. Installing..."
+		curl -s "https://get.sdkman.io" | bash
+	fi
+}
+
 install_docker() {
 	if command_exists apt; then
 		sudo apt -q install \
@@ -230,6 +237,7 @@ install_tpm
 install_docker
 install_jump
 install_jdk
+install_sdk
 
 
 _files=(ideavimrc flake8 gitconfig gitignore_global pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)

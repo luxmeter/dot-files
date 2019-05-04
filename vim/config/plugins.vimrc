@@ -89,7 +89,7 @@ let g:LanguageClient_serverCommands = {
             \ 'python': ['tcp://127.0.0.1:2087'],
             \ 'javascript': ['tcp://127.0.0.1:2089'],
             \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-            \ 'typescript.jsx': ['npx', 'typescript-language-server', '--stdio']
+            \ 'typescript.jsx': ['tcp://127.0.0.1:2089']
             \ }
 
 function! LC_maps()

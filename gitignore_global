@@ -63,3 +63,4 @@ globalConfig.json
 .env
 *.csv
 *.csv-*
+out

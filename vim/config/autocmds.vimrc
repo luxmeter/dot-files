@@ -6,6 +6,7 @@ augroup general
     autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(s:save_cwd)
     autocmd BufWritePost $MYVIMRC,*.vimrc source $MYVIMRC | silent! AirlineRefresh
     autocmd BufRead,BufNewFile *.md,*.txt,gitcommit setlocal spell | setlocal complete+=kspell
+    autocmd BufRead,BufNewFile * let b:autoformat=1
 augroup END
 " }}}
 
@@ -22,7 +23,16 @@ augroup programming
     autocmd BufNewFile,BufRead,BufEnter *.java ALEDisable
     autocmd BufLeave *.java ALEEnable
     " general (e.g. formatting)
-    au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+    au BufWritePre *
+        \   if exists('b:autoformat')  && b:autoformat
+        \|      try
+        \|          undojoin
+        \|          Neoformat
+        \|      catch /^Vim\%((\a\+)\)\=:E790/
+        \|      finally
+        \|          silent Neoformat
+        \|      endtry
+        \|  endif
 augroup end
 "}}}
 

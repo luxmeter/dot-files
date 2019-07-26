@@ -64,3 +64,4 @@ globalConfig.json
 *.csv
 *.csv-*
 out
+git.properties

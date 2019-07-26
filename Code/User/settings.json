@@ -76,5 +76,8 @@
   "window.enableMenuBarMnemonics": false,
   "window.menuBarVisibility": "default",
   "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false
+  "telemetry.enableCrashReporter": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.fontSize": 14
 }

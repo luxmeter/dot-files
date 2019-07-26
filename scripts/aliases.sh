@@ -14,10 +14,10 @@ alias portainer='docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" -p
 alias gcb='git checkout -b'
 alias passwd_login='eval $(op signin my)'
 if [[ "$(uname -s)" =~ "Darwin" ]]; then
-	alias ctags="`brew --prefix`/bin/ctags"
-	alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
-	alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
-	alias java11-0-1='export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.1)'
+    alias ctags="$(brew --prefix)/bin/ctags"
+    alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+    alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
+    alias java11-0-1='export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.1)'
 else
-	alias pbcopy='xsel -i -p && xsel -o -p | xsel -i -b'
+    alias pbcopy='xsel -i -p && xsel -o -p | xsel -i -b'
 fi

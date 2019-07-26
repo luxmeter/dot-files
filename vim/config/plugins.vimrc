@@ -121,6 +121,11 @@ let g:neoformat_try_formatprg = 1
 let g:neoformat_basic_format_align = 0 " Enable alignment globally
 let g:neoformat_basic_format_retab = 0 " Enable tab to spaces conversion globally
 let g:neoformat_basic_format_trim = 1
+let g:neoformat_yaml_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--tab-width', '2', '--stdin', '--single-quote', '--stdin-filepath', '"%:p"', '--parser', 'yaml'],
+            \ 'stdin': 1
+            \ }
 " }}}
 
 " Netrw {{{

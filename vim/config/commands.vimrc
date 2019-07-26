@@ -124,8 +124,8 @@ function! Update_Python_Path(...)
         let root_dir = fnamemodify(FindRootDirectory(), ':t')
         let guess_virtual_env = system(
                     \ 'cd '.$WORKON_HOME.'
-                    \ && find . -type d -maxdepth 1 
-                    \ | grep -i "'.root_dir.'" 
+                    \ && find . -type d -maxdepth 1
+                    \ | grep -i "'.root_dir.'"
                     \ | head -1
                     \ | sed "s|^\./||"')
         if v:shell_error == 0
@@ -160,3 +160,14 @@ endfunction
 command! -bang -nargs=? Vimrc
             \ call fzf#vim#files($DOT_FILES.'/vim/config')
 " }}}
+
+command! -range -nargs=0 MapToJUUID call s:MapToJUUID(<line1>, <line2>)
+function! s:MapToJUUID(line1, line2)
+    let a_save = @a
+    normal! gv"ay
+    let content = substitute(@a, '"', '\\"', "g")
+    let content = substitute(content, "'", "\\'", "g")
+    let uuid = system('mongo --quiet --eval "load(''/Users/caylak/Projects/sharedcloud/mongo-scripts/migration/migrate_acp_pathtype/uuidhelpers.js''); '.content.'.toJUUID()"')
+    let @a = a_save
+    put =uuid
+endfunction

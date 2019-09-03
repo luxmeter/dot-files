@@ -126,6 +126,11 @@ let g:neoformat_yaml_prettier = {
             \ 'args': ['--tab-width', '2', '--stdin', '--single-quote', '--stdin-filepath', '"%:p"', '--parser', 'yaml'],
             \ 'stdin': 1
             \ }
+let g:neoformat_markdown_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--tab-width', '2', '--stdin', '--single-quote', '--stdin-filepath', '"%:p"', '--parser', 'markdown'],
+            \ 'stdin': 1
+            \ }
 " }}}
 
 " Netrw {{{

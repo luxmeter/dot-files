@@ -137,3 +137,8 @@ to_datetime() {
   )
   python3 -c "${cmd}"
 }
+
+doc_remove_all_images() {
+  docker rm $(docker ps -a -q)
+  docker rmi --force $(docker images -q)
+}

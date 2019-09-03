@@ -41,3 +41,4 @@ vnoremap < <gv
 vnoremap > >gv
 
 vnoremap // y/\M<C-R>0<CR>
+set ideajoin

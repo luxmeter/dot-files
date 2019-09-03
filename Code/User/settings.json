@@ -79,5 +79,10 @@
   "telemetry.enableCrashReporter": false,
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "editor.fontSize": 14
+  "editor.fontSize": 14,
+  "files.exclude": {
+    "**/build": true,
+    "**/dist": true,
+    "**/node_modules": true
+  }
 }

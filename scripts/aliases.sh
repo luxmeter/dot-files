@@ -21,3 +21,4 @@ if [[ "$(uname -s)" =~ "Darwin" ]]; then
 else
     alias pbcopy='xsel -i -p && xsel -o -p | xsel -i -b'
 fi
+alias build_svc="mvn  install -Dmaven.test.skip=true -DskipTests -Dfindbugs.skip=true -DskipTessa=true -T4 -pl '!container-tests'"

@@ -1,3 +1,8 @@
+" Ag {{{
+command! -bang -nargs=* Ag
+            \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-a:select-all,ctrl-d:deselect-all' }, <bang>0)
+" }}}
+
 command! Hclose helpclose
 
 " Diff commands {{{

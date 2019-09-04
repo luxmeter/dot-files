@@ -57,11 +57,6 @@ let g:user_emmet_install_global = 0
 " }}}
 
 " fzf {{{
-let g:fzf_action = {
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit' }
-
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
     call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -74,9 +69,6 @@ let g:fzf_action = {
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit' }
-
-command! -bang -nargs=* Ag
-            \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-a:select-all,ctrl-d:deselect-all' }, <bang>0)
 " }}}
 
 " LanguageClient {{{
@@ -163,4 +155,8 @@ let g:UltiSnipsExpandTrigger = "<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-f>"
+" }}}
+
+" Vim Rooter (autochdir) {{{
+let g:rooter_manual_only = 1
 " }}}

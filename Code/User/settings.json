@@ -1,7 +1,9 @@
 {
   "python.sortImports.path": "isort",
   "python.venvPath": "~/.virtualenvs",
-  "[javascript]": {},
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "window.zoomLevel": 0,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.minimap.enabled": false,
@@ -9,7 +11,7 @@
   "explorer.confirmDelete": false,
   "editor.detectIndentation": true,
   "editor.tabSize": 2,
-  "editor.fontFamily": "'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'Hack', 'Source Code Pro', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "vim.easymotion": true,
   "vim.sneak": true,
   "vim.incsearch": true,
@@ -84,5 +86,6 @@
     "**/build": true,
     "**/dist": true,
     "**/node_modules": true
-  }
+  },
+  "editor.formatOnSave": true
 }

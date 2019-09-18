@@ -50,6 +50,7 @@ autocmd VimEnter * call AirlineInit()
 
 " ALE {{{
 let g:ale_linters_sh_shellcheck_exclusions='SC2181,SC1117,SC2155,SC2006,SC2039'
+let g:ale_lint_on_enter = 0
 " }}}
 
 " Emet {{{
@@ -95,7 +96,7 @@ endfunction
 
 augroup languageClient
     autocmd!
-    autocmd VimEnter,BufNewFile,BufRead,BufEnter,Filetype * call LC_maps()
+    autocmd BufNewFile,BufRead,BufEnter,Filetype * call LC_maps()
 augroup end
 " }}}
 
@@ -123,6 +124,7 @@ let g:neoformat_markdown_prettier = {
             \ 'args': ['--tab-width', '2', '--stdin', '--single-quote', '--stdin-filepath', '"%:p"', '--parser', 'markdown'],
             \ 'stdin': 1
             \ }
+let g:neoformat_enabled_python = ['black', 'isort']
 " }}}
 
 " Netrw {{{

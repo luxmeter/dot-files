@@ -82,7 +82,7 @@ passwd_ldap() {
 }
 
 aws_cred_to_env() {
-  cat ~/aws.json | jq -r 'to_entries | map("export \(.key)=\(.value)") | .[]'
+  jq -r 'to_entries | map("export \(.key)=\(.value)") | .[]'
 }
 
 _git_checkout() {

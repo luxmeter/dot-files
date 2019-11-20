@@ -87,5 +87,11 @@
     "**/dist": true,
     "**/node_modules": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "python.jediEnabled": false,
+  "python.dataScience.askForKernelRestart": false,
+  "python.pythonPath": "/Users/caylak/.virtualenvs/aclproto/bin/python",
+  "workbench.colorTheme": "Monokai Dimmed",
+  "workbench.iconTheme": "Monokai Pro Icons",
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }

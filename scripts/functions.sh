@@ -85,6 +85,11 @@ aws_cred_to_env() {
   jq -r 'to_entries | map("export \(.key)=\(.value)") | .[]'
 }
 
+aws_cred_to_file() {
+  echo "[default]" >!~/.aws/credentials
+  jq -r ' with_entries( .key |= ascii_downcase ) | to_entries | map("\(.key)=\(.value)") | .[]' >>~/.aws/credentials
+}
+
 _git_checkout() {
   __git_has_doubledash && return
 

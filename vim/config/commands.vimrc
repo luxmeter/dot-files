@@ -176,3 +176,19 @@ function! s:MapToJUUID(line1, line2)
     let @a = a_save
     put =uuid
 endfunction
+
+" close netrw buffer (bug) {{{
+" if it does not work try `set g:netrw_fastbrowse=0`
+function! QuitNetrw()
+  " echom "called QuitNetrw"
+  for i in range(1, bufnr("$"))
+    if buflisted(i)
+    " echom "Buffer exists: ".i.", filetype is:".getbufvar(i, '&filetype')
+      if getbufvar(i, '&filetype') == "netrw"
+        " echomsg "found netrw buffer. closing..."
+        silent exe 'bwipeout ' . i
+      endif
+    endif
+  endfor
+endfunction
+" }}}

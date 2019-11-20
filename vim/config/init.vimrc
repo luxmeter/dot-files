@@ -17,6 +17,8 @@ Plug 'autozimu/LanguageClient-neovim', {
             \ 'branch': 'next',
             \ 'do': 'bash install.sh',
             \ }
+Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
 Plug 'ayu-theme/ayu-vim'                 " color scheme
 Plug 'bling/vim-bufferline'
 Plug 'bronson/vim-visual-star-search'
@@ -31,11 +33,12 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'plasticboy/vim-markdown'
-Plug 'Raimondi/delimitMate'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'              " syntax highlighting
-Plug 'SirVer/ultisnips'
+Plug 'sonph/onehalf', {
+            \ 'rtp': 'vim/'
+            \ }
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'

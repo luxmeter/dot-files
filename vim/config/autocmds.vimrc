@@ -7,6 +7,9 @@ augroup general
     autocmd BufWritePost $MYVIMRC,*.vimrc source $MYVIMRC | silent! AirlineRefresh
     autocmd BufRead,BufNewFile *.md,*.txt,gitcommit setlocal spell | setlocal complete+=kspell
     autocmd BufRead,BufNewFile * let b:autoformat=1
+    " close netrw buffer (bug)
+    autocmd FileType netrw setl bufhidden=wipe
+    autocmd VimLeavePre *  call QuitNetrw()
 augroup END
 " }}}
 
@@ -35,18 +38,6 @@ augroup programming
         \|  endif
 augroup end
 "}}}
-
-" newtr bugfix {{{
-" https://vi.stackexchange.com/questions/14622/how-can-i-close-the-netrw-buffer
-augroup netrw_buf_hidden_fix " {
-    autocmd!
-    " Set all non-netrw buffers to bufhidden=hide
-    autocmd BufWinEnter *
-                \  if &ft != 'netrw'
-                \|     set bufhidden=hide
-                \| endif
-augroup end
-" }}}
 
 " omni completion {{{
 augroup omni_complete " {

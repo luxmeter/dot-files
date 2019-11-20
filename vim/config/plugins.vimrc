@@ -86,6 +86,7 @@ let g:LanguageClient_serverCommands = {
             \ }
 
 function! LC_maps()
+    echom "Checking if LC is available for filetype ".&filetype.":".has_key(g:LanguageClient_serverCommands, &filetype)
     if has_key(g:LanguageClient_serverCommands, &filetype)
         nnoremap <F1> :call LanguageClient_contextMenu()<CR>
         nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
@@ -125,6 +126,7 @@ let g:neoformat_markdown_prettier = {
             \ 'stdin': 1
             \ }
 let g:neoformat_enabled_python = ['black', 'isort']
+let g:neoformat_enabled_cmake = ['cmake_format']
 " }}}
 
 " Netrw {{{

@@ -86,8 +86,8 @@ imap OF <End>
 
 " Let Omnicompletion behave like you are used to from IDEs
 inoremap <expr> <Esc>       pumvisible() ? "\<C-e>" : "\<Esc>"
-" inoremap <expr> <CR>      pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <silent><expr><CR> pumvisible() ? "<C-R>=ExpandOrClosePopup()<CR>" : "\<Cr>"
+inoremap <expr> <CR>        pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <silent><expr><CR> pumvisible() ? "<C-R>=ExpandOrClosePopup()<CR>" : "\<Cr>"
 inoremap <expr> <Down>      pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>        pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr> <PageDown>  pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"

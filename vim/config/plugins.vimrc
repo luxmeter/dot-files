@@ -86,7 +86,7 @@ let g:LanguageClient_serverCommands = {
             \ }
 
 function! LC_maps()
-    echom "Checking if LC is available for filetype ".&filetype.":".has_key(g:LanguageClient_serverCommands, &filetype)
+    " echom "Checking if LC is available for filetype ".&filetype.":".has_key(g:LanguageClient_serverCommands, &filetype)
     if has_key(g:LanguageClient_serverCommands, &filetype)
         nnoremap <F1> :call LanguageClient_contextMenu()<CR>
         nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
@@ -94,11 +94,6 @@ function! LC_maps()
         nnoremap <buffer> <silent> <F6> :call LanguageClient#textDocument_rename()<CR>
     endif
 endfunction
-
-augroup languageClient
-    autocmd!
-    autocmd BufNewFile,BufRead,BufEnter,Filetype * call LC_maps()
-augroup end
 " }}}
 
 " NCM2 {{{
@@ -152,7 +147,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " UltiSnips {{{
 " Press enter key to trigger snippet expansion (leverages snippet auto completion)
 " inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.snippets', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories=['mysnippets', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = "<c-e>"
 " let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-k>"

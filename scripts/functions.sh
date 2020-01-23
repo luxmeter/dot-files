@@ -147,3 +147,19 @@ doc_remove_all_images() {
   docker rm $(docker ps -a -q)
   docker rmi --force $(docker images -q)
 }
+
+ag_all() {
+  local args=("$@")
+  local first_pattern="$1"
+  local patterns=("${args[@]:1:-1}")
+  local len_args=${#args[@]}
+  local last_index=$(($len_args - 1))
+  local file_pattern=("${args[@]:$last_index}")
+  local cmd="ag -l $first_pattern ${file_pattern[@]}"
+  local piped_patterns=$first_pattern
+  for pattern in "${patterns[@]}"; do
+    cmd=$cmd" | xargs ag -l \"$pattern\""
+    piped_patterns="$piped_patterns|$pattern"
+  done
+  eval "$cmd | xargs ag \"($piped_patterns)\""
+}

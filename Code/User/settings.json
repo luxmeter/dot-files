@@ -90,8 +90,12 @@
   "editor.formatOnSave": true,
   "python.jediEnabled": false,
   "python.dataScience.askForKernelRestart": false,
-  "python.pythonPath": "/Users/caylak/.virtualenvs/aclproto/bin/python",
-  "workbench.colorTheme": "Monokai Dimmed",
+  "python.pythonPath": "/Users/caylak/.virtualenvs/nvimpy3/bin/python3.7",
+  "workbench.colorTheme": "Visual Studio Dark",
   "workbench.iconTheme": "Monokai Pro Icons",
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "python.formatting.provider": "black",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  }
 }

@@ -67,3 +67,6 @@ globalConfig.json
 *.csv-*
 out
 git.properties
+*.jks
+master
+example_*.py

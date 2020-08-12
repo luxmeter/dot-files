@@ -10,7 +10,6 @@ augroup general
     " close netrw buffer (bug)
     autocmd FileType netrw setl bufhidden=wipe
     autocmd VimLeavePre *  call QuitNetrw()
-    autocmd BufNewFile,BufRead,BufEnter,Filetype * call LC_maps()
 augroup END
 " }}}
 

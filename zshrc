@@ -15,10 +15,6 @@ fi
 
 fpath=( $DOT_FILES/zfunc "${fpath[@]}" )
 
-# interactive terminal specific variables
-# konsole didn't set this value
-TERM=xterm-256color
-
 source "$DOT_FILES/general.zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source "$DOT_FILES/scripts/keys.sh"
@@ -48,3 +44,23 @@ source virtualenvwrapper_lazy.sh
 #fi
 # for performance analysis (look at top of file)
 # zprof
+
+# result of eval "$(pyenv init -)"
+export PATH="/Users/caylak/.pyenv/shims:${PATH}"
+export PYENV_SHELL=zsh
+source '/usr/local/Cellar/pyenv/1.2.20/libexec/../completions/pyenv.zsh'
+command pyenv rehash 2>/dev/null
+pyenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  activate|deactivate|rehash|shell)
+    eval "$(pyenv "sh-$command" "$@")";;
+  *)
+    command pyenv "$command" "$@";;
+  esac
+}

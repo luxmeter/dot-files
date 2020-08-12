@@ -36,10 +36,6 @@ noremap <Leader>y yyp
 noremap <Leader>h H
 noremap <Leader>l L
 noremap <Leader>m M
-noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " window navigation
 noremap <C-h> <C-w>h
@@ -86,15 +82,10 @@ imap OF <End>
 
 " Let Omnicompletion behave like you are used to from IDEs
 inoremap <expr> <Esc>       pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <CR>        pumvisible() ? "\<C-y>" : "\<CR>"
-" inoremap <silent><expr><CR> pumvisible() ? "<C-R>=ExpandOrClosePopup()<CR>" : "\<Cr>"
 inoremap <expr> <Down>      pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>        pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr> <PageDown>  pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
 inoremap <expr> <PageUp>    pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
-" Use <TAB> to select the popup menu:
-inoremap <expr> <S-Tab>     pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <Tab>       pumvisible() ? "\<C-n>" : "\<Tab>"
 
 nnoremap <F9> :w<CR>:call RunFile()<CR>
 inoremap <F9> <C-[>:call RunFile()<CR>

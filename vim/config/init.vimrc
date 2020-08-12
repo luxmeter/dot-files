@@ -1,26 +1,15 @@
 set nocompatible " required
 filetype off     " required
 
-let s:uname = system("echo -n \"$(uname)\"")
-if !v:shell_error && s:uname == "Linux"
-    set rtp+=~/fzf
-else
-    let s:fzf_path = system("echo -n \"$(brew --prefix)/opt/fzf\"")
-    exe 'set rtp+=' . expand(s:fzf_path)
-endif
+set rtp+=/usr/local/opt/fzf
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter'            " shows quickdiffs
+" Plug 'airblade/vim-gitgutter'            " shows quickdiffs
 Plug 'airblade/vim-rooter'
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
 Plug 'ayu-theme/ayu-vim'                 " color scheme
-Plug 'bling/vim-bufferline'
 Plug 'bronson/vim-visual-star-search'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ekalinin/Dockerfile.vim'
@@ -32,14 +21,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
-Plug 'plasticboy/vim-markdown'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'plasticboy/vim-markdown'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'              " syntax highlighting
 Plug 'sonph/onehalf', {
             \ 'rtp': 'vim/'
             \ }
-Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'                  " file commands (move, delete...)
@@ -51,7 +40,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " Python plugins
 Plug 'tweekmonster/impsort.vim'

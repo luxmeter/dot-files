@@ -87,7 +87,6 @@
     "**/dist": true,
     "**/node_modules": true
   },
-  "editor.formatOnSave": true,
   "python.jediEnabled": false,
   "python.dataScience.askForKernelRestart": false,
   "python.pythonPath": "/Users/caylak/.virtualenvs/nvimpy3/bin/python3.7",
@@ -97,5 +96,6 @@
   "python.formatting.provider": "black",
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"
-  }
+  },
+  "editor.multiCursorModifier": "ctrlCmd"
 }

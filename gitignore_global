@@ -70,3 +70,7 @@ git.properties
 *.jks
 master
 example_*.py
+example_*.js
+secrets
+rhino*.properties
+*csv.gpg

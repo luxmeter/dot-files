@@ -13,8 +13,8 @@ alias vi="vim"
 alias portainer='docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" -p 9000:9000 portainer/portainer --no-auth -H unix:///var/run/docker.sock && open http://localhost:9000'
 alias gcb='git checkout -b'
 alias passwd_login='eval $(op signin my)'
-if [[ "$(uname -s)" =~ "Darwin" ]]; then
-    alias ctags="$(brew --prefix)/bin/ctags"
+if [[ "$OSTYPE" == darwin* ]]; then
+    alias ctags="/usr/local/bin/ctags"
     alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
     alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
     alias java11-0-1='export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.1)'

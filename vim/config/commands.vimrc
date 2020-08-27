@@ -163,7 +163,7 @@ endfunction
 " Vimrc {{{
 " Likewise, Files command with preview window
 command! -bang -nargs=? Vimrc
-            \ call fzf#vim#files($DOT_FILES.'/vim/config')
+      \ call fzf#run({'dir': $DOT_FILES.'/vim/config', 'sink': 'e', 'down': '20%'})
 " }}}
 
 command! -range -nargs=0 MapToJUUID call s:MapToJUUID(<line1>, <line2>)

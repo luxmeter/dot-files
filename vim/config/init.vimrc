@@ -1,9 +1,8 @@
 set nocompatible " required
 filetype off     " required
 
-set shell=/bin/bash
-
-set rtp+=/usr/local/opt/fzf
+set shell=/usr/local/bin/bash
+set rtp+=$HOME/.fzf
 
 call plug#begin('~/.vim/plugged')
 
@@ -19,7 +18,7 @@ Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'                 " must come before vim-markdown
 Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout

@@ -42,7 +42,8 @@ let g:airline_mode_map = {
             \ }
 
 function! AirlineInit()
-    let g:airline_section_b = airline#section#create(['branch','%{virtualenv#statusline()}'])
+    " let g:airline_section_b = airline#section#create(['branch','%{virtualenv#statusline()}']) " too slow
+    let g:airline_section_b = airline#section#create(['branch'])
     let g:airline_section_c = airline#section#create(['hunks','%f'])
 endfunction
 autocmd VimEnter * call AirlineInit()

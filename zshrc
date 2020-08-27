@@ -34,7 +34,7 @@ source "$DOT_FILES/zshenv"
 ## 	eval "$(jump shell)"
 ## fi
 
-source virtualenvwrapper_lazy.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # slow
 #if [[ "$(uname -s)" =~ "Linux" ]]; then
@@ -43,11 +43,10 @@ source virtualenvwrapper_lazy.sh
 #	[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
 #fi
 # for performance analysis (look at top of file)
-# zprof
 
 # result of eval "$(pyenv init -)"
 export PATH="/Users/caylak/.pyenv/shims:${PATH}"
-export PYENV_SHELL=zsh
+export PYENV_SHELL=/bin/bash
 source '/usr/local/Cellar/pyenv/1.2.20/libexec/../completions/pyenv.zsh'
 command pyenv rehash 2>/dev/null
 pyenv() {
@@ -64,3 +63,4 @@ pyenv() {
     command pyenv "$command" "$@";;
   esac
 }
+# zprof

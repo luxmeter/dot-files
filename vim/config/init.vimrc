@@ -1,11 +1,13 @@
 set nocompatible " required
 filetype off     " required
 
+set shell=/bin/bash
+
 set rtp+=/usr/local/opt/fzf
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'airblade/vim-gitgutter'            " shows quickdiffs
+Plug 'airblade/vim-gitgutter'            " shows quickdiffs
 Plug 'airblade/vim-rooter'
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
@@ -22,10 +24,9 @@ Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'plasticboy/vim-markdown'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
-Plug 'sheerun/vim-polyglot'              " syntax highlighting
+" Plug 'sheerun/vim-polyglot'              " syntax highlighting, slow
 Plug 'sonph/onehalf', {
             \ 'rtp': 'vim/'
             \ }
@@ -40,12 +41,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale' "decreases performance
 
 " Python plugins
 Plug 'tweekmonster/impsort.vim'
 Plug 'tmhedberg/SimpylFold'
-Plug 'plytophogy/vim-virtualenv'
+" Plug 'plytophogy/vim-virtualenv' " slow
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " NCM2

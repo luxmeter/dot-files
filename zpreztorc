@@ -31,10 +31,10 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'fasd' \
   'ssh' \
   'completion' \
   'git' \
-  'fasd' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'

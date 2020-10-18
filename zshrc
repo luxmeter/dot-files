@@ -38,7 +38,8 @@ unset my_zsh_fpath
 # slow
 [[ -f "${HOME}/Projects/scripts/caylak_adobe_scripts.sh" ]] && source "${HOME}/Projects/scripts/caylak_adobe_scripts.sh"
 
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+source "${HOME}/.pyenv/versions/3.8.5/bin/virtualenvwrapper.sh"
+
 
 # slow
 #if [[ "$(uname -s)" =~ "Linux" ]]; then

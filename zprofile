@@ -98,8 +98,8 @@ export FZF_DEFAULT_COMMAND='fd --follow --type f'
 
 export EDITOR="nvim"
 export PYTHONSTARTUP=$HOME/.pythonrc
-export VIRTUALENVWRAPPER_PYTHON="$HOME/.pyenv/versions/3.8.5/bin/python3"
-export VIRTUALENV_PYTHON="$HOME/.pyenv/versions/3.8.5/bin/python3"
+export VIRTUALENVWRAPPER_PYTHON="$HOME/.pyenv/versions/3.8.5/bin/python"
+export VIRTUALENV_PYTHON="$HOME/.pyenv/shims/python3"
 export DOT_FILES="$HOME/dot-files"
 export SLH_SKIP_UPDATE=true
 export SHELL=/usr/local/bin/zsh

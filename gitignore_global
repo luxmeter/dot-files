@@ -72,5 +72,6 @@ master
 example_*.py
 example_*.js
 secrets
+secret
 rhino*.properties
 *csv.gpg

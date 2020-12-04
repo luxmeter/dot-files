@@ -38,15 +38,9 @@ unset my_zsh_fpath
 # slow
 [[ -f "${HOME}/Projects/scripts/caylak_adobe_scripts.sh" ]] && source "${HOME}/Projects/scripts/caylak_adobe_scripts.sh"
 
-source "${HOME}/.pyenv/versions/3.8.5/bin/virtualenvwrapper.sh"
+source "${HOME}/.pyenv/versions/$PYTHON_VERSION/bin/virtualenvwrapper.sh"
 
 
-# slow
-#if [[ "$(uname -s)" =~ "Linux" ]]; then
-#	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#	export SDKMAN_DIR="${HOME}/.sdkman"
-#	[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
-#fi
 # for performance analysis (look at top of file)
 
 # result of eval "$(pyenv init -)"

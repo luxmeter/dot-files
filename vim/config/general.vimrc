@@ -81,13 +81,4 @@ if &term =~ '256color'
     set t_ut=
 endif
 
-if has('gui_macvim')
-    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
-    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
-    set pythonthreehome=/Users/caylak/.pyenv/versions/3.6.4
-    set pythonthreedll=/Users/caylak/.pyenv/versions/3.6.4/lib/libpython3.6m.dylib
-elseif has('nvim')
-    " let g:python3_host_prog = '/Users/caylak/.pyenv/versions/3.6.4/bin/python3'
-    let g:python3_host_prog = $HOME. '/.virtualenvs/nvimpy3/bin/python'
-    let g:python_host_prog = $HOME. '/.virtualenvs/nvimpy2/bin/python'
-endif
+let g:python3_host_prog = $HOME. '/.virtualenvs/nvimpy3/bin/python'

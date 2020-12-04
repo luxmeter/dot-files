@@ -1,6 +1,6 @@
 #!  /usr/bin/env bash
 
-set -u # exit on usage of undeclared variables
+set -ue # exit on usage of undeclared variables
 # set -x # debug
 
 _dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -85,10 +85,8 @@ install_neovim() {
 		curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 		
-		mkvirtualenv --python python2 nvimpy2
 		mkvirtualenv --python python3 nvimpy3
-		~/.virtualenvs/nvimpy2/bin/python -m pip install neovim jedi pylint isort python-language-server
-		~/.virtualenvs/nvimpy3/bin/python -m pip install neovim jedi pylint isort python-language-server
+		~/.virtualenvs/nvimpy3/bin/python -m pip install neovim jedi pylint black isort python-language-server
 		nvim -c 'PlugInstall | qa!'		
 	fi
 }
@@ -102,17 +100,32 @@ install_tmux() {
 }
 
 install_python() {
-	if ! command_exists python3.7 || ! command_exists pip; then
-		echo "python3.7 not found. Installing..."
+	if ! command_exists python3 || ! command_exists pip; then
+		echo "python3 not found. Installing..."
 		if command_exists apt; then
-			sudo apt -q install python3.7 python3.7-dev python3-pip python python-dev python-pip
+			sudo apt -q install python3 python3-dev python3-pip
 
-			sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-			sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
+			if command_exists python2.7; then
+				sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+			else
+				sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+			fi
 		elif command_exists pacman; then
 			sudo pacman -qS --noconfirm python python-pip python2 python2-pip
-			sudo python3 -m pyenv
 		fi
+	fi
+}
+
+install_pyenv() {
+	if ! command_exists pyenv; then
+		PYTHON_VERSION=3.9.0
+		 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+		 if command_exists apt; then
+			sudo apt-get install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev zlib1g-dev libssl-dev openssl libgdbm-dev libgdbm-compat-dev liblzma-dev libreadline-dev libncursesw5-dev libffi-dev uuid-dev
+		fi
+		 pyenv install $PYTHON_VERSION
+		 pyenv global $PYTHON_VERSION
+		 git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
 	fi
 }
 
@@ -127,9 +140,11 @@ install_ag() {
 install_fzf() {
 	if ! command_exists fzf; then
 		echo "fzf not found. Installing..."
+		cd $HOME
 		git clone --depth 1 git@github.com:junegunn/fzf.git
 		chmod +x fzf/install
 		./fzf/install
+		cd -
 	fi
 }
 
@@ -154,6 +169,7 @@ install_npm() {
 		command_exists pacman && sudo pacman -qS --noconfirm npm
 		sudo npm install -g npm@latest
 		sudo npm install -g typescript webpack util @types/node
+		sudo npm install -g prettier
 	fi
 }
 
@@ -225,18 +241,17 @@ install_fonts
 install_tmux
 install_zsh
 install_python
-install_virtualenvwrapper
+# install_virtualenvwrapper
 install_poetry
 install_neovim
 install_ag
-install_fzf
+#install_fzf
 install_npm
 install_fd
 install_prezto
 install_tpm
 install_docker
 install_jump
-install_jdk
 install_sdk
 
 
@@ -256,7 +271,7 @@ for file in "${_files[@]}"; do
 	fi
 done
 if ! cat ~/.zshenv | grep -q 'DOT_FILES='; then
-	echo "export DOT_FILES=${DOT_FILES}" >> "${HOME}/.zshenv"
+	echo "export DOT_FILES=${_dir}" >> "${HOME}/.zshenv"
 fi
 
 if [[ ! -d ~/.vim/config ]]; then

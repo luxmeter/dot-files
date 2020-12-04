@@ -1,7 +1,7 @@
 set nocompatible " required
 filetype off     " required
 
-set shell=/usr/local/bin/bash
+set shell=/usr/bin/bash
 set rtp+=$HOME/.fzf
 
 call plug#begin('~/.vim/plugged')

@@ -89,7 +89,7 @@
   },
   "python.jediEnabled": false,
   "python.dataScience.askForKernelRestart": false,
-  "python.pythonPath": "/Users/caylak/.virtualenvs/nvimpy3/bin/python3.7",
+  "python.pythonPath": "/Users/caylak/.virtualenvs/nvimpy3/bin/python",
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.iconTheme": "Monokai Pro Icons",
   "javascript.updateImportsOnFileMove.enabled": "always",

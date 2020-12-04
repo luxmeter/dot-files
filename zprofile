@@ -11,6 +11,11 @@
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
+  export PYTHON_VERSION=3.8.5
+else
+  export PYTHON_VERSION=3.9.0
+  # xrandr --newmode "2560x1440_60.00"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync
+  xrandr --addmode Virtual1 "2560x1440_60.00"
 fi
 
 #
@@ -68,12 +73,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
 	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
 	export M2_HOME=/usr/local/Cellar/maven/3.5.4
 else
-	export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+	export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
 	export M2_HOME=/usr/share/maven
-fi
-
-if [[ -d "$HOME/miniconda3/bin" ]]; then
-	export PATH="$HOME/miniconda3/bin:$PATH"
+	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+	export SDKMAN_DIR="${HOME}/.sdkman"
+	source "${HOME}/.sdkman/bin/sdkman-init.sh"
 fi
 
 if [[ -f "$HOME/.confidential" ]]; then
@@ -91,17 +95,24 @@ fi
 export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
-export PATH="$HOME/.pyenv/shims:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.local/bin:$HOME/go/bin:/usr/local/bin:/opt/mongodb/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_SHELL=bash
+export PATH="$HOME/.sdkman/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.local/bin:$HOME/go/bin:/usr/local/bin:/opt/mongodb/bin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS -m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all"
 export FZF_DEFAULT_COMMAND='fd --follow --type f'
 
 export EDITOR="nvim"
 export PYTHONSTARTUP=$HOME/.pythonrc
-export VIRTUALENVWRAPPER_PYTHON="$HOME/.pyenv/versions/3.8.5/bin/python"
+export VIRTUALENVWRAPPER_PYTHON="$HOME/.pyenv/versions/$PYTHON_VERSION/bin/python"
 export VIRTUALENV_PYTHON="$HOME/.pyenv/shims/python3"
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export DOT_FILES="$HOME/dot-files"
 export SLH_SKIP_UPDATE=true
-export SHELL=/usr/local/bin/zsh
-export PYENV_SHELL=bash
+if [[ "$OSTYPE" == darwin* ]]; then
+  export SHELL=/usr/local/bin/zsh
+else
+  export SHELL=/usr/bin/zsh
+fi
 

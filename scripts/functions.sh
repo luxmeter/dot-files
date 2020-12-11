@@ -1,9 +1,9 @@
-dolphin() {
-  local path="$1"
-  if [[ "${path:-x}" == "x" ]]; then
-    (/usr/bin/dolphin $(pwd) 2>/dev/null >&1 &)
-  fi
-}
+if [[ "$OSTYPE" != darwin* ]]; then
+  open() {
+    local target="$@"
+    xdg-open $target > /dev/null 2>&1
+  }
+fi
 
 usage() {
   find $1 -maxdepth 1 -type d -exec du -sh {} \; | sort -h
@@ -32,6 +32,7 @@ zshrc() {
   names="$(find $DOT_FILES/scripts -type f)"
   names="$names\n$DOT_FILES/zshenv"
   names="$names\n$DOT_FILES/zshrc"
+  names="$names\n$DOT_FILES/zprofile"
   echo $(echo $names | fzf) | xargs -o vim
   source ~/.zshrc
 }

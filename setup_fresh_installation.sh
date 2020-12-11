@@ -59,14 +59,6 @@ install_jump() {
 	fi
 }
 
-install_jdk() {
-	if ! command_exists java; then
-		echo "Java not found. Installing..."
-		command_exists apt && sudo apt -q install openjdk-11-jdk openjdk-11-source
-		command_exists pacman && sudo pacman -qS --noconfirm openjdk-src jdk-openjdk
-	fi
-}
-
 install_neovim() {
 	if ! command_exists nvim; then
 		echo "NeoVim not found. Installing..."
@@ -141,9 +133,11 @@ install_fzf() {
 	if ! command_exists fzf; then
 		echo "fzf not found. Installing..."
 		cd $HOME
-		git clone --depth 1 git@github.com:junegunn/fzf.git
+		git clone --depth 1 https://github.com/junegunn/fzf.git
 		chmod +x fzf/install
 		./fzf/install
+		mkdir -p ~/.local/bin/
+		ln -s ~/fzf/bin/fzf ~/.local/bin/fzf
 		cd -
 	fi
 }
@@ -170,6 +164,7 @@ install_npm() {
 		sudo npm install -g npm@latest
 		sudo npm install -g typescript webpack util @types/node
 		sudo npm install -g prettier
+		sudo npm install -g --save-dev prettier @prettier/plugin-xml
 	fi
 }
 
@@ -200,6 +195,15 @@ install_sdk() {
 	if ! command_exists sdk; then
 		echo "SDKMAN! not found. Installing..."
 		curl -s "https://get.sdkman.io" | bash
+	fi
+}
+
+install_dev() {
+	if ! command_exists java; then
+		sdk install java
+		sdk install kotlin
+		sdk install gradle
+		sdk install maven
 	fi
 }
 
@@ -241,11 +245,11 @@ install_fonts
 install_tmux
 install_zsh
 install_python
-# install_virtualenvwrapper
+install_virtualenvwrapper
 install_poetry
 install_neovim
 install_ag
-#install_fzf
+install_fzf
 install_npm
 install_fd
 install_prezto
@@ -253,9 +257,10 @@ install_tpm
 install_docker
 install_jump
 install_sdk
+install_dev
 
 
-_files=(ideavimrc flake8 gitconfig gitignore_global pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc)
+_files=(ideavimrc flake8 gitconfig gitignore_global pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc imwheelrc xprofile)
 
 echo "${_files[@]}"
 for file in "${_files[@]}"; do
@@ -279,3 +284,8 @@ if [[ ! -d ~/.vim/config ]]; then
 	mkdir -p ~/.vim > /dev/null 2>&1
 	ln -s -f ${_dir}/vim/config ~/.vim/config
 fi
+
+echo "(Optional) Manually add following scripts and links if wanted"
+echo 'imwheel -b "4 5" # fixes scroll bug and allows to go back and forth with mouse'
+echo "bash ~/.xprofile # adds correct monitor resolution in X11"
+echo "sudo ln -s /usr/bin/fdfind /usr/bin/fd"

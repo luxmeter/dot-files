@@ -14,8 +14,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export PYTHON_VERSION=3.8.5
 else
   export PYTHON_VERSION=3.9.0
-  # xrandr --newmode "2560x1440_60.00"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync
-  xrandr --addmode Virtual1 "2560x1440_60.00"
 fi
 
 #
@@ -73,8 +71,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
 	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
 	export M2_HOME=/usr/local/Cellar/maven/3.5.4
 else
-	export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
-	export M2_HOME=/usr/share/maven
+	export JAVA_HOME=~/.sdkman/candidates/java/current
+	export M2_HOME=~/.sdkman/candidates/maven/current
 	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 	export SDKMAN_DIR="${HOME}/.sdkman"
 	source "${HOME}/.sdkman/bin/sdkman-init.sh"

@@ -53,7 +53,7 @@ set complete=.,w,b,u,U,t,i,d
 set tags=./tags;,tags,./.tags;,.tags
 set background=dark " or light if you prefer the light version
 " colorscheme onehalfdark
-colorscheme iceberg
+colorscheme Tomorrow-Night
 
 " if &diff
 "     colorscheme jellybeans

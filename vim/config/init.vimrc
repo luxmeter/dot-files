@@ -19,6 +19,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'                 " must come before vim-markdown
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout

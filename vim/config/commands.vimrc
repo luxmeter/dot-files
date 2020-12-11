@@ -1,8 +1,3 @@
-" Ag {{{
-command! -bang -nargs=* Ag
-            \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-a:select-all,ctrl-d:deselect-all' }, <bang>0)
-" }}}
-
 command! Hclose helpclose
 
 " Diff commands {{{
@@ -164,12 +159,6 @@ endfunction
 " Likewise, Files command with preview window
 command! -bang -nargs=? Vimrc
       \ call fzf#run({'dir': $DOT_FILES.'/vim/config', 'sink': 'e', 'down': '20%'})
-" }}}
-
-" Files {{{
-" Likewise, Files command with preview window
-command! -bang -nargs=? Files
-      \ execute 'FZF'
 " }}}
 
 command! -range -nargs=0 MapToJUUID call s:MapToJUUID(<line1>, <line2>)

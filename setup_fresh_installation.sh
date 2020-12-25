@@ -46,6 +46,7 @@ install_zsh() {
 		command_exists apt && sudo apt -q install zsh
 		command_exists pacman && sudo pacman -qS --noconfirm zsh
 		chsh -s $(which zsh)
+		command_exists apt && sudo apt -q install shellcheck
 	fi
 }
 
@@ -283,6 +284,8 @@ if [[ ! -d ~/.vim/config ]]; then
 	echo "Linking vim configs"
 	mkdir -p ~/.vim > /dev/null 2>&1
 	ln -s -f ${_dir}/vim/config ~/.vim/config
+	ln -s -f ${_dir}/vim/mysnippets ~/.config/nvim
+	ln -s -f ${_dir}/vim/coc-settings.json ~/.config/nvim
 fi
 
 echo "(Optional) Manually add following scripts and links if wanted"

@@ -53,9 +53,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale' "decreases performance
 
 " Python plugins
-Plug 'tweekmonster/impsort.vim'
-Plug 'tmhedberg/SimpylFold'
 " Plug 'plytophogy/vim-virtualenv' " slow
+Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'tmhedberg/SimpylFold'
+Plug 'tweekmonster/impsort.vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " NCM2

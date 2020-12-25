@@ -60,3 +60,56 @@ def main():
 if __name__ == "__main__":
     main()
 endsnippet
+
+snippet python3 "Python3 template file" b
+#!/usr/bin/env python
+
+import logging
+import os
+import shlex
+import subprocess
+import sys
+from collections import namedtuple
+from itertools import izip
+
+from StringIO import StringIO
+
+DEBUG = os.environ.get("DEBUG", "0").lower()[0] in ("1", "y")
+
+logging.basicConfig(
+    level=(logging.DEBUG if DEBUG else logging.INFO),
+    datefmt="%H:%M:%S",
+    format="%(levelname)-5s | %(asctime)s | %(message)s",
+)
+logging.addLevelName(logging.WARNING, "WARN")
+logger = logging.getLogger(os.path.basename(__file__.replace(".py", "")))
+
+
+def run(cmd):
+    p = subprocess.Popen(
+        shlex.split(cmd),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        universal_newlines=True,
+        env=dict(os.environ),
+        close_fds=True,
+    )
+    for line in iter(p.stdout.readline, ""):
+        sys.stdout.write(line)
+    p.wait()
+    if p.returncode != 0:
+        logger.warning(
+            "Some commands didn't return successfully (return code: {})".format(
+                p.returncode
+            )
+        )
+    return (p.pid, p.returncode)
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
+endsnippet

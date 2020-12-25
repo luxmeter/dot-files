@@ -8,8 +8,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'            " shows quickdiffs
 Plug 'airblade/vim-rooter'
-Plug 'Raimondi/delimitMate'
-Plug 'SirVer/ultisnips'
 Plug 'ayu-theme/ayu-vim'                 " color scheme
 Plug 'bronson/vim-visual-star-search'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -20,12 +18,15 @@ Plug 'godlygeek/tabular'                 " must come before vim-markdown
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lambdalisue/suda.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Raimondi/delimitMate'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
+Plug 'SirVer/ultisnips'
 " Plug 'sheerun/vim-polyglot'              " syntax highlighting, slow
 Plug 'sonph/onehalf', {
             \ 'rtp': 'vim/'

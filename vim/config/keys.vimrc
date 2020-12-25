@@ -60,9 +60,9 @@ vnoremap < <gv
 vnoremap > >gv
 
 " dont show help when pressing f1 accidentally
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
+" inoremap <F1> <ESC>
+" nnoremap <F1> <ESC>
+" vnoremap <F1> <ESC>
 
 " esc insert mode with
 inoremap jj <ESC>

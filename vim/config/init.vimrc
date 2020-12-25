@@ -16,17 +16,25 @@ Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'                 " must come before vim-markdown
 Plug 'honza/vim-snippets'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/suda.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pangloss/vim-javascript'
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'Raimondi/delimitMate'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
 Plug 'SirVer/ultisnips'
+Plug 'skywind3000/asyncrun.vim'
 " Plug 'sheerun/vim-polyglot'              " syntax highlighting, slow
 Plug 'sonph/onehalf', {
             \ 'rtp': 'vim/'

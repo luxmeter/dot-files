@@ -70,10 +70,6 @@ inoremap jj <ESC>
 " substitute word under the cursor
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
 
-" use space to toggle folds
-nnoremap <Space> za
-vnoremap <Space> za
-
 " fix keys since tmux likes to break things
 map OH <Home>
 map OF <End>

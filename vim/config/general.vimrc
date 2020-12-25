@@ -53,7 +53,8 @@ set complete=.,w,b,u,U,t,i,d
 set tags=./tags;,tags,./.tags;,.tags
 set background=dark " or light if you prefer the light version
 " colorscheme onehalfdark
-colorscheme Tomorrow-Night
+" colorscheme Tomorrow-Night
+colorscheme onedark
 
 " if &diff
 "     colorscheme jellybeans
@@ -72,13 +73,13 @@ if isdirectory($HOME.'/.vim/swap') == 0
 endif
 set directory=~/.vim/swap//
 
-" fix for background color bug in tmux
-" see also http://sunaku.github.io/vim-256color-bce.html
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-endif
+" " fix for background color bug in tmux
+" " see also http://sunaku.github.io/vim-256color-bce.html
+" if &term =~ '256color'
+"     " disable Background Color Erase (BCE) so that color schemes
+"     " render properly when inside 256-color tmux and GNU screen.
+"     " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+"     set t_ut=
+" endif
 
 let g:python3_host_prog = $HOME. '/.virtualenvs/nvimpy3/bin/python'

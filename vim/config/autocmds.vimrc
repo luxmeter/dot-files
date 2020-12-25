@@ -8,8 +8,9 @@ augroup general
     autocmd BufRead,BufNewFile *.md,*.txt,gitcommit setlocal spell | setlocal complete+=kspell
     autocmd BufRead,BufNewFile * let b:autoformat=1
     " close netrw buffer (bug)
-    autocmd FileType netrw setl bufhidden=wipe
+    autocmd FileType netrw setl bufhidden=wipe | set nobuflisted
     autocmd VimLeavePre *  call QuitNetrw()
+    autocmd FileType qf,fern set nobuflisted
 augroup END
 " }}}
 

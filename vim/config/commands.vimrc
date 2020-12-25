@@ -50,11 +50,12 @@ function! RunFile()
     let l:file = escape(escape(expand("%"), ' '), '\ ')
     let l:wd = escape(escape(expand("%:p:h"), ' '), '\ ')
     if &filetype =~ "typescript"
-        echom "Filetype is ". &filetype
         " execute('!cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
-        execute('silent Shell cd '.l:wd.' && npx tsc --build '.l:wd.' &&  node '.substitute(l:file, ".tsx", ".js", ""))
+        execute('AsyncRun -save -raw -strip -cwd=<root> ts-node '.l:file)
+    elseif &filetype =~ "python"
+        execute('AsyncRun -save -raw -strip python '.l:file)
     else
-        echom "No routine for filetype ". &filetype ." found"
+        echom "RunFile: No routine for filetype ". &filetype ." found"
     endif
 endfunction
 " }}}

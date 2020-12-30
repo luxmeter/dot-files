@@ -1,5 +1,4 @@
 let mapleader = ","
-
 " When F5 is pressed, a numbered list of file names is printed, and the user
 " needs to type a single number based on the 'menu' and press enter.
 nnoremap <silent><C-N> :FZF<CR>
@@ -78,6 +77,7 @@ imap OF <End>
 
 
 " Let Omnicompletion behave like you are used to from IDEs
+" don't add tab cycling if Coc is used (it comes with its own mapping)
 inoremap <expr> <Esc>       pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <Down>      pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>        pumvisible() ? "\<C-p>" : "\<Up>"

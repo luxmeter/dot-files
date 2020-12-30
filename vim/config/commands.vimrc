@@ -60,33 +60,6 @@ function! RunFile()
 endfunction
 " }}}
 
-" RunShellCommand {{{
-command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
-function! s:RunShellCommand(cmdline)
-    echo a:cmdline
-    let expanded_cmdline = a:cmdline
-    for part in split(a:cmdline, ' ')
-        if part[0] =~ '\v[%#<]'
-            let expanded_part = fnameescape(expand(part))
-            let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
-        endif
-    endfor
-    execute "pclose!"
-    execute "normal! mm"
-    botright vnew
-    setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
-    call setline(1, 'You entered:    ' . a:cmdline)
-    call setline(2, 'Expanded Form:  ' .expanded_cmdline)
-    call setline(3,substitute(getline(2),'.','=','g'))
-    execute 'silent $read !'. expanded_cmdline
-    setlocal nomodifiable
-    execute ":set pvw"
-    execute "normal! \<C-W>p"
-    execute "normal! gg"
-    execute "normal! `m"
-endfunction
-" }}}
-
 " Text Modifications {{{
 " modify selected text using combining diacritics
 command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
@@ -100,66 +73,13 @@ function! s:CombineSelection(line1, line2, cp)
 endfunction
 " }}}
 
-" Ulti-Snippet expandsion on autocomplection {{{
-function! ExpandOrClosePopup()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        echom snippet
-        return snippet
-    else
-        return ncm2_ultisnips#expand_or("\<CR>", 'n')
-    endif
-endfunction
-" }}}
-
-" UpdatePythonPath {{{
-function! s:CompleteVirtualEnv(arg_lead, cmd_line, cursor_pos)
-    return virtualenv#names(a:arg_lead)
-endfunction
-
-command! -nargs=? -complete=customlist,s:CompleteVirtualEnv UpdatePythonPath call Update_Python_Path(<q-args>)
-function! Update_Python_Path(...)
-    let virtual_env = a:1
-    if empty(virtual_env)
-        " try to guess virtual env
-        let root_dir = fnamemodify(FindRootDirectory(), ':t')
-        let guess_virtual_env = system(
-                    \ 'cd '.$WORKON_HOME.'
-                    \ && find . -type d -maxdepth 1
-                    \ | grep -i "'.root_dir.'"
-                    \ | head -1
-                    \ | sed "s|^\./||"')
-        if v:shell_error == 0
-            let virtual_env = guess_virtual_env
-        endif
-    endif
-
-    if !empty(virtual_env)
-        echom 'Activating virtual env '.virtual_env
-        execute ':VirtualEnvActivate '.virtual_env
-    endif
-
-    let ver = system($VIRTUAL_ENV. '/bin/python --version | grep -Po ''(\d\.?)+''')
-    if ver =~ "\^3."
-        let python_path = $HOME. '/.virtualenvs/nvimpy3'
-    else
-        let python_path =  $HOME. '/.virtualenvs/nvimpy2'
-    endif
-
-    if len(python_path) == 0
-        echom 'No VirtualEnv set'
-    else
-        let g:LanguageClient_serverCommands['python'] = [python_path . '/bin/pyls']
-        :LanguageClientStop
-        :LanguageClientStart
-    endif
-endfunction
-" }}}
-
 " Vimrc {{{
 " Likewise, Files command with preview window
 command! -bang -nargs=? Vimrc
-      \ call fzf#run({'dir': $DOT_FILES.'/vim/config', 'sink': 'e', 'down': '20%'})
+      \ call fzf#run(fzf#wrap({
+        \'dir': $DOT_FILES.'/vim/config',
+        \'sink': 'e',
+        \}))
 " }}}
 
 command! -range -nargs=0 MapToJUUID call s:MapToJUUID(<line1>, <line2>)

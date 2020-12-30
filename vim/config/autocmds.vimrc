@@ -40,11 +40,12 @@ augroup programming
 augroup end
 "}}}
 
+" don't use with coc otherwise it interfers coc completion
 " omni completion {{{
-augroup omni_complete " {
-    " clear commands before resetting
-    autocmd!
-    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-augroup END
+" augroup omni_complete " {
+"     " clear commands before resetting
+"     autocmd!
+"     autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"     autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" augroup END
 " }}}

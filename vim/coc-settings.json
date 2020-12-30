@@ -6,6 +6,7 @@
     "typescriptreact"
   ],
   "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnType": false,
+  "coc.preferences.noselect": false,
   "python.pythonPath": "~/.virtualenvs/nvimpy3/bin/python"
 }

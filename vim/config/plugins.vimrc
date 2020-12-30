@@ -77,14 +77,6 @@ let g:fzf_action = {
             \ 'ctrl-v': 'vsplit' }
 " }}}
 
-" NCM2 {{{
-augroup ncm2
-    autocmd!
-    " enable NCM2 for all buffers
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-augroup END
-" }}}
-
 " NeoFormat {{{
 let g:neoformat_try_formatprg = 1
 " let b:neoformat_run_all_formatters = 0
@@ -206,29 +198,29 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <Leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <Leader>f  <Plug>(coc-format-selected)
+nmap <Leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <Leader>a  <Plug>(coc-codeaction-selected)
+nmap <Leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <Leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <Leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -307,25 +299,23 @@ function! FernInit() abort
         \   "\<Plug>(fern-action-expand)",
         \   "\<Plug>(fern-action-collapse)",
         \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> N <Plug>(fern-action-new-path)
-  nmap <buffer> D <Plug>(fern-action-new-dir)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> M <Plug>(fern-action-rename)
-  nmap <buffer> r <Plug>(fern-action-reload)
-  nmap <buffer> <F5> <Plug>(fern-action-reload)
-  nmap <buffer> <Tab> <Plug>(fern-action-mark:toggle)
-  nmap <buffer> s <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer> <nowait> . <Plug>(fern-action-hidden:toggle)
-  nmap <buffer><nowait> [ <Plug>(fern-action-leave)
-  nmap <buffer><nowait> ] <Plug>(fern-action-enter)
-  nmap <buffer><nowait> <Left> <Plug>(fern-action-collapse)
-  nmap <buffer><nowait> <Right> <Plug>(fern-action-expand)
-  nmap <buffer><nowait> h <Plug>(fern-action-collapse)
-  nmap <buffer><nowait> l <Plug>(fern-action-expand)
+nmap <buffer><nowait> <F5> <Plug>(fern-action-reload)
+nmap <buffer><nowait> <Return> <Plug>(fern-action-enter)
+nmap <buffer><nowait> <Backspace> <Plug>(fern-action-leave)
+nmap <buffer><nowait> l <Plug>(fern-action-expand)
+nmap <buffer><nowait> h <Plug>(fern-action-collapse)
+nmap <buffer><nowait> i <Plug>(fern-action-reveal)
+nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+nmap <buffer> <C-N> <Plug>(fern-action-new-path)
+nmap <buffer> dd <Plug>(fern-action-remove)
+nmap <buffer> m <Plug>(fern-action-move)
+nmap <buffer> <F2> <Plug>(fern-action-rename)
+nmap <buffer> <Tab> <Plug>(fern-action-mark:toggle)
+nmap <buffer> <C-S> <Plug>(fern-action-open:split)
+nmap <buffer> <C-V> <Plug>(fern-action-open:vsplit)
+nmap <buffer> <nowait> . <Plug>(fern-action-hidden:toggle)
+nmap <buffer><nowait> <Left> <Plug>(fern-action-collapse)
+nmap <buffer><nowait> <Right> <Plug>(fern-action-expand)
 endfunction
 
 augroup FernGroup

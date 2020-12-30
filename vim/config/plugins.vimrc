@@ -9,7 +9,7 @@ let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts=1
 let g:airline_enable_syntastic=1
 let g:airline_detect_paste=1
-let g:airline_theme='zenburn'
+let g:airline_theme='onedark'
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ' '
 let g:airline_right_sep = ' '
@@ -142,7 +142,6 @@ let g:coc_global_extensions = [
     \ 'coc-jedi',
     \ 'coc-vimlsp',
     \ 'coc-ultisnips',
-    \ 'coc-prettier',
     \ 'coc-json',
     \ 'coc-css'
 \ ]

@@ -287,6 +287,8 @@ let g:fern#disable_default_mappings = 1
 let g:fern_git_status#disable_ignored    = 1
 let g:fern_git_status#disable_untracked  = 1
 let g:fern_git_status#disable_submodules = 1
+let g:fern#mapping#fzf#disable_default_mappings = 1
+let g:fern#renderer="nerdfont"
 
 noremap  <F1> :Fern . -drawer -reveal=% -toggle -width=35<CR>
 
@@ -317,8 +319,15 @@ nmap <buffer><nowait> <Left> <Plug>(fern-action-collapse)
 nmap <buffer><nowait> <Right> <Plug>(fern-action-expand)
 endfunction
 
+function! s:init_fern_mapping_fzf() abort
+    nmap <buffer> ff <Plug>(fern-action-fzf-files)
+    nmap <buffer> fd <Plug>(fern-action-fzf-dirs)
+    nmap <buffer> fa <Plug>(fern-action-fzf-both)
+endfunction
+
 augroup FernGroup
   autocmd!
-  autocmd FileType fern call FernInit()
+  autocmd FileType fern call FernInit() | call s:init_fern_mapping_fzf()
 augroup END
+
 "}}}

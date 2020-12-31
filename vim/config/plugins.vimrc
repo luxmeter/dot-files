@@ -55,7 +55,26 @@ let g:ale_lint_on_enter = 0
 " }}}
 
 " Emet {{{
+imap <expr><c-e>
+      \ <SID>IsASnippet() ? "\<c-r>=(UltiSnips#ExpandSnippet())<cr>" :
+      \ "\<Plug>(emmet-expand-abbr)"
 let g:user_emmet_install_global = 0
+" let g:user_emmet_leader_key = '<c-e>'
+let g:user_emmet_expandabbr_key = '<c-e>'
+let g:user_emmet_expandword_key = '<C-e>w'
+let g:user_emmet_update_tag = '<C-e>u'
+let g:user_emmet_balancetaginward_key = '<C-e>t'
+let g:user_emmet_balancetagoutward_key = '<C-e>T'
+let g:user_emmet_next_key = '<C-e>n'
+let g:user_emmet_prev_key = '<C-e>N'
+let g:user_emmet_imagesize_key = '<C-e>i'
+let g:user_emmet_togglecomment_key = '<C-e>/'
+let g:user_emmet_splitjointag_key = '<C-e>j'
+let g:user_emmet_removetag_key = '<C-e>d'
+let g:user_emmet_anchorizeurl_key = '<C-e>a'
+let g:user_emmet_anchorizesummary_key = '<C-e>A'
+let g:user_emmet_mergelines_key = '<C-e>m'
+let g:user_emmet_codepretty_key = '<C-e>f'
 " }}}
 
 " AsyncRun {{{
@@ -119,7 +138,7 @@ let g:SimpylFold_fold_docstring = 0
 " Press enter key to trigger snippet expansion (leverages snippet auto completion)
 " inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 let g:UltiSnipsSnippetDirectories=['mysnippets', 'UltiSnips']
-let g:UltiSnipsExpandTrigger = "<c-e>"
+" let g:UltiSnipsExpandTrigger = "<c-e>"
 " let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -129,6 +148,14 @@ let g:UltiSnipsListSnippets="<c-f>"
 
 " Vim Rooter (autochdir) {{{
 let g:rooter_manual_only = 1
+
+function! s:IsASnippet()
+    return !(
+      \ col('.') <= 1
+      \ || !empty(matchstr(getline('.'), '\%' . (col('.') - 1) . 'c\s'))
+      \ || empty(UltiSnips#SnippetsInCurrentScope())
+      \ )
+endfunction
 " }}}
 
 " COC.nvim {{{

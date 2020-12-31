@@ -22,7 +22,7 @@ augroup programming
     " python
     autocmd BufWritePre *.py ImpSort!
     " web
-    autocmd FileType html,css,javascript,typescript EmmetInstall
+    autocmd FileType html,css,javascript,typescript,typescriptreact,javascriptreact EmmetInstall
     " java
     autocmd BufNewFile,BufRead,BufEnter *.java ALEDisable
     autocmd BufLeave *.java ALEEnable

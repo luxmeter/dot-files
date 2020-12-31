@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'            " shows quickdiffs
 Plug 'airblade/vim-rooter'
 Plug 'bronson/vim-visual-star-search'
+Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'                 " must come before vim-markdown
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -34,7 +35,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'                  " file commands (move, delete...)
 Plug 'tpope/vim-fugitive'                " wrapper around git cmds
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'                     " allows you to move the cursor in command line mode
+" Plug 'tpope/vim-rsi'                     " allows you to move the cursor in command line mode (fucks up insert mode)
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'

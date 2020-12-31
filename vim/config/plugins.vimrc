@@ -301,7 +301,7 @@ function! FernInit() abort
         \   "\<Plug>(fern-action-collapse)",
         \ )
 nmap <buffer><nowait> <F5> <Plug>(fern-action-reload)
-nmap <buffer><nowait> <Return> <Plug>(fern-action-enter)
+nmap <buffer><nowait> <Return> <Plug>(fern-action-open-or-enter)
 nmap <buffer><nowait> <Backspace> <Plug>(fern-action-leave)
 nmap <buffer><nowait> l <Plug>(fern-action-expand)
 nmap <buffer><nowait> h <Plug>(fern-action-collapse)

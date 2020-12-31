@@ -19,10 +19,9 @@ set listchars=tab:▸\ ,eol:¬       " shows symbols for tab and newline
 set mouse=a                       " enable mouse movement - makes copy & paste hard to use
 set nobackup                      " Some servers have issues with backup files, see #649.
 set noeol
-set norelativenumber              " let the  menu flicker
+set relativenumber              " let the  menu flicker
 set noswapfile                    " helps if u want to use somekind of filesystem watcher
 set nowritebackup
-set number
 set pastetoggle=<F2>
 set scrolloff=3                   " show additional lines when scrolling at the end
 set shiftwidth=4

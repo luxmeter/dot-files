@@ -1,0 +1,19 @@
+snippet echov "echo variable" b
+echo "$1=\$\{$1\}"$0
+endsnippet
+
+snippet bashs "bash script template" b
+#!/usr/bin/env bash
+
+shopt -s globstar # recursive globbing
+shopt -s nullglob # prevents no matching patters are returned in result
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
+
+main() {
+    $0
+}
+
+main "$@" # "$@" evaluates to every element of the array, as a separate words.
+endsnippet

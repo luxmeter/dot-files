@@ -57,7 +57,7 @@ let g:ale_lint_on_enter = 0
 " Emet {{{
 imap <expr><c-e>
       \ <SID>IsASnippet() ? "\<c-r>=(UltiSnips#ExpandSnippet())<cr>" :
-      \ "\<Plug>(emmet-expand-abbr)"
+      \ exists('b:emmet_installed') && b:emmet_installed==1 ? "\<Plug>(emmet-expand-abbr)" : ""
 let g:user_emmet_install_global = 0
 " let g:user_emmet_leader_key = '<c-e>'
 let g:user_emmet_expandabbr_key = '<c-e>'
@@ -143,11 +143,12 @@ let g:SimpylFold_fold_docstring = 0
 " Press enter key to trigger snippet expansion (leverages snippet auto completion)
 " inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 let g:UltiSnipsSnippetDirectories=['mysnippets', 'UltiSnips']
-" let g:UltiSnipsExpandTrigger = "<c-e>"
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger = "<c-y>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>" " interfers with coc completion
+" on tab
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-f>"
 " }}}
 
@@ -342,6 +343,7 @@ nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
 nmap <buffer> <C-N> <Plug>(fern-action-new-path)
 nmap <buffer> dd <Plug>(fern-action-remove)
 nmap <buffer> m <Plug>(fern-action-move)
+nmap <buffer><nowait> c <Plug>(fern-action-copy)
 nmap <buffer> <F2> <Plug>(fern-action-rename)
 nmap <buffer> <Tab> <Plug>(fern-action-mark:toggle)
 nmap <buffer> <C-S> <Plug>(fern-action-open:split)
@@ -361,7 +363,6 @@ augroup FernGroup
   autocmd!
   autocmd FileType fern call FernInit() | call s:init_fern_mapping_fzf()
 augroup END
-
 "}}}
 
 "{{{EasyMotion

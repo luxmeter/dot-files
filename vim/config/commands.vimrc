@@ -54,6 +54,8 @@ function! RunFile()
         execute('AsyncRun -save -raw -strip -cwd=<root> ts-node '.l:file)
     elseif &filetype =~ "python"
         execute('AsyncRun -save -raw -strip python '.l:file)
+    elseif &filetype =~ "sh"
+        execute('AsyncRun -save -raw -strip bash '.l:file)
     else
         echom "RunFile: No routine for filetype ". &filetype ." found"
     endif

@@ -25,7 +25,6 @@ Plug 'lambdalisue/suda.vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
 Plug 'SirVer/ultisnips'

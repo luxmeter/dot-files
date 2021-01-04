@@ -20,8 +20,9 @@ Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/nerdfont.vim'
-Plug 'LumaKernel/fern-mapping-fzf.vim'
 Plug 'lambdalisue/suda.vim'
+Plug 'LumaKernel/fern-mapping-fzf.vim'
+Plug 'luochen1990/rainbow'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

@@ -1,3 +1,17 @@
 snippet logv "print variable" b
 console.log(\`$1=\$\{$1\}\`)$0
 endsnippet
+
+snippet reactfc "create react functional component"
+import React, { useEffect, useState} from 'react'
+import '`!p snip.rv = f"{snip.basename}.css"`'
+
+const $1: React.FC = () => {
+    $0
+    return (
+        <div>hello world</div>
+    )
+}
+
+export default $1
+endsnippet

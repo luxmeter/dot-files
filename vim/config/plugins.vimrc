@@ -155,6 +155,11 @@ let g:UltiSnipsListSnippets="<c-f>"
 " Vim Rooter (autochdir) {{{
 let g:rooter_manual_only = 1
 
+augroup ultisnips
+    autocmd!
+    autocmd FileType snippets hi snipLeadingSpaces NONE
+augroup END
+
 function! s:IsASnippet()
     return !(
       \ col('.') <= 1

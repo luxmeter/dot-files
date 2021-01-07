@@ -26,6 +26,7 @@ Plug 'luochen1990/rainbow'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'psliwka/vim-smoothie'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
 Plug 'SirVer/ultisnips'

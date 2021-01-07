@@ -6,7 +6,7 @@ augroup general
     autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(s:save_cwd)
     autocmd BufWritePost $MYVIMRC,*.vimrc source $MYVIMRC | silent! AirlineRefresh
     autocmd BufRead,BufNewFile *.md,*.txt,gitcommit setlocal spell | setlocal complete+=kspell
-    autocmd BufRead,BufNewFile * let b:autoformat=1
+    autocmd BufRead,BufNewFile * let b:autoformat=1 | exec 'FernDo :FernReveal -stay '.expand('%')
     " close netrw buffer (bug)
     autocmd FileType netrw setl bufhidden=wipe | set nobuflisted
     autocmd VimLeavePre *  call QuitNetrw()

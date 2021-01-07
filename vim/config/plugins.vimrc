@@ -282,8 +282,9 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" Suggests visual selections
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -297,25 +298,25 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+  let g:airline#extensions#coc#enabled = 1
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" g[ g] do the same?
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+"" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " coc }}}
 
 " fern {{{
@@ -340,8 +341,10 @@ function! FernInit() abort
         \ )
 nmap <buffer><nowait> <F5> <Plug>(fern-action-reload)
 nmap <buffer><nowait> <Return> <Plug>(fern-action-open-or-enter)
+nmap <buffer><nowait> o <Plug>(fern-action-open-or-enter)
 nmap <buffer><nowait> <Backspace> <Plug>(fern-action-leave)
 nmap <buffer><nowait> l <Plug>(fern-action-expand)
+nmap <buffer><nowait> <space> <Plug>(fern-action-expand)
 nmap <buffer><nowait> h <Plug>(fern-action-collapse)
 nmap <buffer><nowait> i <Plug>(fern-action-reveal)
 nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)

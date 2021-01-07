@@ -2,9 +2,9 @@ let mapleader = "\<space>"
 " When F5 is pressed, a numbered list of file names is printed, and the user
 " needs to type a single number based on the 'menu' and press enter.
 nnoremap <silent><c-n> :Files<CR>
-nnoremap <silent><c-n>n :execute 'FZF ' . FindRootDirectory()<CR>
+nnoremap <silent><leader>n :execute 'FZF ' . FindRootDirectory()<CR>
 nnoremap <silent><leader>c :execute 'Commands'<CR>
-nnoremap <silent><Leader>e :Buffers<CR>
+nnoremap <silent><leader>e :Buffers<CR>
 nmap // :BLines!<CR>
 nmap ?? :Ag!<CR>
 nnoremap <Leader>d "0d
@@ -20,8 +20,9 @@ xnoremap P Pgvy
 noremap <F7> mzgg=G`z
 
 noremap <Leader>w :Bwipeout!<CR>
+noremap ,w :Bwipeout!<CR>
 
-noremap <Leader>s :w<CR>
+noremap ,s :w<CR>
 
 
 nnoremap <F8> :setlocal spell! spell?<CR>

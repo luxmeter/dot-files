@@ -65,9 +65,6 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-export PATH="$HOME/.poetry/bin:/home/mustafac/.pyenv/shims:${PATH}"
-
-
 if [[ "$OSTYPE" == darwin* ]]; then
 	export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
 	export M2_HOME=/usr/local/Cellar/maven/3.5.4
@@ -95,9 +92,9 @@ export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$HOME/.pyenv/shims:$PYENV_ROOT/bin:$PATH"
+export PATH="$HOME/.sdkman/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.local/bin:$HOME/go/bin:/opt/mongodb/bin:$PATH"
 export PYENV_SHELL=bash
-export PATH="$HOME/.sdkman/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.local/bin:$HOME/go/bin:/usr/local/bin:/opt/mongodb/bin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS -m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all"
 export FZF_DEFAULT_COMMAND='fd --follow --type f'

@@ -150,10 +150,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " on tab
 " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-f>"
-" }}}
-
-" Vim Rooter (autochdir) {{{
-let g:rooter_manual_only = 1
 
 augroup ultisnips
     autocmd!
@@ -167,6 +163,10 @@ function! s:IsASnippet()
       \ || empty(UltiSnips#SnippetsInCurrentScope())
       \ )
 endfunction
+" }}}
+
+" Vim Rooter (autochdir) {{{
+let g:rooter_manual_only = 1
 " }}}
 
 " COC.nvim {{{

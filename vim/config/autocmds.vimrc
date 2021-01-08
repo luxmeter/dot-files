@@ -11,6 +11,8 @@ augroup general
     autocmd FileType netrw setl bufhidden=wipe | set nobuflisted
     autocmd VimLeavePre *  call QuitNetrw()
     autocmd FileType qf,fern set nobuflisted
+    " jump back to quickfix list after deleting entry (quicklist reflector)
+    autocmd FileType qf set nobuflisted | noremap <buffer> dd dd :exec winnr('$') . "wincmd w"<cr>
 augroup END
 " }}}
 

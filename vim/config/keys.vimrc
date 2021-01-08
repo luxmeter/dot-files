@@ -6,7 +6,7 @@ nnoremap <silent><leader>n :execute 'FZF ' . FindRootDirectory()<CR>
 nnoremap <silent><leader>c :execute 'Commands'<CR>
 nnoremap <silent><leader>e :Buffers<CR>
 nmap // :BLines!<CR>
-nmap ?? :Ag!<CR>
+nmap ?? :Rg!<CR>
 nnoremap <Leader>d "0d
 nnoremap <Leader><S-d> "0D
 vnoremap <Leader>d "0d
@@ -69,7 +69,13 @@ vnoremap > >gv
 inoremap jj <ESC>
 
 " substitute word under the cursor
-nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
+" recursive mapping in order to use visual-star-search
+nmap <leader>r *<c-o>:%s/<c-r>//<c-r>//g<left><left>
+xmap <leader>r *<c-o>:%s/<c-r>//<c-r>//g<left><left>
+
+" center viewport when navigating the quicklist
+nnoremap ]q :cn<cr> z.
+nnoremap [q :cp<cr> z.
 
 " fix keys since tmux likes to break things
 map OH <Home>

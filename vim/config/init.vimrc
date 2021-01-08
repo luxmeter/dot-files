@@ -13,9 +13,11 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'                 " must come before vim-markdown
 Plug 'honza/vim-snippets'
+" Plug '/justinmk/vim-sneak' " f/t with two chars (not tried yet)
+Plug 'jiangmiao/auto-pairs' " auto closing pairs
+" Plug 'jremmen/vim-ripgrep' " not needed with fzf which ships with a Rg command
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'jiangmiao/auto-pairs' " auto closing pairs
 Plug 'lambdalisue/fern-hijack.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern.vim'
@@ -23,14 +25,14 @@ Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/suda.vim'
 Plug 'LumaKernel/fern-mapping-fzf.vim'
 Plug 'luochen1990/rainbow'
-Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'                     " remove buffer while keeping window layout
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'psliwka/vim-smoothie'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
-Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips' " Replaced by coc-snippets
 Plug 'skywind3000/asyncrun.vim'
+Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'                  " file commands (move, delete...)
@@ -40,6 +42,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+" Plug 'terryma/vim-multiple-cursors' " need to remap default keys
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale' "decreases performance
@@ -57,9 +60,7 @@ Plug 'ayu-theme/ayu-vim'                 " color scheme
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'joshdick/onedark.vim'
-Plug 'sonph/onehalf', {
-            \ 'rtp': 'vim/'
-            \ }
+Plug 'sonph/onehalf', {  'rtp': 'vim/'  }
 
 " syntax highlighting
 Plug 'ekalinin/Dockerfile.vim'

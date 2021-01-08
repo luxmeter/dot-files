@@ -30,7 +30,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'psliwka/vim-smoothie'
 Plug 'rakr/vim-two-firewatch'
 Plug 'sbdchd/neoformat'
-Plug 'SirVer/ultisnips' " Replaced by coc-snippets
+" Plug 'SirVer/ultisnips' " Replaced by coc-snippets
 Plug 'skywind3000/asyncrun.vim'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tpope/vim-abolish'

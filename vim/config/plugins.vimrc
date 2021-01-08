@@ -56,11 +56,11 @@ let g:ale_lint_on_enter = 0
 
 " Emet {{{
 imap <expr><c-e>
-      \ <SID>IsASnippet() ? "\<c-r>=(UltiSnips#ExpandSnippet())<cr>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ exists('b:emmet_installed') && b:emmet_installed==1 ? "\<Plug>(emmet-expand-abbr)" : ""
 let g:user_emmet_install_global = 0
 " let g:user_emmet_leader_key = '<c-e>'
-let g:user_emmet_expandabbr_key = '<c-e>'
+let g:user_emmet_expandabbr_key = '<C-e>'
 let g:user_emmet_expandword_key = '<C-e>w'
 let g:user_emmet_update_tag = '<C-e>u'
 let g:user_emmet_balancetaginward_key = '<C-e>t'
@@ -139,32 +139,6 @@ let g:netrw_winsize = 25
 let g:SimpylFold_fold_docstring = 0
 " }}}
 
-" UltiSnips {{{
-" Press enter key to trigger snippet expansion (leverages snippet auto completion)
-" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-let g:UltiSnipsSnippetDirectories=['mysnippets', 'UltiSnips']
-let g:UltiSnipsExpandTrigger = "<c-y>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>" " interfers with coc completion
-" on tab
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsListSnippets="<c-f>"
-
-augroup ultisnips
-    autocmd!
-    autocmd FileType snippets hi snipLeadingSpaces NONE
-augroup END
-
-function! s:IsASnippet()
-    return !(
-      \ col('.') <= 1
-      \ || !empty(matchstr(getline('.'), '\%' . (col('.') - 1) . 'c\s'))
-      \ || empty(UltiSnips#SnippetsInCurrentScope())
-      \ )
-endfunction
-" }}}
-
 " Vim Rooter (autochdir) {{{
 let g:rooter_manual_only = 1
 " }}}
@@ -181,8 +155,10 @@ let g:coc_global_extensions = [
     \ 'coc-vimlsp',
     \ 'coc-ultisnips',
     \ 'coc-json',
-    \ 'coc-css'
+    \ 'coc-css',
+    \ 'coc-snippets'
 \ ]
+let g:coc_snippet_next = '<tab>'
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

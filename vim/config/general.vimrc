@@ -59,11 +59,9 @@ colorscheme onedark
 "     colorscheme jellybeans
 " endif
 
-if executable('ag')
-    " set grepprg=ag\ --vimgrep\ $*
-    let &grepprg="ag --vimgrep $*"
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow\ --no-heading
     set grepformat=%f:%l:%c:%m
-    let g:ackprg = 'ag --vimgrep'
 endif
 
 " Save your swp files to a less annoying place than the current directory.

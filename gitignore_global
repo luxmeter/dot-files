@@ -75,3 +75,5 @@ secrets
 secret
 rhino*.properties
 *csv.gpg
+node_modules
+*.min.css

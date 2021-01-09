@@ -9,5 +9,11 @@
   "coc.preferences.formatOnType": false,
   "coc.preferences.noselect": false,
   "python.pythonPath": "~/.virtualenvs/nvimpy3/bin/python",
-  "python.venvPath": "~/.virtualenvs/"
+  "python.venvPath": "~/.virtualenvs/",
+  "list.normalMappings": {
+    "<C-c>": "do:exit"
+  },
+  "list.insertMappings": {
+    "<C-c>": "do:exit"
+  }
 }

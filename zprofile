@@ -97,7 +97,7 @@ export PATH="$HOME/.sdkman/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.lo
 export PYENV_SHELL=bash
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS -m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all"
-export FZF_DEFAULT_COMMAND='fd --follow --type f'
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!.git' -g '!*.min.css'"
 
 export EDITOR="nvim"
 export PYTHONSTARTUP=$HOME/.pythonrc

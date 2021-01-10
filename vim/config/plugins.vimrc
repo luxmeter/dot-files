@@ -235,6 +235,7 @@ nmap <Leader>a  <Plug>(coc-codeaction-selected)
 nmap <Leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <Leader>qf  <Plug>(coc-fix-current)
+nmap <Leader>. <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.

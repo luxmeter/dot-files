@@ -48,6 +48,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale' "decreases performance
 
+" general programming
+Plug 'AndrewRadev/sideways.vim'
+
 " Python plugins
 " Plug 'plytophogy/vim-virtualenv' " slow
 Plug 'jeetsukumaran/vim-pythonsense'

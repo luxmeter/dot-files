@@ -6,8 +6,11 @@ set cmdheight=2                   " Give more space for displaying messages
 set cursorline
 set encoding=utf8
 set expandtab
-set foldlevel=99                  " prevents closing all folds by default when opening a file
-set foldmethod=syntax
+set foldlevelstart=99             " start unfolded
+" set foldmethod=syntax
+set fillchars=vert:┃
+set fillchars+=fold:·
+set foldtext=wincent#settings#foldtext()
 set hidden
 set hlsearch                      " highlight search term
 set ignorecase                    " case insensitive

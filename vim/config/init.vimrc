@@ -3,6 +3,7 @@ filetype off     " required
 
 set shell=/usr/bin/bash
 set rtp+=$HOME/.fzf
+set rtp+=$HOME/.vim
 
 call plug#begin('~/.vim/plugged')
 

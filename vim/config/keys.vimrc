@@ -17,12 +17,8 @@ xnoremap p pgvy
 vnoremap P Pgvy
 xnoremap P Pgvy
 
-noremap <F7> mzgg=G`z
-
-noremap <Leader>w :Bwipeout!<CR>
-noremap ,w :Bwipeout!<CR>
-
-noremap ,s :w<CR>
+noremap <c-w> :Bwipeout!<CR>
+noremap <c-s> :w<CR>
 
 
 nnoremap <F8> :setlocal spell! spell?<CR>
@@ -70,8 +66,12 @@ inoremap jj <ESC>
 
 " substitute word under the cursor
 " recursive mapping in order to use visual-star-search
-nmap <leader>r *<c-o>:%s/<c-r>//<c-r>//g<left><left>
-xmap <leader>r *<c-o>:%s/<c-r>//<c-r>//g<left><left>
+nnoremap <leader>r g*<c-o>:%s/<c-r>//<c-r>//g<left><left>
+vmap <leader>r *<c-o>:%s/<c-r>//<c-r>//g<left><left>
+
+" don't jump to next hit
+map * *``
+vmap * *``
 
 " center viewport when navigating the quicklist
 nnoremap ]q :cn<cr> z.

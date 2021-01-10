@@ -5,9 +5,11 @@
     "typescript",
     "typescriptreact"
   ],
+  "list.source.symbols.excludes": ["node_modules/**/*"],
+  "diagnostic.displayByAle": true,
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": false,
-  "coc.preferences.noselect": false,
+  "suggest.noselect": true,
   "python.pythonPath": "~/.virtualenvs/nvimpy3/bin/python",
   "python.venvPath": "~/.virtualenvs/",
   "list.normalMappings": {

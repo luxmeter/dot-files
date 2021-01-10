@@ -20,7 +20,7 @@ augroup END
 augroup programming
     autocmd!
     " vim
-    autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldmethod=marker | set fdo-=search " don't open fold when searching
     " python
     autocmd BufWritePre *.py ImpSort!
     " web

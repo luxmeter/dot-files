@@ -238,6 +238,18 @@ install_docker() {
 	fi
 }
 
+install_rg() {
+	if ! command_exists rg; then
+		sudo apt-get install ripgrep
+	fi
+}
+
+install_bat() {
+	if ! command_exists bat && ! command_exists batcat; then
+		sudo apt-get install bat
+	fi
+}
+
 cd "${_root}"
 
 install_git
@@ -259,6 +271,8 @@ install_docker
 install_jump
 install_sdk
 install_dev
+install_bat
+install_rg
 
 
 _files=(ideavimrc flake8 gitconfig gitignore_global pylintrc pythonrc tmux-macosx tmux.conf vimrc zpreztorc zprofile zshenv zshrc imwheelrc xprofile)

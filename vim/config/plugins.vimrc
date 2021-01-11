@@ -56,8 +56,8 @@ let g:ale_lint_on_enter = 0
 
 " Emet {{{
 imap <expr><c-e>
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ exists('b:emmet_installed') && b:emmet_installed==1 ? "\<Plug>(emmet-expand-abbr)" : ""
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ exists('b:emmet_installed') && b:emmet_installed==1 ? "\<Plug>(emmet-expand-abbr)" : ""
 let g:user_emmet_install_global = 0
 " let g:user_emmet_leader_key = '<c-e>'
 let g:user_emmet_expandabbr_key = '<C-e>'
@@ -148,40 +148,40 @@ let g:rooter_manual_only = 1
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 let g:coc_global_extensions = [
-    \ 'coc-tsserver',
-    \ 'coc-eslint',
-    \ 'coc-marketplace',
-    \ 'coc-jedi',
-    \ 'coc-vimlsp',
-    \ 'coc-ultisnips',
-    \ 'coc-json',
-    \ 'coc-css',
-    \ 'coc-snippets'
-\ ]
+            \ 'coc-tsserver',
+            \ 'coc-eslint',
+            \ 'coc-marketplace',
+            \ 'coc-jedi',
+            \ 'coc-vimlsp',
+            \ 'coc-ultisnips',
+            \ 'coc-json',
+            \ 'coc-css',
+            \ 'coc-snippets'
+            \ ]
 let g:coc_snippet_next = '<tab>'
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -199,13 +199,13 @@ nmap <silent> <C-F7> <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+    else
+        execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -219,11 +219,11 @@ xmap <Leader>f  <Plug>(coc-format-selected)
 nmap <Leader>f  <Plug>(coc-format-selected)
 
 augroup coc
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    " autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
@@ -250,12 +250,12 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Use CTRL-S for selections ranges.
@@ -277,7 +277,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-  let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#coc#enabled = 1
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -311,88 +311,86 @@ let g:fern#renderer="nerdfont"
 noremap  <F1> :Fern . -drawer -reveal=% -toggle -width=35<CR>
 
 function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-nmap <buffer><nowait> <F5> <Plug>(fern-action-reload)
-nmap <buffer><nowait> <Return> <Plug>(fern-action-open-or-enter)
-nmap <buffer><nowait> o <Plug>(fern-action-open-or-enter)
-nmap <buffer><nowait> <Backspace> <Plug>(fern-action-leave)
-nmap <buffer><nowait> l <Plug>(fern-action-expand)
-nmap <buffer><nowait> <space> <Plug>(fern-action-expand)
-nmap <buffer><nowait> h <Plug>(fern-action-collapse)
-nmap <buffer><nowait> i <Plug>(fern-action-reveal)
-nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
-nmap <buffer> <C-N> <Plug>(fern-action-new-path)
-nmap <buffer> dd <Plug>(fern-action-remove)
-nmap <buffer> m <Plug>(fern-action-move)
-nmap <buffer><nowait> c <Plug>(fern-action-copy)
-nmap <buffer> <F2> <Plug>(fern-action-rename)
-nmap <buffer> rn <Plug>(fern-action-rename)
-nmap <buffer> <Tab> <Plug>(fern-action-mark:toggle)
-nmap <buffer> <C-S> <Plug>(fern-action-open:split)
-nmap <buffer> <C-V> <Plug>(fern-action-open:vsplit)
-nmap <buffer> <nowait> . <Plug>(fern-action-hidden:toggle)
-nmap <buffer><nowait> <Left> <Plug>(fern-action-collapse)
-nmap <buffer><nowait> <Right> <Plug>(fern-action-expand)
-endfunction
+    nmap <buffer><expr>
+                \ <Plug>(fern-my-open-expand-collapse)
+                \ fern#smart#leaf(
+                \   "\<Plug>(fern-action-open:select)",
+                \   "\<Plug>(fern-action-expand)",
+                \   "\<Plug>(fern-action-collapse)",
+                \ )
+    nmap <buffer><nowait> <F5> <Plug>(fern-action-reload)
+    nmap <buffer><nowait> <Return> <Plug>(fern-action-open-or-enter)
+    nmap <buffer><nowait> o <Plug>(fern-my-open-expand-collapse)
+    nmap <buffer><nowait> <Backspace> <Plug>(fern-action-leave)
+    nmap <buffer><nowait> l <Plug>(fern-action-expand)
+    nmap <buffer><nowait> <space> <Plug>(fern-my-open-expand-collapse)
+    nmap <buffer><nowait> h <Plug>(fern-action-collapse)
+    nmap <buffer><nowait> i <Plug>(fern-action-reveal)
+    nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+    nmap <buffer> <C-N> <Plug>(fern-action-new-path)
+    nmap <buffer> dd <Plug>(fern-action-remove)
+    nmap <buffer> m <Plug>(fern-action-move)
+    nmap <buffer><nowait> c <Plug>(fern-action-copy)
+    nmap <buffer> <F2> <Plug>(fern-action-rename)
+    nmap <buffer> rn <Plug>(fern-action-rename)
+    nmap <buffer> <Tab> <Plug>(fern-action-mark:toggle)
+    nmap <buffer> <C-S> <Plug>(fern-action-open:split)
+    nmap <buffer> <C-V> <Plug>(fern-action-open:vsplit)
+    nmap <buffer> <nowait> . <Plug>(fern-action-hidden:toggle)
+    nmap <buffer><nowait> <Left> <Plug>(fern-action-collapse)
+    nmap <buffer><nowait> <Right> <Plug>(fern-action-expand)
 
-function! s:init_fern_mapping_fzf() abort
     nmap <buffer> ff <Plug>(fern-action-fzf-files)
     nmap <buffer> fd <Plug>(fern-action-fzf-dirs)
     nmap <buffer> fa <Plug>(fern-action-fzf-both)
 endfunction
 
 augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit() | call s:init_fern_mapping_fzf()
+    autocmd!
+    autocmd FileType fern call FernInit()
 augroup END
 "}}}
 
 "{{{EasyMotion
 augroup EasyMotionGroup
-  autocmd! User EasyMotionPromptBegin silent! CocDisable
-  autocmd! User EasyMotionPromptEnd silent! CocEnable
+    autocmd! User EasyMotionPromptBegin silent! CocDisable
+    autocmd! User EasyMotionPromptEnd silent! CocEnable
 augroup END
 "}}}
 
 "{{{rainbow
 let g:rainbow_conf = {
-\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-\	'guis': [''],
-\	'cterms': [''],
-\	'operators': '_,_',
-\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-\	'separately': {
-\		'*': {},
-\		'markdown': {
-\			'parentheses_options': 'containedin=markdownCode contained',
-\		},
-\		'lisp': {
-\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-\		},
-\		'haskell': {
-\			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
-\		},
-\		'vim': {
-\			'parentheses_options': 'containedin=vimFuncBody',
-\		},
-\		'perl': {
-\			'syn_name_prefix': 'perlBlockFoldRainbow',
-\		},
-\		'stylus': {
-\			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
-\		},
-\		'css': 0,
-\	}
-\}
+            \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+            \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+            \	'guis': [''],
+            \	'cterms': [''],
+            \	'operators': '_,_',
+            \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+            \	'separately': {
+            \		'*': {},
+            \		'markdown': {
+            \			'parentheses_options': 'containedin=markdownCode contained',
+            \		},
+            \		'lisp': {
+            \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+            \		},
+            \		'haskell': {
+            \			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
+            \		},
+            \		'vim': {
+            \			'parentheses_options': 'containedin=vimFuncBody',
+            \		},
+            \		'perl': {
+            \			'syn_name_prefix': 'perlBlockFoldRainbow',
+            \		},
+            \		'stylus': {
+            \			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
+            \		},
+            \		'css': 0,
+            \	}
+            \}
 augroup Rainbow
-  autocmd! FileType typescript,javascript,typescriptreact,javascriptreact,css RainbowToggleOn
+    autocmd! FileType typescript,javascript,typescriptreact,javascriptreact,css RainbowToggleOn
 augroup END
 "}}}
 

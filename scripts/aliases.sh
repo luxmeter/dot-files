@@ -22,7 +22,7 @@ else
     alias pbcopy='xsel -i -p && xsel -o -p | xsel -i -b'
 fi
 alias build_svc="mvn  install -Dmaven.test.skip=true -DskipTests -Dfindbugs.skip=true -DskipTessa=true -T4 -pl '!container-tests'"
-if [[ "$OSTYPE" == linux*  ]]; then
+if [[ "$OSTYPE" == linux* ]]; then
     alias cat=batcat
 else
     alias cat=bat

@@ -17,8 +17,8 @@ xnoremap p pgvy
 vnoremap P Pgvy
 xnoremap P Pgvy
 
-noremap <c-w> :Bwipeout!<CR>
-noremap <c-s> :w<CR>
+noremap ,w :Bwipeout!<CR>
+noremap ,s :w<CR>
 
 
 nnoremap <F8> :setlocal spell! spell?<CR>

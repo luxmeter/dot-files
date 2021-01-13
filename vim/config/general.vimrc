@@ -41,7 +41,7 @@ set statusline=%#warningmsg#
 set switchbuf=usetab
 set tabstop=4
 set termguicolors                 " enable true colors support
-set timeoutlen=500                " e.g. time to enter jj(c-]) in insert mode
+set timeoutlen=300                " e.g. time to enter jj(c-]) in insert mode
 set ttyfast
 set updatetime=300                " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 syntax on

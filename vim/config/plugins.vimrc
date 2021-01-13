@@ -402,3 +402,16 @@ xmap aa <Plug>SidewaysArgumentTextobjA
 omap ia <Plug>SidewaysArgumentTextobjI
 xmap ia <Plug>SidewaysArgumentTextobjI
 " }}}
+
+" {{{ VimWiki
+let g:vimwiki_list = [{
+            \'path': '~/notes/',
+            \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_table_mappings=0 " tab is reserved for coc completion
+" unfortunately vimwiki remaps cr...
+" }}}
+
+" {{{ auto-pairs
+let g:AutoPairsMapSpace=0
+let g:AutoPairsMapCR=0
+" }}}

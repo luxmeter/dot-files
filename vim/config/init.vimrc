@@ -43,6 +43,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-scriptease'
 " Plug 'terryma/vim-multiple-cursors' " need to remap default keys
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

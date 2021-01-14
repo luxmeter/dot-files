@@ -1,39 +1,41 @@
 if [[ "$OSTYPE" != darwin* ]]; then
   open() {
-    local target="$@"
-    xdg-open $target > /dev/null 2>&1
+    local targets=( "$@" ) # "@" expands each elements as an argument with prevented globbing
+    for target in "${targets[@]}" ; do
+      echo "${target}"
+      xdg-open "$target" > /dev/null 2>&1 &
+    done
   }
 fi
 
 usage() {
-  find $1 -maxdepth 1 -type d -exec du -sh {} \; | sort -h
+  du -sh "$1"/* | sort -h
 }
 
 gadd() {
-  pattern="$1"
-  git add $(git status -s | grep -v '^D' | awk '{print $2}' | grep "$pattern")
-}
-
-fdp() {
-  fd $@ | fzf -m --preview 'cat {}'
-}
-
-agp() {
-  ag -l $@ | fzf -m --preview 'cat {}'
+  local pattern="$1"
+  git add "$(git status -s | grep -v '^D' | awk '{print $2}' | grep "$pattern")"
 }
 
 vimrc() {
-  local names="$@"
-  names="$(find $DOT_FILES/vim/config -type f -name "*vimrc" | fzf)"
-  echo ${names} | xargs -o vim
+  # for bash
+  # readarray -d '' names < <(find $DOT_FILES/vim/config -print0 -type f -name "*vimrc" | fzf)
+  # for zsh http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion-Flags
+  local names=( ${(f)"$(find "$DOT_FILES/vim/config" -type f -name '*vimrc' | fzf)"} )
+  if [[ ${#names[@]} -gt 0 ]]; then
+    vim "${names[@]}"
+  fi
 }
 
 zshrc() {
-  names="$(find $DOT_FILES/scripts -type f)"
-  names="$names\n$DOT_FILES/zshenv"
-  names="$names\n$DOT_FILES/zshrc"
-  names="$names\n$DOT_FILES/zprofile"
-  echo $(echo $names | fzf) | xargs -o vim
+  local files="$(find "$DOT_FILES/scripts" -type f)"
+  files="$files\n$DOT_FILES/zshenv"
+  files="$files\n$DOT_FILES/zshrc"
+  files="$files\n$DOT_FILES/zprofile"
+  names=( ${(f)"$(echo "$files" | fzf)"} )
+  if [[ ${#names[@]} -gt 0 ]]; then
+    vim "${names[@]}"
+  fi
   source ~/.zshrc
 }
 
@@ -47,16 +49,16 @@ doc_get_id() {
 }
 
 doc_purge_containers() {
-  docker stop $(docker ps -a -q) >/dev/null 2>&1
-  docker rm $(docker ps -a -q) >/dev/null 2>&1
+  docker stop "$(docker ps -a -q)" >/dev/null 2>&1
+  docker rm "$(docker ps -a -q)" >/dev/null 2>&1
 }
 
 ## returns spring version to the given spring boot version
 get_spring_version() {
   local spring_boot_version="$1"
-  echo $(http http://central.maven.org/maven2/org/springframework/boot/spring-boot-dependencies/${spring_boot_version}.RELEASE/spring-boot-dependencies-${spring_boot_version}.RELEASE.pom \
+  http http://central.maven.org/maven2/org/springframework/boot/spring-boot-dependencies/"${spring_boot_version}".RELEASE/spring-boot-dependencies-"${spring_boot_version}".RELEASE.pom \
     | sed 's/xmlns=".*"//g' \
-    | xmllint --xpath '/project/properties/spring.version/text()' -)
+    | xmllint --xpath '/project/properties/spring.version/text()' -
 }
 
 enable_charles_proxy() {
@@ -78,8 +80,8 @@ passwd_ldap() {
     passwd_login
     item=$(op get item "LDAP Login" 2>&1)
   fi
-  local password=$(echo ${item} | jq -r '.details.fields[] | select(.designation=="password").value')
-  echo ${password} | pbcopy
+  local password=$(echo "${item}" | jq -r '.details.fields[] | select(.designation=="password").value')
+  echo "${password}" | pbcopy
 }
 
 aws_cred_to_env() {
@@ -110,9 +112,9 @@ _git_checkout() {
         track_opt=''
       fi
       if [ "$command" = "checkoutr" ]; then
-        __git_complete_refs $track_opt
+        __git_complete_refs "$track_opt"
       else
-        __gitcomp_nl "$(__git_heads '' $track)"
+        __gitcomp_nl "$(__git_heads '' "$track")"
       fi
       ;;
   esac
@@ -127,40 +129,24 @@ gbdf() {
 }
 
 rcp() {
-  ARGS=("$@")
-  SRC=("${ARGS[@]:0:-1}")
-  END=("${ARGS[@]: -1:1}")
-  rsync -rptovl --progress --stats --human-readable --exclude .git --exclude node_modules "${ARGS[@]}"
+  local args=("$@")
+  rsync -rptovl --progress --stats --human-readable --exclude .git --exclude node_modules "${args[@]}"
 }
 
 to_datetime() {
   local timestamp=$1
   cmd=(
-    "from datetime import datetime as dt;"
-    "import pytz;"
-    "t=dt.fromtimestamp(${timestamp}/1000, pytz.timezone('Europe/Berlin')).replace(microsecond=0).isoformat(' ');"
-    "print(t);"
+    "from datetime import datetime as dt"
+    "import pytz"
+    "ts=${timestamp}"
+    "ts=ts / 1000 if len(str(ts)) > 10 else ts"
+    "t=dt.fromtimestamp(ts, pytz.timezone('Europe/Berlin')).replace(microsecond=0).isoformat(' ')"
+    "print(t)"
   )
-  python3 -c "${cmd}"
+  python3 -c "$(printf '%s\n' "${cmd[@]}")"
 }
 
 doc_remove_all_images() {
-  docker rm $(docker ps -a -q)
-  docker rmi --force $(docker images -q)
-}
-
-ag_all() {
-  local args=("$@")
-  local first_pattern="$1"
-  local patterns=("${args[@]:1:-1}")
-  local len_args=${#args[@]}
-  local last_index=$(($len_args - 1))
-  local file_pattern=("${args[@]:$last_index}")
-  local cmd="ag -l $first_pattern ${file_pattern[@]}"
-  local piped_patterns=$first_pattern
-  for pattern in "${patterns[@]}"; do
-    cmd=$cmd" | xargs ag -l \"$pattern\""
-    piped_patterns="$piped_patterns|$pattern"
-  done
-  eval "$cmd | xargs ag \"($piped_patterns)\""
+  docker rm "$(docker ps -a -q)"
+  docker rmi --force "$(docker images -q)"
 }

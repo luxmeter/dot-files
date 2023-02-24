@@ -1,0 +1,14 @@
+{
+  "Create python script": {
+    "prefix": ["python"],
+    "body": "#!/usr/bin/env python3\nimport os\nimport sys\nimport json\nimport shlex\nimport logging\nimport functools\nimport subprocess\n\nfrom pathlib import Path\n\nLOG = logging.getLogger(os.path.basename(__file__.replace('.py', '')))\n\ndef main():\n    def indented_writer(msg, level=4, writer=sys.stdout):\n        writer.write(f'{\" \"*level}{msg}')\n    # for path in Path('~/').expanduser().glob('*event.json'):\n    #     LOG.info(path)\n    run(sys.argv[1], write=indented_writer,\n        write_err=functools.partial(indented_writer, writer=sys.stderr))\n\n\n### start: helper functions ###\n# print only to stderr\ndef run(pipedcmd, write=sys.stdout.write, write_err=sys.stderr.write):\n    LOG.debug(f'{pipedcmd}')\n    cmds = (cmd.strip() for cmd in pipedcmd.split('|'))\n    p = None\n    for i,cmd in enumerate(cmds):\n        p = subprocess.Popen(\n            shlex.split(cmd),\n            stdin=p.stdout if p else None,\n            universal_newlines=True,\n            env=dict(os.environ),\n            close_fds=True,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n            preexec_fn=os.setpgrp\n        )\n        for line in iter(p.stderr.readline, ''):\n            if (write_err):\n                write_err(line)\n    for line in iter(p.stdout.readline, ''):\n        if write:\n            write(line)\n    p.wait()\n    return p.returncode\n### end: helper functions ###\n\n\nif __name__ == '__main__':\n    logging.basicConfig(\n        level=os.environ.get('LOG_LEVEL', 'INFO'),\n        datefmt='%H:%M:%S',\n        format='%(levelname)-5s | %(asctime)s > %(message)s',\n    )\n    logging.addLevelName(logging.WARNING, 'WARN')\n    LOG.info('fu')\n    main()\n"
+  },
+  "Log variable": {
+    "prefix": ["logv"],
+    "body": "LOG.debug(f'${1:array}={${1:array}}')$0"
+  },
+  "Print variable": {
+    "prefix": ["printv"],
+    "body": "print(f'${1:array}={${1:array}}')$0"
+  }
+}

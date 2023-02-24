@@ -1,0 +1,8 @@
+if [ $commands[helm] ]; then
+    local context="${KUBECTL_CONTEXT:-}"
+    if [[ "$context" != "" ]]; then
+      command $0 --kube-context $context "$@"
+    else
+      command $0 "$@"
+    fi
+fi

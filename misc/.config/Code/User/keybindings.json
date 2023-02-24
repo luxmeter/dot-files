@@ -1,0 +1,273 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "alt+h",
+    "mac": "alt+h",
+    "command": "workbench.action.navigateLeft",
+    "when": "editorTextFocus && vim.mode  && vim.mode != 'Insert'"
+  },
+  {
+    "key": "alt+l",
+    "mac": "alt+l",
+    "command": "workbench.action.navigateRight",
+    "when": "editorTextFocus && vim.mode  && vim.mode != 'Insert'"
+  },
+  {
+    "key": "alt+k",
+    "mac": "alt+k",
+    "command": "workbench.action.navigateUp",
+    "when": "editorTextFocus && vim.mode  && vim.mode != 'Insert'"
+  },
+  {
+    "key": "alt+j",
+    "mac": "alt+j",
+    "command": "workbench.action.navigateDown",
+    "when": "editorTextFocus && vim.mode  && vim.mode != 'Insert'"
+  },
+  {
+    "key": "shift+l",
+    "mac": "shift+l",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus && vim.mode  && vim.mode != 'Insert'"
+  },
+  {
+    "key": "shift+h",
+    "mac": "shift+h",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus && vim.mode  && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+q",
+    "mac": "ctrl+q",
+    "command": "editor.action.showHover",
+    "when": "vim.active && vim.mode  && vim.mode != 'Insert'"
+  },
+  {
+    "key": "alt+n",
+    "mac": "alt+n",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "cmd+w",
+    "mac": "cmd+w",
+    "command": "workbench.action.closeActiveEditor",
+    "jetbrains": "Close active editor tab"
+  },
+  {
+    "key": "f4",
+    "mac": "f4",
+    "command": "editor.action.goToDeclaration",
+    "when": "editorHasDefinitionProvider && editorTextFocus",
+    "intellij": "Edit source"
+  },
+  {
+    "key": "f9",
+    "mac": "f9",
+    "command": "workbench.action.debug.continue",
+    "when": "inDebugMode",
+    "jetbrains": "Resume Program"
+  },
+  {
+    "key": "f7",
+    "mac": "f7",
+    "command": "workbench.action.debug.stepInto",
+    "when": "inDebugMode",
+    "jetbrains": "Step Into"
+  },
+  {
+    "key": "shift+f8",
+    "mac": "shift+f8",
+    "command": "workbench.action.debug.stepOut",
+    "when": "inDebugMode",
+    "jetbrains": "Step Out"
+  },
+  {
+    "key": "alt+f7",
+    "mac": "alt+f7",
+    "command": "references-view.find",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor",
+    "jetbrains": "Find Usages"
+  },
+  {
+    "key": "alt+f8",
+    "mac": "alt+f8",
+    "command": "workbench.debug.action.toggleRepl",
+    "jetbrains": "Evaluate Expression..."
+  },
+  {
+    "key": "alt+f8",
+    "mac": "alt+f8",
+    "command": "editor.debug.action.selectionToRepl",
+    "when": "editorTextFocus && editorHasSelection",
+    "jetbrains": "Evaluate expression (selection)"
+  },
+  {
+    "key": "alt+f9",
+    "mac": "alt+f9",
+    "command": "editor.debug.action.runToCursor",
+    "when": "inDebugMode",
+    "jetbrains": "Run to Cursor"
+  },
+  {
+    "key": "f9",
+    "mac": "f9",
+    "command": "workbench.action.debug.continue",
+    "when": "inDebugMode",
+    "jetbrains": "Resume program"
+  },
+  {
+    "key": "f8",
+    "mac": "f8",
+    "command": "workbench.action.debug.stepOver",
+    "when": "inDebugMode",
+    "jetbrains": "Step Over"
+  },
+  {
+    "key": "cmd+shift+enter",
+    "mac": "cmd+shift+enter",
+    "command": "acceptSelectedSuggestion",
+    "when": "editorFocus && suggestWidgetVisible",
+    "jetbrains": "Complete Current Statement"
+  },
+  {
+    "key": "shift+cmd+enter",
+    "mac": "shift+cmd+enter",
+    "command": "editor.action.insertLineAfter",
+    "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible",
+    "jetbrains": "Start new line"
+  },
+  {
+    "key": "cmd+alt+m",
+    "mac": "cmd+alt+m",
+    "command": "editor.action.codeAction",
+    "when": "editorTextFocus",
+    "jetbrains": "Extract Method",
+    "args": {
+      "kind": "refactor.extract.function",
+      "apply": "ifSingle"
+    }
+  },
+  {
+    "key": "cmd+alt+v",
+    "mac": "cmd+alt+v",
+    "command": "editor.action.codeAction",
+    "when": "editorTextFocus",
+    "jetbrains": "Extract Variable",
+    "args": {
+      "kind": "refactor.extract.constant",
+      "apply": "ifSingle"
+    }
+  },
+  {
+    "key": "cmd+e",
+    "mac": "cmd+e",
+    "command": "-actions.find"
+  },
+  {
+    "key": "cmd+e",
+    "mac": "cmd+e",
+    "command": "-workbench.action.openRecent"
+  },
+  {
+    "key": "cmd+e",
+    "mac": "cmd+e",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inQuickOpen",
+    "intellij": "Recent files popup"
+  },
+  {
+    "key": "cmd+e",
+    "mac": "cmd+e",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "cmd+shift+backspace",
+    "mac": "cmd+shift+backspace",
+    "command": "workbench.action.navigateToLastEditLocation",
+    "intellij": "Navigate to last edit location"
+  },
+  {
+    "key": "cmd+1",
+    "mac": "cmd+1",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "jetbrains": "Close corresponding tool window (Explorer)"
+  },
+  {
+    "key": "cmd+b",
+    "mac": "cmd+b",
+    "command": "editor.action.goToDeclaration",
+    "when": "editorHasDefinitionProvider && editorTextFocus",
+    "intellij": "Go to declaration"
+  },
+  {
+    "key": "cmd+n",
+    "mac": "cmd+n",
+    "command": "workbench.action.showAllSymbols",
+    "intellij": "Go to class",
+    "todo": "not only class"
+  },
+  {
+    "key": "cmd+shift+n",
+    "mac": "cmd+shift+n",
+    "command": "workbench.action.quickOpen",
+    "intellij": "Go to file"
+  },
+  {
+    "key": "cmd+alt+shift+n",
+    "mac": "cmd+alt+shift+n",
+    "command": "workbench.action.gotoSymbol",
+    "intellij": "Go to symbol"
+  },
+  {
+    "key": "cmd+shift+a",
+    "mac": "cmd+shift+a",
+    "command": "workbench.action.showCommands",
+    "intellij": "Find Action"
+  },
+  {
+    "key": "cmd+alt+b",
+    "mac": "cmd+alt+b",
+    "command": "editor.action.goToImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor",
+    "intellij": "Go to implementation(s)"
+  },
+  {
+    "key": "cmd+shift+i",
+    "mac": "cmd+shift+i",
+    "command": "editor.action.previewDeclaration",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor",
+    "intellij": "Open quick definition lookup"
+  },
+  {
+    "key": "cmd+p",
+    "mac": "cmd+p",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus",
+    "intellij": "Parameter info (within method call arguments)"
+  },
+  {
+    "key": "cmd+r",
+    "mac": "cmd+r",
+    "command": "editor.action.startFindReplaceAction",
+    "intellij": "Replace"
+  },
+  {
+    "key": "cmd+shift+r",
+    "mac": "cmd+shift+r",
+    "command": "workbench.action.replaceInFiles",
+    "intellij": "Replace in path"
+  },
+  {
+    "key": "cmd+f",
+    "mac": "cmd+f",
+    "command": "actions.find",
+    "intellij": "Find"
+  },
+  {
+    "key": "ctrl+shift+f",
+    "mac": "cmd+shift+f",
+    "command": "workbench.view.search",
+    "when": "!searchViewletVisible",
+    "intellij": "Find in path"
+  }
+]

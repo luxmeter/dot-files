@@ -1,0 +1,8 @@
+if [ $commands[k9s] ]; then
+    local context="${KUBECTL_CONTEXT:-}"
+    if [[ "$context" != "" ]]; then
+      command $0 --context $context "$@"
+    else
+      command $0 "$@"
+    fi
+fi

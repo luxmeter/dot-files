@@ -1,0 +1,10 @@
+{
+  "Iterate throug dirs": {
+    "prefix": ["iterd"],
+    "body": "while read -r -d '' ${1:array}; do\n$0\ndone < <(find . -print0 -type d -maxdepth 1)\n"
+  },
+  "Iterate throug files": {
+    "prefix": ["iterf"],
+    "body": "while read -r -d '' ${1:array}; do\n$0\ndone < <(find . -print0 -type f -maxdepth 1)\n"
+  }
+}

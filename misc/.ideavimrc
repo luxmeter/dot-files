@@ -1,0 +1,44 @@
+set clipboard=unnamed,unnamedplus " copy into unnamed register to paste outside from vim (linux, windows = unnamed)
+set hlsearch                      " highlight search term
+set ignorecase
+set incsearch
+" set relativenumber                " let the  menu flicker
+set showmode
+set smartcase
+set surround                      " vim-surround
+set visualbell
+let mapleader = ","
+
+nnoremap [<space> O<c-[>j
+nnoremap ]<space> o<c-[>k
+nnoremap [e ddkP
+nnoremap ]e ddp
+" delete line without copying the content to the yank register
+nnoremap <S-L> :action NextTab<CR>
+nnoremap <S-H> :action PreviousTab<CR>
+" window navigation
+noremap <A-h> <C-w>h
+noremap <A-j> <C-w>j
+noremap <A-k> <C-w>k
+noremap <A-l> <C-w>l
+noremap <C-Q> :action QuickJavaDoc<CR>
+noremap <C-H> :action TypeHierarchy<CR>
+nnoremap <C-P> "0p
+nnoremap <C-S-P> "0P
+nnoremap <Leader>d "0d
+nnoremap <Leader><S-d> "0D
+vnoremap <Leader> "0d
+vnoremap <Leader><S-d> "0D
+nnoremap dm va}Vd
+
+vnoremap p pgvy
+xnoremap p pgvy
+
+inoremap jj <c-[>
+
+" keeps selection when moving code blocks
+vnoremap < <gv
+vnoremap > >gv
+
+vnoremap // y/\M<C-R>0<CR>
+set ideajoin

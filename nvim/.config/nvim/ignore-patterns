@@ -1,0 +1,16 @@
+.git
+/vendor
+/node_modules
+/.venv
+/build
+/_site
+/output
+/dest
+/dist
+/target
+__pycache__
+
+.DS_Store?
+.idea
+*.iml
+*.lock

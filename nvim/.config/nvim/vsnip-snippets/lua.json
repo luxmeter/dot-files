@@ -1,0 +1,6 @@
+{
+  "Log variable": {
+    "prefix": ["logv"],
+    "body": "print('${1:array}='..vim.inspect(${1:array}))$0"
+  }
+}

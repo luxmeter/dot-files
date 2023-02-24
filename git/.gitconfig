@@ -1,0 +1,50 @@
+[core]
+	excludesfile = /Users/caylak/.gitignore_global
+	editor = nvim
+	fileMode = false
+[push]
+	default = simple
+[color]
+	ui = true
+[alias]
+	l = log --pretty=format:'%C(yellow)%h%C(red)%d%Creset %ad %C(green)%an%Creset: %s' --date=local
+[credential]
+	helper = cache --timeout=3600
+[diff]
+	tool = nvimdiff
+[merge]
+	tool = nvimdiff
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = Mustafa Caylak
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+[delta]
+    features = unobtrusive-line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "unobtrusive-line-numbers"]
+    line-numbers = true
+    line-numbers-minus-style = "#828282"
+    line-numbers-zero-style = "#828282"
+    line-numbers-plus-style = "#828282"
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+    line-numbers-left-style = blue
+    line-numbers-right-style = blue
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = yellow box

@@ -36,6 +36,7 @@ alias portainer='docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" -p
 alias passwd_login='eval $(op signin my)'
 alias grep='rg --smart-case --hidden --no-ignore-global'
 alias rg="rg --smart-case --hidden --no-ignore-global"
+alias fd="fd --hidden --no-ignore-parent"
 
 alias build_svc="mvn  install -Dmaven.test.skip=true -DskipTests -Dfindbugs.skip=true -DskipTessa=true -T4 -pl '!container-tests'"
 alias genpw='< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16'

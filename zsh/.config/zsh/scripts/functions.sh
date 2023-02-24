@@ -186,7 +186,12 @@ function zsh_add_completion() {
 
 
 function kontext() {
-  for context in $(yq '.contexts[]|.name' ${KUBECONFIG:-~/.kube/config} | fzf); do
+  IFS=':' read -A CONFIGS <<< ${KUBECONFIG:-~/.kube/config}
+  local contexts
+  for config in ${CONFIGS[@]}; do
+    contexts+=$(yq '.contexts[]|.name' < $config)
+  done
+  for context in $(fzf <<< $contexts); do
     export KUBECTL_CONTEXT=$context
   done
 }

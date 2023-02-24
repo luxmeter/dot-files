@@ -132,3 +132,4 @@ source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/quantum"

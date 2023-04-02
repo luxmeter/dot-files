@@ -15,10 +15,11 @@ end
 
 lsp.preset("recommended")
 lsp.ensure_installed({
-	"sumneko_lua",
+	"lua_ls",
 	"pyright",
 	"tsserver",
 	"cssls",
+	"rust_analyzer",
 })
 lsp.nvim_workspace({
 	library = vim.api.nvim_get_runtime_file("", true),
@@ -34,10 +35,10 @@ lsp.on_attach(function(client, buffer)
 end)
 
 lsp.setup_nvim_cmp({
-  preselect = 'none',
-  completion = {
-    completeopt = 'menu,menuone,noinsert,noselect'
-  },
+	preselect = "none",
+	completion = {
+		completeopt = "menu,menuone,noinsert,noselect",
+	},
 	mapping = lsp.defaults.cmp_mappings({
 		-- ["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<Tab>"] = cmp.mapping(function(fallback)

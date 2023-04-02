@@ -99,7 +99,12 @@ packer.startup(function(use)
 		requires = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
+			{
+				"williamboman/mason.nvim",
+				build = function()
+					pcall(vim.cmd, "MasonUpdate")
+				end,
+			},
 			{ "williamboman/mason-lspconfig.nvim" },
 
 			-- Autocompletion
@@ -118,6 +123,14 @@ packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim", requires = {
 		"nvim-lua/plenary.nvim",
 	} })
+
+	use({
+		"zbirenbaum/copilot.lua",
+	})
+
+	use({
+		"zbirenbaum/copilot-cmp",
+	})
 
 	-- syntax highlighting and text motion
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

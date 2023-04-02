@@ -2,6 +2,7 @@ local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
 	return
 end
+local nvim_tree_api = require("nvim-tree.api")
 
 local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
 if not config_status_ok then
@@ -85,7 +86,7 @@ nvim_tree.setup({
 		custom = getCustomFilter(),
 	},
 	-- project.nvim integration
-	sync_root_with_cwd = false,
+	sync_root_with_cwd = true,
 	respect_buf_cwd = false,
 	update_focused_file = {
 		enable = true,
@@ -102,7 +103,7 @@ nvim_tree.setup({
 		},
 		change_dir = {
 			enable = true,
-			global = true,
+			global = false,
 			restrict_above_cwd = false,
 		},
 	},
@@ -110,7 +111,7 @@ nvim_tree.setup({
 
 vim.api.nvim_set_keymap("n", "<F1>", "", {
 	callback = function()
-		nvim_tree.toggle(true)
+		nvim_tree_api.tree.toggle(true)
 	end,
 	noremap = true,
 })

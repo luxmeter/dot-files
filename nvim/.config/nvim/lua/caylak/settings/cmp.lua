@@ -45,6 +45,7 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				copilot = "[Copilot]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -57,5 +58,17 @@ cmp.setup({
 	experimental = {
 		ghost_text = false,
 		native_menu = false,
+	},
+	sources = {
+		{ name = "copilot" },
+		{ name = "nvim_lsp" },
+	},
+	mapping = {
+		["<CR>"] = cmp.mapping.confirm({
+			-- documentation says this is important.
+			-- I don't know why.
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = false,
+		}),
 	},
 })

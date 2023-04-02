@@ -12,9 +12,10 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup({
 	debug = true,
 	sources = {
-		formatting.yamlfmt.with({}),
+		-- formatting.yamlfmt.with({}),
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		formatting.isort,
+		formatting.rustfmt,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua.with({ extra_args = { "--indent-width=2" } }),
 		formatting.shfmt.with({ extra_args = { "--indent=2" } }),

@@ -89,7 +89,7 @@
   },
 "python.jediEnabled": false,
   "python.pythonPath": "/Users/caylak/.virtualenvs/nvimpy3/bin/python",
-  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.colorTheme": "Atom One Dark",
   "workbench.iconTheme": "Monokai Pro Icons",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "python.formatting.provider": "black",

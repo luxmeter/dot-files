@@ -29,6 +29,13 @@ setopt HIST_FIND_NO_DUPS      # Do not display a previously found event.
 setopt HIST_IGNORE_SPACE      # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY            # Do not execute immediately upon history expansion.
+# fucking macos overrides zshenv
+export HISTFILE="$HOME/.config/zsh/.zsh_history"
+export HISTSIZE=500000
+export SAVEHIST=500000
+setopt appendhistory
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 # misc
 setopt ZLE                    # use magic (this is default, but it can't hurt!)
@@ -57,9 +64,11 @@ path=(
   /opt/mongodb/bin
   /opt/homebrew/bin
   /opt/homebrew/opt/coreutils/libexec/gnubin
+  /opt/homebrew/opt/llvm/bin
   /usr/local/opt/ruby/bin
   /usr/local/lib/ruby/gems/3.0.0/bin
   /usr/local/{bin,sbin}
+  /opt/mvnd-0.9.0/bin
   $path
 )
 . "$HOME/.cargo/env"
@@ -132,4 +141,4 @@ source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export PATH="$HOME/.poetry/bin:$PATH"
-export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/quantum"
+export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/quantum:$HOME/.kube/loadtest-jenkins"

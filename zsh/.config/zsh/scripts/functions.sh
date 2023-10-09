@@ -189,7 +189,7 @@ function kontext() {
   IFS=':' read -A CONFIGS <<< ${KUBECONFIG:-~/.kube/config}
   local contexts
   for config in ${CONFIGS[@]}; do
-    contexts+=$(yq '.contexts[]|.name' < $config)
+    contexts+="$(yq '.contexts[]|.name' < $config)"$'\n'
   done
   for context in $(fzf <<< $contexts); do
     export KUBECTL_CONTEXT=$context

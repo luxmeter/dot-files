@@ -22,6 +22,7 @@
 	trustExitCode = true
 [user]
 	name = Mustafa Caylak
+	email = caylak@adobe.com
 [pager]
 	diff = delta
 	log = delta

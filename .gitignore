@@ -27,6 +27,8 @@ misc/.config/Code/machineid
 misc/.config/Code/code.lock
 misc/.config/Code/WebStorage
 misc/.config/Code/Workspaces/
+misc/.config/Code/CachedProfilesData/
+misc/.config/Code/DawnCache/
 
 # tmux
 tmux/.config/tmux/plugins

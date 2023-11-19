@@ -125,7 +125,7 @@ gbf() {
 }
 
 gbdf() {
-  git branch --format='%(refname:short)' | grep -v master | fzf | xargs -I{} git branch -D {}
+  git branch --format='%(refname:short)' | grep -v '(master|main)' | fzf | xargs -I{} git branch -D {}
 }
 
 rcp() {

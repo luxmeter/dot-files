@@ -89,3 +89,4 @@ users*.properties
 m2
 **/charts
 *history*
+/spell

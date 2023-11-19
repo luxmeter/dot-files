@@ -65,6 +65,7 @@ path=(
   /opt/homebrew/bin
   /opt/homebrew/opt/coreutils/libexec/gnubin
   /opt/homebrew/opt/llvm/bin
+  /opt/homebrew/sbin
   /usr/local/opt/ruby/bin
   /usr/local/lib/ruby/gems/3.0.0/bin
   /usr/local/{bin,sbin}
@@ -141,4 +142,5 @@ source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export PATH="$HOME/.poetry/bin:$PATH"
-export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/quantum:$HOME/.kube/loadtest-jenkins"
+# export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/quantum:$HOME/.kube/loadtest-jenkins"
+export KUBECONFIG="$HOME/.kube/quantum:$HOME/.kube/loadtest-jenkins"

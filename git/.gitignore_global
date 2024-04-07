@@ -68,12 +68,6 @@ out
 git.properties
 *.jks
 master
-example_*.py
-example_*.js
-*secrets*
-*secret*
-*token*
-*tokens*
 rhino*.properties
 *csv.gpg
 node_modules

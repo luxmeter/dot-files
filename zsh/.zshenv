@@ -65,3 +65,4 @@ export SLH_SKIP_UPDATE=true
 
 # gpg agent for interactive shell
 export GPG_TTY=$(tty)
+. "$HOME/.cargo/env"

@@ -54,6 +54,9 @@ bindkey '\e\e[D' backward-word
 
 # needs to be defined here otherwise something after .zshenv alters it
 path=(
+  $HOME/.local/nvim/bin
+  $HOME/.local/share/nvim/mason/bin/
+  $HOME/.cargo/bin
   $HOME/.poetry/bin
   $PYENV_ROOT/shims
   $PYENV_ROOT/bin
@@ -72,7 +75,6 @@ path=(
   /opt/mvnd-0.9.0/bin
   $path
 )
-. "$HOME/.cargo/env"
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 

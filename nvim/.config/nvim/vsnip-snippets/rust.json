@@ -1,0 +1,14 @@
+{
+  "Log variable": {
+    "prefix": [
+      "logv"
+    ],
+    "body": "dbg!(\"${1:array}={}\", ${1:array})$0"
+  },
+  "Test module": {
+    "prefix": [
+      "testm"
+    ],
+    "body": "#[cfg(test)]\nmod tests {\n    use super::*;\n    $0\n}"
+  }
+}

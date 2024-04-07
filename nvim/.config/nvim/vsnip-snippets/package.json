@@ -1,24 +1,21 @@
 {
-  "name": "my snippets",
   "contributes": {
     "snippets": [
       {
-        "language": [
-          "python"
-        ],
-        "path": "./python.json"
+        "path": "./lua.json",
+        "language": "lua"
       },
       {
-        "language": [
-          "sh"
-        ],
-        "path": "./sh.json"
+        "path": "./python.json",
+        "language": "python"
       },
       {
-        "language": [
-          "lua"
-        ],
-        "path": "./lua.json"
+        "path": "./rust.json",
+        "language": "rust"
+      },
+      {
+        "path": "./sh.json",
+        "language": "sh"
       }
     ]
   }

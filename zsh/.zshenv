@@ -18,7 +18,10 @@ export LESS_TERMCAP_so=$'\E[30;43m'
 export LESS_TERMCAP_se=$'\E[39;49m'
 
 # affects deletion of words (alt+backspace or ctrl-w)
-export WORDCHARS='*?_[]~=&;!#$%^(){}'
+# The default Zsh value of WORDCHARS is, as of version 5.7.1:
+# export WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>'
+# want to break at / and =
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 # home-brew
 export HOMEBREW_PREFIX="/opt/homebrew";
@@ -52,11 +55,11 @@ export VIRTUALENV_PYTHON="$HOME/.pyenv/shims/python3"
 export POETRY_VIRTUALENVS_PATH="$HOME/.virtualenvs"
 
 # core utils
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/man:${MANPATH}"
 
 # fzf
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS -m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all"
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!.git' -g '!*.min.css'"
+export FZF_DEFAULT_COMMAND="fd --hidden"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 # misc

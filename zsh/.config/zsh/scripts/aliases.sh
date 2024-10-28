@@ -29,9 +29,9 @@ alias ls='ls -h --color=auto --sort=time --sort=size -r'
 alias ll="ls -lh --color=auto --sort=time --sort=size -r"
 alias less="less -R"
 alias man="man -P less"
-alias vi=" ~/.local/nvim/bin/nvim"
-alias vim=" ~/.local/nvim/bin/nvim"
-alias vimdiff=" ~/.local/nvim/bin/nvim -d"
+alias vi="nvim"
+alias vim="nvim"
+alias vimdiff="nvim -d"
 alias portainer='docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" -p 9000:9000 portainer/portainer --no-auth -H unix:///var/run/docker.sock && open http://localhost:9000'
 alias passwd_login='eval $(op signin my)'
 alias grep='rg --smart-case --hidden --no-ignore-global --ignore-file ~/dot-files/nvim/.config/nvim/ignore-patterns'

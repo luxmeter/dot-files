@@ -52,6 +52,9 @@ bindkey -e
 bindkey '\e\e[C' forward-word
 bindkey '\e\e[D' backward-word
 
+# until we restarted
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+
 # needs to be defined here otherwise something after .zshenv alters it
 path=(
   $HOME/.local/nvim/bin

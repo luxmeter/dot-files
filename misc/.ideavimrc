@@ -1,38 +1,113 @@
+let mapleader = " "
 set clipboard=unnamed,unnamedplus " copy into unnamed register to paste outside from vim (linux, windows = unnamed)
 set hlsearch                      " highlight search term
 set ignorecase
 set incsearch
-" set relativenumber                " let the  menu flicker
+set relativenumber                " let the  menu flicker
 set showmode
 set smartcase
-set surround                      " vim-surround
 set visualbell
-let mapleader = ","
+
+" ideavim settings
+set ideajoin
+set ideamarks
+set idearefactormode=normal
+set ideastatusicon=gray
+
+
+" plugins
+" https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
+set surround
+set argtextobj
+" external plugins (need to be installed)
+set easymotion
+map \ <Plug>(easymotion-prefix)
+
+
+" highlight yank (bundle plugin)
+set highlightedyank
+let g:highlightedyank_highlight_duration = "800"
 
 nnoremap [<space> O<c-[>j
 nnoremap ]<space> o<c-[>k
-nnoremap [e ddkP
-nnoremap ]e ddp
-" delete line without copying the content to the yank register
-nnoremap <S-L> :action NextTab<CR>
-nnoremap <S-H> :action PreviousTab<CR>
-" window navigation
-noremap <A-h> <C-w>h
-noremap <A-j> <C-w>j
-noremap <A-k> <C-w>k
-noremap <A-l> <C-w>l
-noremap <C-Q> :action QuickJavaDoc<CR>
-noremap <C-H> :action TypeHierarchy<CR>
-nnoremap <C-P> "0p
-nnoremap <C-S-P> "0P
-nnoremap <Leader>d "0d
-nnoremap <Leader><S-d> "0D
-vnoremap <Leader> "0d
-vnoremap <Leader><S-d> "0D
-nnoremap dm va}Vd
 
-vnoremap p pgvy
-xnoremap p pgvy
+nnoremap <A-j> :action MoveLineDown<CR>
+nnoremap <A-k> :action MoveLineUp<CR>
+vnoremap <A-j> :action MoveLineDown<CR>
+vnoremap <A-k> :action MoveLineUp<CR>
+
+" delete line without copying the content to the yank register
+nnoremap [b :bnext<CR>
+nnoremap ]b :bprev<CR>
+nnoremap <c-[> <ESC>
+
+" window navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-w>l :action JumpToLastWindow<CR>
+noremap <C-Q> :action QuickJavaDoc<CR>
+noremap <S-K> :action QuickJavaDoc<CR>
+
+nnoremap <leader>sf :action GotoFile<CR>
+nnoremap <leader>fa :action GotoAction<CR>
+nnoremap <leader>fc :action GotoClass<CR>
+nnoremap <leader>fs :action GotoSymbol<CR>
+nnoremap <leader>fo :action FileStructurePopup<CR>
+nnoremap <leader>sg :action TextSearchAction<CR>
+nnoremap <leader><leader> :action RecentFiles<CR>
+
+nnoremap ,w :action CloseContent<CR>
+
+noremap <F1> :action ActivateProjectToolWindow<CR>
+nmap <leader>1 <Action>(GoToTab1)
+nmap <leader>2 <Action>(GoToTab2)
+nmap <leader>3 <Action>(GoToTab3)
+nmap <leader>4 <Action>(GoToTab4)
+nmap <leader>5 <Action>(GoToTab5)
+nmap <leader>6 <Action>(GoToTab6)
+nmap <leader>7 <Action>(GoToTab7)
+nmap <leader>8 <Action>(GoToTab8)
+nmap <leader>9 <Action>(GoToTab9)
+nnoremap <leader>` <c-^>
+
+
+" code
+nnoremap gh :action TypeHierarchy<CR>
+nnoremap gR :action CallHierarchy<CR>
+nnoremap gr :action FindUsages<CR>
+nnoremap gI :action GotoImplementation<CR>
+nnoremap gc :action CommentByLineComment<CR>
+vnoremap gc :action CommentByLineComment<CR>
+nnoremap <leader>e :action ShowErrorDescription<CR>
+nnoremap <leader>E :action ShowHoverInfo<CR>
+
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap <leader>cr <Action>(RefactoringMenu)
+nmap <leader>rn <Action>(RenameElement)
+
+nmap [h <Action>(VcsShowPrevChangeMarker)
+nmap ]h <Action>(VcsShowNextChangeMarker)
+nmap [q <Action>(PreviousOccurence)
+nmap ]q <Action>(NextOccurence)
+nmap <leader>n <Action>(NextDiff)
+nmap <leader>p <Action>(PreviousDiff)
+
+" run
+nnoremap <leader>rc :action ChooseRunConfiguration<CR>
+nnoremap <leader>tl :action Rerun<CR>
+nnoremap <leader>tr :action RunClass<CR>
+nnoremap <leader>tS :action Stop<CR>
+nnoremap <leader>td :action DebugClass<CR>
+
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+
+" vnoremap p pgvy
+" xnoremap p pgvy
+
+vnoremap p "_dP
+xnoremap p "_dP
 
 inoremap jj <c-[>
 
@@ -41,4 +116,3 @@ vnoremap < <gv
 vnoremap > >gv
 
 vnoremap // y/\M<C-R>0<CR>
-set ideajoin

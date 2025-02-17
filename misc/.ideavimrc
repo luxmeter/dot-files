@@ -89,8 +89,12 @@ nmap <leader>rn <Action>(RenameElement)
 
 nmap [h <Action>(VcsShowPrevChangeMarker)
 nmap ]h <Action>(VcsShowNextChangeMarker)
+nmap [f <Action>(MethodUp)
+nmap ]f <Action>(MethodDown)
 nmap [q <Action>(PreviousOccurence)
 nmap ]q <Action>(NextOccurence)
+nmap [e <Action>(GotoPreviousError)
+nmap ]e <Action>(GotoNextError)
 nmap <leader>n <Action>(NextDiff)
 nmap <leader>p <Action>(PreviousDiff)
 

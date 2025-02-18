@@ -1,15 +1,39 @@
-require("caylak.plugins")
-require("caylak.options")
-require("caylak.autocmds")
-require("caylak.keymaps")
-require("caylak.commands")
+require 'options'
 
--- plugin settings
-local files = vim.api.nvim_get_runtime_file("**/caylak/settings/*.lua", true)
-for _, file in ipairs(files) do
-	local module = string.gsub(file, ".-/lua/(.-)%.lua", "%1")
-	module = string.gsub(module, "/", ".")
-	require(module)
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+
+if not vim.loop.fs_stat(lazypath) then
+  local repo = 'https://github.com/folke/lazy.nvim.git'
+  vim.fn.system { 'git', 'clone', '--filter=blob:none', repo, '--branch=stable', lazypath }
 end
+vim.opt.rtp:prepend(lazypath)
 
--- require('caylak.settings.lsp')
+require('lazy').setup({ import = 'plugins' }, {
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = true,
+    notify = false, -- get a notification when changes are found
+  },
+})
+
+require 'autocmds'
+require 'mappings'
+
+if vim.fn.executable 'rg' then
+  local grep = {
+    'rg',
+    '--vimgrep',
+    '--no-heading',
+    '--smart-case',
+    '--hidden',
+    '--follow',
+    '--iglob',
+    '!lazy-lock.json',
+  }
+
+  local join = require('plenary.functional').join
+  local result = join(grep, ' ')
+  vim.o.grepprg = result
+  vim.o.grepformat = '%f:%l:%c:%m'
+end

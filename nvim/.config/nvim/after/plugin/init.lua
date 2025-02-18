@@ -1,0 +1,8 @@
+-- to fix fucking catppuccin and notify transparency issue
+-- background_colour = "#000000",
+-- background_colour = "#24273A", -- wezterm macciato
+-- background_colour = "#1e1e2e", -- wezterm mocha
+-- vim.cmd([[
+-- hi! Normal ctermbg=NONE guibg=NONE
+-- hi! NotifyBackground guibg=#24273A
+-- ]])

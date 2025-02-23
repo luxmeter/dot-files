@@ -47,8 +47,10 @@ return {
         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
 				-- stylua: ignore end
-				require("which-key").register({
-					["<leader>g"] = { name = "+git", h = "Hunk" },
+				local wk = require("which-key")
+				wk.add({
+					{ "<leader>g", group = "git" },
+					{ "<leader>gh", desc = "Hunk" },
 				})
 			end,
 		},
@@ -159,12 +161,10 @@ return {
 			end
 
 			require("neotest").setup(opts)
-			require("which-key").register({
-				["<leader>t"] = { name = "+test", _ = "which_key_ignore" },
-			})
 		end,
   -- stylua: ignore
   keys = {
+    {"<leader>t", gropu = "test", desc = "NeoTest"},
     { "<leader>tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
     { "<leader>tT", function() require("neotest").run.run(vim.uv.cwd()) end, desc = "Run All Test Files" },
     { "<leader>tr", function() require("neotest").run.run() end, desc = "Run Nearest" },

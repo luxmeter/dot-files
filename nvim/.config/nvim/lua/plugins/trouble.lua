@@ -4,10 +4,11 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons", "folke/which-key.nvim" },
       -- stylua: ignore start
         keys = {
-            {'<leader>xx', function() require('trouble').toggle 'diagnostics' end,  desc = 'Workspace diagnostics' },
-            {'<leader>xd', function() require('trouble').toggle 'diagnostics_buffer' end,  desc = 'Document diagnostics' },
-            {'<leader>xq', function() require('trouble').toggle 'quickfix' end,  desc = 'Show Diagnostics in Quickfix' },
-            {'<leader>xl', function() require('trouble').toggle 'loclist' end,  desc = 'Show Diagnostics in Loclist' },
+            {'<leader>x', group="trouble", desc = 'Trouble'},
+            {'<leader>xx', function() require('trouble').toggle 'diagnostics' end, desc = 'Workspace diagnostics' },
+            {'<leader>xd', function() require('trouble').toggle 'diagnostics_buffer' end, desc = 'Document diagnostics' },
+            {'<leader>xq', function() require('trouble').toggle 'quickfix' end, desc = 'Show Diagnostics in Quickfix' },
+            {'<leader>xl', function() require('trouble').toggle 'loclist' end, desc = 'Show Diagnostics in Loclist' },
         },
 	-- stylua: ignore end
 	opts = function(opts)
@@ -18,10 +19,6 @@ return {
 			hint = " ",
 			information = " ",
 			other = " ",
-		})
-
-		require("which-key").register({
-			["<leader>x"] = { name = "+diagnostics", _ = "which_key_ignore" },
 		})
 
 		-- vim.keymap.set("n", "]d", function()

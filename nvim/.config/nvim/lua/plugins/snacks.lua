@@ -1,3 +1,6 @@
+vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#3F4048", bg = nil })
+vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#727481", bg = nil })
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -31,7 +34,7 @@ return {
 		},
 		dashboard = { enabled = true },
 		explorer = { enabled = false },
-		indent = { enabled = true },
+		indent = { enabled = true, animate = { enabled = false } },
 		input = { enabled = true },
 		notifier = {
 			enabled = false,

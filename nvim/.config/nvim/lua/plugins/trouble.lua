@@ -6,7 +6,7 @@ return {
         keys = {
             {'<leader>x', group="trouble", desc = 'Trouble'},
             {'<leader>xx', function() require('trouble').toggle 'diagnostics' end, desc = 'Workspace diagnostics' },
-            {'<leader>xd', function() require('trouble').toggle 'diagnostics_buffer' end, desc = 'Document diagnostics' },
+            { "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Document diagnostics", },
             {'<leader>xq', function() require('trouble').toggle 'quickfix' end, desc = 'Show Diagnostics in Quickfix' },
             {'<leader>xl', function() require('trouble').toggle 'loclist' end, desc = 'Show Diagnostics in Loclist' },
         },

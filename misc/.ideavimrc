@@ -101,8 +101,10 @@ nmap <leader>p <Action>(PreviousDiff)
 " run
 nnoremap <leader>rc :action ChooseRunConfiguration<CR>
 nnoremap <leader>tl :action Rerun<CR>
+nnoremap <leader>tR :action Run<CR>
 nnoremap <leader>tr :action RunClass<CR>
 nnoremap <leader>tS :action Stop<CR>
+nnoremap <leader>tD :action Debug<CR>
 nnoremap <leader>td :action DebugClass<CR>
 
 nnoremap <leader>db :action ToggleLineBreakpoint<CR>

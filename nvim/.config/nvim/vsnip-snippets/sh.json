@@ -6,5 +6,9 @@
   "Iterate throug files": {
     "prefix": ["iterf"],
     "body": "while read -r -d '' ${1:array}; do\n$0\ndone < <(find . -print0 -type f -maxdepth 1)\n"
+  },
+  "Shell script": {
+    "prefix": ["bash"],
+    "body": "#! /usr/bin/env bash\nset -o errexit  # abort on nonzero exitstatus\nset -o nounset  # abort on unbound variable\nset -o pipefail # don't hide errors within pipes\n\nSCRIPT=\"\\${BASH_SOURCE[0]}\"\nSCRIPT_DIR=\\$(cd \"\\$(dirname \"\\$SCRIPT\")\" && pwd)\n\n# start in ms\nSTART=\\$(date +%s%3N)\n\n# P=\"a.b.c\"\n# echo \\${P//./\\/} # a/b/c\n# echo \\${P%.*}    # a.b\n# echo \\${P%%.*}   # a\n# echo \\${P#*.}    # b.c\n# echo \\${P##*.}   # c\n\nlog_err() {\n  local message=\"\\$1\"\n  local date\n  date=\\$(date +\"%Y-%m-%d %H:%M:%S\")\n  printf \"[ERROR] %s %s\\\\n\" \"\\$date\" \"\\$message\" >/dev/stderr\n}\n\nlog_info() {\n  local message=\"\\$1\"\n  local date\n  shift 1\n  date=\\$(date +\"%H:%M:%S\")\n  message=\\$(printf \"\\$message\\\\n\" \"\\$@\")\n  printf \"[INFO] %s %s\\\\n\" \"\\$date\" \"\\$message\" >/dev/stdout\n}\n\nexit_trap() {\n  END=\\$(date +%s%3N)\n  local lc=\"\\$BASH_COMMAND\" rc=\\$?\n  if [ \\$rc -ne 0 ]; then\n    eprint \"Last command [\\$lc] exited with code [\\$rc]\"\n  fi\n  # pretty time\n  local millis\n  local seconds\n  local minutes\n  millis=\\$((END - START))\n  seconds=\\$((millis / 1000))\n  minutes=\\$(((seconds / 60) % 60))\n  log_info \"Execution time: %dm %ds %dms\" \"\\$minutes\" \"\\$seconds\" \"\\$millis\"\n}\ntrap exit_trap EXIT\n\nlog_info \"Script: %s\" \"\\$SCRIPT\"\nlog_info \"Script dir: %s\" \"\\$SCRIPT_DIR\"\n\nwhile read -r -d '' file; do\n  log_info \"file %s yea\" \"\\$file\"\ndone < <(find . -print0 -type f -maxdepth 1)\n"
   }
 }

@@ -134,8 +134,7 @@ fi
 # fzf
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-# fasd
-type fasd > /dev/null && eval "$(fasd --init auto)"
+type zoxide > /dev/null && eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"

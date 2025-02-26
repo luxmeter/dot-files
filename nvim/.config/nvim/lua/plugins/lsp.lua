@@ -21,6 +21,7 @@ return {
 				-- Load the wezterm types when the `wezterm` module is required
 				-- Needs `justinsgithub/wezterm-types` to be installed
 				{ path = "wezterm-types", mods = { "wezterm" } },
+				{ path = "LuaSnip", mods = { "luasnip" } },
 			},
 			-- always enable unless `vim.g.lazydev_enabled = false`
 			-- This is the default
@@ -184,6 +185,7 @@ return {
 			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+			--  NOTE: Keys are ere Mason package names!
 			local servers = {
 				-- python linter and formatter
 				ruff = {
@@ -259,6 +261,8 @@ return {
 						},
 					},
 				},
+
+				gdtoolkit = {},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -277,6 +281,9 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"shfmt",
+				"shellcheck",
+				-- "gdtoolkit",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -295,6 +302,11 @@ return {
 					rust_analyzer = nil,
 				},
 			})
+
+			-- mason-lspconfig has no mapping for gdtoolkit to gdscript
+			-- so we have to call it ourselves
+			local gdscript = require("lspconfig.configs.gdscript")
+			require("lspconfig").gdscript.setup(gdscript)
 		end,
 	},
 	{

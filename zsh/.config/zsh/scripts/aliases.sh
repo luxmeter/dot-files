@@ -20,13 +20,13 @@ alias greset='git reset origin/master'
 
 # fasd
 # defaults: https://github.com/clvv/fasd
-alias j='fasd_cd -d'     # cd, same functionality as j in autojump
-alias jj='fasd_cd -d -i' # cd with interactive selection
+alias j='z'   # cd, same functionality as j in autojump
+alias jj='zi' # cd with interactive selection
 
 # needs to be screen, otherwise `clear` wouldn't clear the history...
 alias tmux="TERM=screen-256color tmux -2"
-alias ls='ls -h --color=auto --sort=time --sort=size -r'
-alias ll="ls -lh --color=auto --sort=time --sort=size -r"
+alias ls='exa -h --color=auto --sort=time --sort=size -r'
+alias ll="exa --icons -lh --color=auto --sort=time --sort=size -r"
 alias less="less -R"
 alias man="man -P less"
 alias vi="nvim"

@@ -5,9 +5,14 @@ return {
 	build = ":Copilot auth",
 	event = "InsertEnter",
 	opts = {
-		suggestion = { enabled = true, auto_trigger = true, keymap = {
-			accept = "<m-l>",
-		} },
+		suggestion = {
+			enabled = true,
+			auto_trigger = false,
+			keymap = {
+				-- next <m-]> previous <m-[>
+				accept = "<m-l>",
+			},
+		},
 		panel = { enabled = true },
 	},
 }

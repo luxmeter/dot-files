@@ -1,5 +1,7 @@
-vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#3F4048", bg = nil })
-vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#727481", bg = nil })
+vim.schedule(function()
+	vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#3F4048", bg = nil })
+	vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#727481", bg = nil })
+end)
 
 return {
 	"folke/snacks.nvim",

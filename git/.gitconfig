@@ -53,5 +53,7 @@
 
 [url "ssh://git@git.corp.adobe.com"]
 	insteadOf = https://git.corp.adobe.com
+[url "ssh://git@github.com"]
+    insteadOf = https://github.com
 [init]
 	defaultBranch = main

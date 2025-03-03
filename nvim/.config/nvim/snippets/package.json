@@ -16,6 +16,10 @@
       {
         "path": "./sh.json",
         "language": "sh"
+      },
+      {
+        "path": "./gdscript.json",
+        "language": "gdscript"
       }
     ]
   }

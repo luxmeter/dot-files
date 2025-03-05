@@ -1,13 +1,3 @@
-if [[ "$OSTYPE" != darwin* ]]; then
-  open() {
-    local targets=( "$@" ) # "@" expands each elements as an argument with prevented globbing
-    for target in "${targets[@]}" ; do
-      echo "${target}"
-      xdg-open "$target" > /dev/null 2>&1 &
-    done
-  }
-fi
-
 disk_usage() {
   du -sh "$1"/* | sort -h
 }
@@ -72,16 +62,6 @@ get_pom_version() {
   else
     (echo &>2 "No pom.xml found")
   fi
-}
-
-passwd_ldap() {
-  local item=$(op get item "LDAP Login" 2>&1)
-  if [[ ${item} =~ "not currently signed in" ]]; then
-    passwd_login
-    item=$(op get item "LDAP Login" 2>&1)
-  fi
-  local password=$(echo "${item}" | jq -r '.details.fields[] | select(.designation=="password").value')
-  echo "${password}" | pbcopy
 }
 
 aws_cred_to_env() {

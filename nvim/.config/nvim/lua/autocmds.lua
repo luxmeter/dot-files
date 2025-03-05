@@ -107,15 +107,6 @@ autocmd({ "BufRead", "BufNewFile" }, {
 autocmd({ "BufRead" }, {
 	pattern = { "**/vendor/*", "**/node_modules/*", "**/dist/*", "**/build/*" },
 	callback = function(ev)
-		-- ev={
-		--   buf = 453,
-		--   event = "BufReadPost",
-		--   file = "/Users/caylak/Projects/adobe/cpx/invitations/vendor/git.corp.adobe.com/CPX/external-config/config/invitationsConfig.go",
-		--   group = 66,
-		--   id = 473,
-		--   match = "/Users/caylak/Projects/adobe/cpx/invitations/vendor/git.corp.adobe.com/CPX/external-config/config/invitationsConfig.go"
-		-- }
-		-- vendor/git.corp.adobe.com/Stormcloud/collab-base/v28/pipeline/consumer.go
 		local root_patterns = { ".git", ".clang-format", "pyproject.toml", "setup.py", "node_modules", "vendor" }
 		local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
 		-- expand ev.file to absolute path

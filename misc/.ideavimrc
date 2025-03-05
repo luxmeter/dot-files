@@ -50,13 +50,9 @@ noremap <C-w>l :action JumpToLastWindow<CR>
 noremap <C-Q> :action QuickJavaDoc<CR>
 noremap <S-K> :action QuickJavaDoc<CR>
 
-nnoremap <leader>sf :action GotoFile<CR>
-nnoremap <leader>fa :action GotoAction<CR>
-nnoremap <leader>fc :action GotoClass<CR>
-nnoremap <leader>fs :action GotoSymbol<CR>
-nnoremap <leader>fo :action FileStructurePopup<CR>
-nnoremap <leader>sg :action TextSearchAction<CR>
-nnoremap <leader><leader> :action RecentFiles<CR>
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader><leader> :action SearchEverywhere<CR>
+nnoremap <leader>fb :action RecentFiles<CR>
 
 nnoremap ,w :action CloseContent<CR>
 
@@ -74,10 +70,13 @@ nnoremap <leader>` <c-^>
 
 
 " code
+nnoremap ss :action FileStructurePopup<CR>
+nnoremap sS :action GotoSymbol<CR>
 nnoremap gh :action TypeHierarchy<CR>
 nnoremap gR :action CallHierarchy<CR>
 nnoremap gr :action FindUsages<CR>
 nnoremap gI :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
 nnoremap gc :action CommentByLineComment<CR>
 vnoremap gc :action CommentByLineComment<CR>
 nnoremap <leader>e :action ShowErrorDescription<CR>

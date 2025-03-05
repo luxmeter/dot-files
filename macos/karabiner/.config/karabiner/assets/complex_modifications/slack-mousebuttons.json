@@ -1,0 +1,65 @@
+{
+    "title": "App Mouse Button Mappings",
+    "rules": [
+        {
+            "description": "mouse 4 -> go back in apps",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "bundle_identifiers": [
+                                "^com\\.apple\\.Safari$",
+                                "^com\\.tinyspeck\\.slackmacgap$"
+                            ],
+                            "description": "app is in the foreground",
+                            "type": "frontmost_application_if"
+                        }
+                    ],
+                    "from": {
+                        "pointing_button": "button4"
+                    },
+                    "to": [
+                        {
+                            "key_code": "open_bracket",
+                            "modifiers": [
+                                "left_gui"
+                            ],
+                            "repeat": true
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "mouse 5 -> go forward in app",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "bundle_identifiers": [
+                                "^com\\.apple\\.Safari$",
+                                "^com\\.tinyspeck\\.slackmacgap$"
+                            ],
+                            "description": "app is in the foreground",
+                            "type": "frontmost_application_if"
+                        }
+                    ],
+                    "from": {
+                        "pointing_button": "button5"
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket",
+                            "modifiers": [
+                                "left_gui"
+                            ],
+                            "repeat": true
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        }
+    ]
+}

@@ -33,7 +33,6 @@ alias vi="nvim"
 alias vim="nvim"
 alias vimdiff="nvim -d"
 alias portainer='docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" -p 9000:9000 portainer/portainer --no-auth -H unix:///var/run/docker.sock && open http://localhost:9000'
-alias passwd_login='eval $(op signin my)'
 alias grep='rg --smart-case --hidden --no-ignore-global --ignore-file ~/dot-files/nvim/.config/nvim/ignore-patterns'
 alias rg="rg --smart-case --hidden --no-ignore-global --ignore-file ~/dot-files/nvim/.config/nvim/ignore-patterns"
 alias fd="fd --hidden --no-ignore-parent --ignore-file ~/dot-files/nvim/.config/nvim/ignore-patterns"
@@ -41,16 +40,14 @@ alias fd="fd --hidden --no-ignore-parent --ignore-file ~/dot-files/nvim/.config/
 alias build_svc="mvn  install -Dmaven.test.skip=true -DskipTests -Dfindbugs.skip=true -DskipTessa=true -T4 -pl '!container-tests'"
 alias genpw='< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16'
 alias aclf='java -jar ~/Projects/sharedcloud/aclftool/target/aclftool-1.0-SNAPSHOT.jar'
-alias nosleep='pmset noidle'
 alias k='kubectl'
 
+alias cat=bat
 if [[ "$OSTYPE" == darwin* ]]; then
   alias ctags="/usr/local/bin/ctags"
   alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
   alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
   alias java11-0-1='export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.1)'
-  alias cat=bat
 else
   alias pbcopy='xsel -i -p && xsel -o -p | xsel -i -b'
-  alias cat=bat
 fi

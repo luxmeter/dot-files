@@ -1,0 +1,157 @@
+{
+    "title": "Custom Capslock Mappings",
+    "rules": [
+        {
+            "description": "Capslock override & caps lock toggle replacement (caps+\\) (required by all other groups)",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "set_variable": {
+                                "name": "caps_lock pressed",
+                                "value": 1
+                            }
+                        }
+                    ],
+                    "to_after_key_up": [
+                        {
+                            "set_variable": {
+                                "name": "caps_lock pressed",
+                                "value": 0
+                            }
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "name": "caps_lock pressed",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "backslash",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "caps_lock"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Typing base (j k l h → arrow keys)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "name": "caps_lock pressed",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "name": "caps_lock pressed",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "name": "caps_lock pressed",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow"
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "conditions": [
+                        {
+                            "name": "caps_lock pressed",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -51,11 +51,11 @@ install_zsh() {
 }
 
 install_jump() {
-  if ! command_exists jump; then
+  if ! command_exists zoxide; then
     if command_exists dpkg; then
-      echo "jump not found. Installing..."
-      wget https://github.com/gsamokovarov/jump/releases/download/v0.22.0/jump_0.22.0_amd64.deb
-      type dpkg && sudo dpkg -i jump_0.22.0_amd64.deb
+      echo "zoxide not found. Installing..."
+      wget https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.7/zoxide_0.9.7-1_amd64.deb
+      type dpkg && sudo dpkg -i zoxide_0.9.7-1_amd64.deb
     fi
   fi
 }
@@ -64,23 +64,6 @@ install_neovim() {
   if ! command_exists nvim; then
     echo "NeoVim not found. Installing..."
 
-    if command_exists apt; then
-      sudo apt -q install neovim
-
-      sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-      sudo update-alternatives --config vi
-      sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-      sudo update-alternatives --config vim
-      sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
-      sudo update-alternatives --config editor
-    fi
-    command_exists pacman && sudo pacman -qS --noconfirm neovim
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-    mkvirtualenv --python python3 nvimpy3
-    ~/.virtualenvs/nvimpy3/bin/python -m pip install neovim jedi pylint black isort python-language-server
-    nvim -c 'PlugInstall | qa!'
   fi
 }
 
@@ -93,23 +76,6 @@ install_tmux() {
 }
 
 install_python() {
-  if ! command_exists python3 || ! command_exists pip; then
-    echo "python3 not found. Installing..."
-    if command_exists apt; then
-      sudo apt -q install python3 python3-dev python3-pip
-
-      if command_exists python2.7; then
-        sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-      else
-        sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
-      fi
-    elif command_exists pacman; then
-      sudo pacman -qS --noconfirm python python-pip python2 python2-pip
-    fi
-  fi
-}
-
-install_pyenv() {
   if ! command_exists pyenv; then
     PYTHON_VERSION=3.13.1
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -118,14 +84,18 @@ install_pyenv() {
     fi
     pyenv install $PYTHON_VERSION
     pyenv global $PYTHON_VERSION
+
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
   fi
 }
 
-install_ag() {
-  if ! command_exists ag; then
-    echo "ag not found. Installing..."
-    command_exists apt && sudo apt -q install 'silversearcher-ag'
-    command_exists pacman && sudo pacman -qS --noconfirm the_silver_searcher
+install_rg() {
+  if ! command_exists rg; then
+    echo "rg not found. Installing..."
+    command_exists apt && sudo apt-get install ripgrep
+    command_exists pacman && sudo pacman -qS --noconfirm ripgrep
   fi
 }
 
@@ -142,28 +112,10 @@ install_fzf() {
   fi
 }
 
-install_virtualenvwrapper() {
-  if ! command_exists virtualenvwrapper.sh; then
-    echo "virtualenvwrapper not found. Installing..."
-    sudo python3 -m pip install virtualenvwrapper
-  fi
-}
-
 install_poetry() {
   if ! command_exists poetry; then
     echo "poetry not found. Installing..."
     curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-  fi
-}
-
-install_npm() {
-  if ! command_exists npm; then
-    echo "npm not found. Installing..."
-    command_exists apt && sudo apt -q install node npm
-    command_exists pacman && sudo pacman -qS --noconfirm npm
-    sudo npm install -g typescript webpack util @types/node
-    sudo npm install -g prettier
-    sudo npm install -g --save-dev prettier @prettier/plugin-xml
   fi
 }
 
@@ -265,15 +217,14 @@ install_curl
 install_fonts
 install_tmux
 install_zsh
-install_pyenv
+install_python
 install_neovim
 install_fzf
-install_npm
 install_fd
 install_tpm
 # install_docker
 install_jump
 install_sdk
-install_dev
+# install_dev
 install_bat
 install_rg

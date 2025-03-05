@@ -1,0 +1,4 @@
+keybinding:
+  commits:
+    moveDownCommit: '<c-e>' # move commit down one
+    moveUpCommit: '<c-y>' # move commit up one

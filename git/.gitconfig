@@ -23,7 +23,7 @@
 	trustExitCode = true
 [user]
 	name = Mustafa Caylak
-	email = caylak@adobe.com
+	email = mustafa.caylak@web.de
 [pager]
 	diff = delta
 	log = delta
@@ -51,8 +51,6 @@
 	file-decoration-style = none
 	hunk-header-decoration-style = yellow box
 
-[url "ssh://git@git.corp.adobe.com"]
-	insteadOf = https://git.corp.adobe.com
 [url "ssh://git@github.com"]
     insteadOf = https://github.com
 [init]

@@ -2,34 +2,13 @@
 nvim/.config/nvim/plugin/packer_compiled.lua
 
 # vs code
-misc/.config/Code/Backups/
-misc/.config/Code/Cache/
-misc/.config/Code/CachedData/
-misc/.config/Code/CachedExtensionVSIXs/
-misc/.config/Code/CachedExtensions/
-misc/.config/Code/Code\ Cache/
-misc/.config/Code/Cookies
-misc/.config/Code/Cookies-journal
-misc/.config/Code/GPUCache/
-misc/.config/Code/Local\ Storage/
-misc/.config/Code/Network\ Persistent\ State
-misc/.config/Code/QuotaManager
-misc/.config/Code/QuotaManager-journal
-misc/.config/Code/Service\ Worker/
-misc/.config/Code/Session\ Storage/
-misc/.config/Code/TransportSecurity
-misc/.config/Code/User/History/
-misc/.config/Code/User/globalStorage/
-misc/.config/Code/User/workspaceStorage/
-misc/.config/Code/databases/
-misc/.config/Code/languagepacks.json
-misc/.config/Code/machineid
-misc/.config/Code/code.lock
-misc/.config/Code/WebStorage
-misc/.config/Code/Workspaces/
-misc/.config/Code/CachedProfilesData/
-misc/.config/Code/DawnCache/
+misc/.config/Code/**
 
 # tmux
 tmux/.config/tmux/plugins
 
+# karabiner
+**/automatic_backups
+
+# lazygit
+**/lazygit/state.yml

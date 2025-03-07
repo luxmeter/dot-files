@@ -31,6 +31,12 @@ font-style-italic = SemiLight Italic
 font-style-bold = Bold
 font-style-bold-italic = Bold Italic
 
+# font-family = "Ubuntu Sans Mono"
+# font-style = Medium
+# font-style-italic = Medium Italic
+# font-style-bold = SemiBold
+# font-style-bold-italic = Bold Italic
+
 # font-family = "SauceCodePro Nerd Font"
 # font-style = Medium
 # font-style-italic = Medium Italic

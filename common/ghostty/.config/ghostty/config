@@ -19,17 +19,24 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
-font-family = "JetBrainsMono Nerd Font"
-font-style = Medium
-font-style-italic = Medium Italic
-font-style-bold = Bold
-font-style-bold-italic = Bold Italic
+# font-family = "JetBrainsMono Nerd Font"
+# font-style = Medium
+# font-style-italic = Medium Italic
+# font-style-bold = Bold
+# font-style-bold-italic = Bold Italic
 
 # font-family = "SauceCodePro Nerd Font"
+# font-family = "Source Code Pro for Powerline"
 # font-style = Medium
 # font-style-italic = Medium Italic
 # font-style-bold = SemiBold
 # font-style-bold-italic = Bold Italic
+
+font-family = "Ubuntu Sans Mono"
+font-style = Medium
+font-style-italic = Medium Italic
+font-style-bold = SemiBold
+font-style-bold-italic = Bold Italic
 
 # font-family = "Hack Nerd Font"
 # font-family = "FiraCode Nerd Font"
@@ -40,7 +47,7 @@ font-style-bold-italic = Bold Italic
 # font-family = "MonaspiceKr Nerd Font"
 # font-family = "MonaspiceNe Nerd Font"
 # font-family = "MonaspiceAr Nerd Font"
-# window-padding-x = 2
+
 font-size = 11
 adjust-cell-height = 20%
 theme="catppuccin-macchiato"

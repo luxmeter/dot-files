@@ -12,6 +12,8 @@ _darcs
 \.hg
 
 \.git
+\.git
+\.git
 \.gitignore
 \.gitmodules
 

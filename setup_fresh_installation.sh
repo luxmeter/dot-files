@@ -182,17 +182,12 @@ install_docker() {
       "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
 			$(lsb_release -cs) \
 			stable"
-
     sudo apt-get install docker-ce docker-ce-cli containerd.io
-
     sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
     sudo chmod +x /usr/local/bin/docker-compose
-
     if ! grep -q docker /etc/group; then
       sudo groupadd docker
     fi
-
     sudo usermod -aG docker $USER
   fi
 }
@@ -210,9 +205,19 @@ install_bat() {
   fi
 }
 
+install_lazygit() {
+  if ! command_exists lazygit; then
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit -D -t /usr/local/bin/
+  fi
+}
+
 cd "${_root}"
 
 install_git
+install_lazygit
 install_curl
 install_fonts
 install_tmux

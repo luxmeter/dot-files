@@ -49,8 +49,21 @@ setopt INTERACTIVE_COMMENTS   # in interactive shell allows commenting the curre
 # for alacritty and karabiner config on macos
 # https://github.com/alacritty/alacritty/issues/4048#issuecomment-1024966230
 bindkey -e
+
 bindkey '\e\e[C' forward-word
 bindkey '\e\e[D' backward-word
+
+# for windows / linux?
+if [[ "$OSTYPE" =~ linux* ]]; then
+  bindkey '\e[1;3C' forward-word
+  bindkey '\e[1;3D' backward-word
+  bindkey '\e\e[C' forward-word
+  bindkey '\e\e[D' backward-word
+  bindkey '\e[C' forward-word
+  bindkey '\e[D' backward-word
+  bindkey '\M-f' forward-word
+  bindkey '\M-b' backward-word
+fi
 
 # until we restarted
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'

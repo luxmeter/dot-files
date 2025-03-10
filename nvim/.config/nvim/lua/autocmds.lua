@@ -50,8 +50,8 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 	end,
 })
 
-local function create_autocmd_proxy(group)
-	local group = vim.api.nvim_create_augroup(group, {})
+local function create_autocmd_proxy(groupname)
+	local group = vim.api.nvim_create_augroup(groupname, {})
 	return function(events, opts)
 		local _opts = vim.tbl_deep_extend("force", {
 			group = group,
@@ -102,6 +102,11 @@ autocmd({ "FileType" }, {
 autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.jenkinsfile", "Jenkinsfile" },
 	command = "set ft=groovy",
+})
+
+autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "**/argo/templates/**.y*ml", "**/k8s/helm/**.y*ml", "**/charts/**.y*ml" },
+	command = "set ft=helm",
 })
 
 autocmd({ "BufRead" }, {

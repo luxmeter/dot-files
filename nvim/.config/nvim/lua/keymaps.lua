@@ -50,6 +50,12 @@ map("n", "g_", "$")
 map("n", "[b", "<cmd>bprev<cr>", { desc = "Previous buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
+-- local list
+map("n", "[l", "<cmd>lprev<cr>", { desc = "Previous loclist" })
+map("n", "]l", "<cmd>lnext<cr>", { desc = "Next loclist" })
+
+map("n", "<leader>q", "<cmd>close<cr>", { desc = "Next loclist" })
+
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
 map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })

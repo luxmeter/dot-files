@@ -91,6 +91,7 @@ return {
 					require("trouble").open({ mode = "quickfix", focus = false })
 				end,
 			},
+			log_level = vim.log.levels.DEBUG,
 		},
 		config = function(_, opts)
 			local neotest_ns = vim.api.nvim_create_namespace("neotest")

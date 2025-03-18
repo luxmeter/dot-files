@@ -34,7 +34,7 @@ return {
 				end)
 			end,
 		},
-		dashboard = { enabled = true },
+		dashboard = { enabled = false },
 		explorer = { enabled = false },
 		indent = { enabled = true, animate = { enabled = false } },
 		input = { enabled = true },
@@ -66,7 +66,7 @@ return {
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-    { "<leader>ff", function() Snacks.picker.files({cmd="fd"}) end, desc = "Find Files" },
+    { "<leader>ff", function() Snacks.picker.files({cmd="fd", follow=true}) end, desc = "Find Files" },
     { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
@@ -88,6 +88,7 @@ return {
       show_empty = true,
       live = true, -- live grep by default
       supports_live = true,
+      follow = true,
       exclude = {"vendor/", "node_modules/", ".git/", "build/", "target/"},
     }) end, desc = "Grep" },
     { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },

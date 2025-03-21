@@ -84,9 +84,10 @@ return {
 			trigger = { show_in_snippet = false },
 			list = {
 				selection = {
-					preselect = function()
-						return not require("blink.cmp").snippet_active()
-					end,
+					-- preselect = function()
+					-- 	return not require("blink.cmp").snippet_active()
+					-- end,
+					preselect = false,
 					auto_insert = true,
 				},
 			},

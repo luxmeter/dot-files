@@ -1,11 +1,11 @@
 -- my own plugins
 return {
-	-- {
-	-- 	name = "callhierarchy",
-	-- 	enabled = true,
-	-- 	dir = "~/Projects/neovim/callhierarchy",
-	-- 	opt = {},
-	-- },
+	{
+		name = "callhierarchy",
+		enabled = true,
+		dir = "~/projects/callhierarchy.nvim",
+		opt = {},
+	},
 	-- {
 	-- 	name = "mongojuuid",
 	-- 	enabled = true,

@@ -27,11 +27,13 @@ return {
 				Snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
 				vim.b.minianimate_disable = true
 				vim.schedule(function()
+					vim.api.nvim_create_augroup("mini-trim", { clear = true })
 					if vim.api.nvim_buf_is_valid(ctx.buf) then
 						vim.bo[ctx.buf].syntax = ctx.ft
 						vim.keymap.set("n", "/", "/\\C", { buffer = ctx.buf })
 					end
 				end)
+				vim.b.minitrailspace_disable = true
 			end,
 		},
 		dashboard = { enabled = false },

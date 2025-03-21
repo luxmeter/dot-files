@@ -25,6 +25,12 @@
 # font-style-bold = Bold
 # font-style-bold-italic = Bold Italic
 
+font-family = "Cascadia Mono PL"
+font-style = SemiLight
+font-style-italic = SemiLight Italic
+font-style-bold = Bold
+font-style-bold-italic = Bold Italic
+
 # font-family = "SauceCodePro Nerd Font"
 # font-style = Medium
 # font-style-italic = Medium Italic
@@ -37,11 +43,11 @@
 # font-style-bold = Bold
 # font-style-bold-italic = Bold Italic
 
-font-family = "MonaspiceNe Nerd Font"
-font-style = Regular
-font-style-italic = Regular Italic
-font-style-bold = Medium
-font-style-bold-italic = Medium Italic
+# font-family = "MonaspiceNe Nerd Font"
+# font-style = Regular
+# font-style-italic = Regular Italic
+# font-style-bold = Medium
+# font-style-bold-italic = Medium Italic
 
 # font-family = "Hack Nerd Font"
 # font-family = "FiraCode Nerd Font"
@@ -53,8 +59,8 @@ font-style-bold-italic = Medium Italic
 # font-family = "MonaspiceNe Nerd Font"
 # font-family = "MonaspiceAr Nerd Font"
 # window-padding-x = 2
-font-size = 12
-adjust-cell-height = 20%
+font-size = 13
+adjust-cell-height = 10%
 theme="catppuccin-macchiato"
 #
 # # Spacing around the equals sign does not matter.

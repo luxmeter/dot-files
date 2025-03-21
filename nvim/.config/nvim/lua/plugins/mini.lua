@@ -22,6 +22,15 @@ return { -- Collection of various small independent plugins/modules
 		require("mini.move").setup()
 		require("mini.pairs").setup()
 		require("mini.splitjoin").setup()
+		require("mini.trailspace").setup()
+
+		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			group = vim.api.nvim_create_augroup("mini-trim", { clear = false }),
+			pattern = { "*" },
+			callback = function()
+				require("mini.trailspace").trim()
+			end,
+		})
 
 		-- Simple and easy statusline.
 		--  You could remove this setup call if you don't like it,

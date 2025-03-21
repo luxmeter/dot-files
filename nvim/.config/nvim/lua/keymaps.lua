@@ -19,6 +19,10 @@ local tmap = function(lhs, rhs, opts)
 	map("t", lhs, rhs, opts)
 end
 
+local cmap = function(lhs, rhs, opts)
+	map("c", lhs, rhs, opts)
+end
+
 nmap("<c-s>", ":w<cr>")
 nmap("<leader>`", "<c-^>")
 
@@ -83,6 +87,8 @@ nmap("]w", diagnostic_goto(true, "WARN"), { desc = "Next [W]arning" })
 nmap("[w", diagnostic_goto(false, "WARN"), { desc = "Prev [W]arning" })
 nmap("<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 -- nmap('<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+cmap("<C-e>", "<End>")
 
 vim.cmd([[
 " smooth scrooling

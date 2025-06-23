@@ -68,72 +68,11 @@ fi
 # until we restarted
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
-# needs to be defined here otherwise something after .zshenv alters it
-path=(
-  $HOME/.local/nvim/bin
-  $HOME/.local/share/nvim/mason/bin/
-  $HOME/.cargo/bin
-  $HOME/.poetry/bin
-  $PYENV_ROOT/shims
-  $PYENV_ROOT/bin
-  $HOME/.sdkman/bin
-  $HOME/.local/bin
-  $HOME/go/bin
-  $HOME/.gem/ruby/3.0.0/bin
-  /opt/mongodb/bin
-  /opt/homebrew/bin
-  /opt/homebrew/opt/coreutils/libexec/gnubin
-  /opt/homebrew/opt/llvm/bin
-  /opt/homebrew/sbin
-  /usr/local/opt/ruby/bin
-  /usr/local/lib/ruby/gems/3.0.0/bin
-  /usr/local/{bin,sbin}
-  /opt/mvnd-0.9.0/bin
-  $path
-)
-# Ensure path arrays do not contain duplicates.
-typeset -gU cdpath fpath mailpath path
-
 # colors
 eval "$(dircolors -b $DOT_FILES/zsh/.config/zsh/dircolors)"
 
-# Setting autoloaded functions
-# like `source` but better and lazy loaded
-my_zsh_fpath="${DOT_FILES}/zsh/.config/zsh/autoloaded"
-fpath=($my_zsh_fpath "$DOT_FILES/zsh/.config/zsh/plugins" $fpath)
-if [[ -d "$my_zsh_fpath" ]]; then
-  for func in $my_zsh_fpath/*; do
-    autoload -Uz ${func:t}
-  done
-fi
-unset my_zsh_fpath
-
-# slow
-[[ -f "${HOME}/Projects/adobe/caylak/scripts/caylak_adobe_scripts.sh" ]] && source "${HOME}/Projects/adobe/caylak/scripts/caylak_adobe_scripts.sh"
-
 # completion
 source $DOT_FILES/zsh/.config/zsh/completion.zsh
-
-# direnv (switch automatically virtual env)
-if type direnv > /dev/null; then
-  _direnv_hook() {
-    trap -- '' SIGINT;
-    eval "$("/Users/caylak/.local/bin/direnv" export zsh)";
-    trap - SIGINT;
-  }
-typeset -ag precmd_functions;
-if [[ -z ${precmd_functions[(r)_direnv_hook]} ]]; then
-  precmd_functions=( _direnv_hook ${precmd_functions[@]} )
-fi
-typeset -ag chpwd_functions;
-if [[ -z ${chpwd_functions[(r)_direnv_hook]} ]]; then
-  chpwd_functions=( _direnv_hook ${chpwd_functions[@]} )
-fi
-fi
-
-source "$DOT_FILES/zsh/.config/zsh/scripts/keys.sh"
-source "$DOT_FILES/zsh/.config/zsh/scripts/aliases.sh"
-source "$DOT_FILES/zsh/.config/zsh/scripts/functions.sh"
 
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
@@ -157,7 +96,3 @@ source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-export PATH="$HOME/.poetry/bin:$PATH"
-# export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/quantum:$HOME/.kube/loadtest-jenkins"
-export KUBECONFIG="$HOME/.kube/quantum:$HOME/.kube/loadtest-jenkins"

@@ -1,8 +1,19 @@
 if [ $commands[kubectl] ]; then
     local context="${KUBECTL_CONTEXT:-}"
+    
+    # List of kubectl plugins that need --context at the end
+    local context_at_end_plugins=("argo" "kustomize" "neat")
+    
     if [[ "$context" != "" ]]; then
-      command $0 "$@" --context $context
+        # Check if first argument is in the list of plugins that need context at end
+        if [[ " ${context_at_end_plugins[*]} " =~ " $1 " ]]; then
+            # For these plugins, put context at the end
+            command $0 "$@" --context $context
+        else
+            # Insert --context before other arguments
+            command $0 --context $context "$@" 
+        fi
     else
-      command $0 "$@"
+        command $0 "$@"
     fi
 fi

@@ -26,8 +26,8 @@
 # font-style-bold-italic = Bold Italic
 
 font-family = "Cascadia Mono PL"
-font-style = SemiLight
-font-style-italic = SemiLight Italic
+font-style = Regular
+font-style-italic = Regular Italic
 font-style-bold = Bold
 font-style-bold-italic = Bold Italic
 

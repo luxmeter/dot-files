@@ -79,3 +79,5 @@ m2
 redoc_static.html
 Chart.lock
 .tmp/
+go.work
+go.work.sum

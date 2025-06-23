@@ -55,6 +55,7 @@ nnoremap <leader><leader> :action SearchEverywhere<CR>
 nnoremap <leader>fb :action RecentFiles<CR>
 
 nnoremap ,w :action CloseContent<CR>
+nnoremap ,/ :nohl<CR>
 
 noremap <F1> :action ActivateProjectToolWindow<CR>
 nmap <leader>1 <Action>(GoToTab1)
@@ -79,6 +80,7 @@ nnoremap gI :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gc :action CommentByLineComment<CR>
 vnoremap gc :action CommentByLineComment<CR>
+nnoremap gt :action GotoTypeDeclaration<CR>
 nnoremap <leader>e :action ShowErrorDescription<CR>
 nnoremap <leader>E :action ShowHoverInfo<CR>
 

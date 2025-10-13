@@ -61,7 +61,7 @@ font-style-bold-italic = Bold Italic
 # window-padding-x = 2
 font-size = 13
 adjust-cell-height = 10%
-theme="catppuccin-macchiato"
+theme=Catppuccin Macchiato
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:

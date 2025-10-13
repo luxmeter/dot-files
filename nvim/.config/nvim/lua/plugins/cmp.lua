@@ -70,7 +70,7 @@ return {
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
+				completion = { completeopt = "menu,menuone,noinsert,noselect" },
 				formatting = {
 					format = require("lspkind").cmp_format({
 						mode = "text_symbol", -- show only symbol annotations
@@ -135,7 +135,7 @@ return {
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
 					--  Default: <C-y> ([y]yes)
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display

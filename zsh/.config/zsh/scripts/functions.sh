@@ -11,7 +11,7 @@ vimrc() {
   # for bash
   # readarray -d '' names < <(find $DOT_FILES/vim/config -print0 -type f -name "*vimrc" | fzf)
   # for zsh http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion-Flags
-  local names=( ${(f)"$(find "$DOT_FILES/nvim/.config/nvim/lua/caylak" -type f -name '*.lua' | fzf)"} )
+  local names=( ${(f)"$(find "$DOT_FILES/nvim/.config/nvim" -type f -name '*.lua' | fzf)"} )
   if [[ ${#names[@]} -gt 0 ]]; then
     vim "${names[@]}"
   fi

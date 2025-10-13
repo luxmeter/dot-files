@@ -81,3 +81,7 @@ Chart.lock
 .tmp/
 go.work
 go.work.sum
+.cursor
+
+.env
+.cursor/mcp.json

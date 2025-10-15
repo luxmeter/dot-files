@@ -123,7 +123,7 @@ to_datetime() {
     "t=dt.fromtimestamp(ts, pytz.timezone('Europe/Berlin')).replace(microsecond=0).isoformat(' ')"
     "print(t)"
   )
-  python3 -c "$(printf '%s\n' "${cmd[@]}")"
+  python -c "$(printf '%s\n' "${cmd[@]}")"
 }
 
 doc_remove_all_images() {

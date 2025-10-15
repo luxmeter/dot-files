@@ -75,9 +75,10 @@ return {
 					-- end
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+					map("<A-CR>", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
 					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-					---@param client vim.lsp.Client
+					---@param clent vim.lsp.Client
 					---@param method vim.lsp.protocol.Method
 					---@param bufnr? integer some lsp support methods only in specific files
 					---@return boolean

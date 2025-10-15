@@ -50,16 +50,6 @@ install_zsh() {
   fi
 }
 
-install_jump() {
-  if ! command_exists zoxide; then
-    if command_exists dpkg; then
-      echo "zoxide not found. Installing..."
-      wget https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.7/zoxide_0.9.7-1_amd64.deb
-      type dpkg && sudo dpkg -i zoxide_0.9.7-1_amd64.deb
-    fi
-  fi
-}
-
 install_neovim() {
   if ! command_exists nvim; then
     echo "NeoVim not found. Installing..."
@@ -80,29 +70,21 @@ install_python() {
     PYTHON_VERSION=3.13.1
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     if command_exists apt; then
-      sudo apt-get install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev zlib1g-dev libssl-dev openssl libgdbm-dev libgdbm-compat-dev liblzma-dev libreadline-dev libncursesw5-dev libffi-dev uuid-dev
+      sudo apt -q install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev zlib1g-dev libssl-dev openssl libgdbm-dev libgdbm-compat-dev liblzma-dev libreadline-dev libncursesw5-dev libffi-dev uuid-dev
     fi
-    pyenv install $PYTHON_VERSION
-    pyenv global $PYTHON_VERSION
+    ~/.pyenv/bin/pyenv install $PYTHON_VERSION
+    ~/.pyenv/bin/pyenv global $PYTHON_VERSION
 
-    export PYENV_ROOT="$HOME/.pyenv"
+    export PYENV_ROOT="~/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
-  fi
-}
-
-install_rg() {
-  if ! command_exists rg; then
-    echo "rg not found. Installing..."
-    command_exists apt && sudo apt-get install ripgrep
-    command_exists pacman && sudo pacman -qS --noconfirm ripgrep
   fi
 }
 
 install_fzf() {
   if ! command_exists fzf && [ ! -d ~/fzf ]; then
     echo "fzf not found. Installing..."
-    cd $HOME
+    cd ~
     git clone --depth 1 https://github.com/junegunn/fzf.git
     chmod +x fzf/install
     ./fzf/install
@@ -145,10 +127,10 @@ install_tpm() {
 install_sdk() {
   if ! [ -d ~/.sdkman ]; then
     if ! command_exists unzip; then
-      sudo apt install unzip
+      sudo apt -q install unzip
     fi
     if ! command_exists zip; then
-      sudo apt install zip
+      sudo apt -q install zip
     fi
     echo "SDKMAN! not found. Installing..."
     curl -s "https://get.sdkman.io" | bash
@@ -158,7 +140,7 @@ install_sdk() {
 install_dev() {
   if ! command_exists java; then
     set +u
-    . "$HOME/.sdkman/bin/sdkman-init.sh"
+    . "~/.sdkman/bin/sdkman-init.sh"
     sdk install java
     sdk install kotlin
     sdk install gradle
@@ -182,7 +164,7 @@ install_docker() {
       "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
 			$(lsb_release -cs) \
 			stable"
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    sudo apt -q install docker-ce docker-ce-cli containerd.io
     sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
     if ! grep -q docker /etc/group; then
@@ -192,25 +174,56 @@ install_docker() {
   fi
 }
 
-install_rg() {
-  if ! command_exists rg; then
-    sudo apt-get install ripgrep
-  fi
-}
-
-install_bat() {
-  if ! command_exists bat && ! command_exists batcat; then
-    sudo apt-get install bat
-    sudo update-alternatives --install /usr/bin/bat bat /usr/bin/batcat 60
-  fi
-}
-
 install_lazygit() {
   if ! command_exists lazygit; then
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
     curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
     tar xf lazygit.tar.gz lazygit
-    sudo install lazygit -D -t /usr/local/bin/
+    sudo apt -q install lazygit -D -t /usr/local/bin/
+  fi
+}
+
+install_rust() {
+  if ! command_exists cargo; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ~/.cargo/bin/cargo install cargo-watch
+    ~/.cargo/bin/cargo install git-delta
+  fi
+}
+
+install_zoxide() {
+  if ! command_exists z; then
+    ~/.cargo/bin/cargo install zoxide
+  fi
+}
+
+install_rg() {
+  if ! command_exists rg; then
+    ~/.cargo/bin/cargo install ripgrep
+  fi
+}
+
+install_bat() {
+  if ! command_exists bat && ! command_exists batcat; then
+    ~/.cargo/bin/cargo install bat
+  fi
+}
+
+install_zip() {
+  if ! command_exists unzip; then
+    sudo apt -q install zip unzip
+  fi
+}
+
+install_xsel() {
+  if ! command_exists xsel; then
+    sudo apt -q install xsel
+  fi
+}
+
+install_nodejs() {
+  if ! command_exists npm; then
+    sudo apt -q install nodejs npm
   fi
 }
 
@@ -231,5 +244,10 @@ install_tpm
 install_jump
 install_sdk
 # install_dev
+install_rust
 install_bat
 install_rg
+install_zip
+install_zoxide
+install_xsel
+install_nodejs

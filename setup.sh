@@ -1,7 +1,6 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
-##! /usr/bin/env bash
-# set -o errexit  # abort on nonzero exitstatus
+set -o errexit  # abort on nonzero exitstatus
 set -o nounset  # abort on unbound variable
 set -o pipefail # don't hide errors within pipes
 
@@ -10,7 +9,6 @@ while read -r -d '' config; do
     # which means all from zsh created files will be put there
     # we don't want to persist them in git so we create a dir instead of a link
     if [[ "$config" == zsh ]]; then
-        mkdir -p "$HOME/.config/$config/plugins"
         mkdir -p "$HOME/.config/$config/plugins"
     fi
     if [[ "$config" == code ]]; then

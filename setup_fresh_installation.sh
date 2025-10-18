@@ -35,6 +35,11 @@ install_fonts() {
     cd powerline-fonts
     chmod +x install.sh
     ./install.sh
+
+    curl -O -L https://github.com/microsoft/cascadia-code/releases/download/v2407.24/CascadiaCode-2407.24.zip
+    unzip -d CascadiaCode CascadiaCode*.zip
+    cp -r CascadiaCode/ttf/* ~/.local/share/fonts
+
     cd -
     rm -rf powerline-fonts
   fi

@@ -57,12 +57,19 @@ bindkey '\e\e[D' backward-word
 if [[ "$OSTYPE" =~ linux* ]]; then
   bindkey '\e[1;3C' forward-word
   bindkey '\e[1;3D' backward-word
-  bindkey '\e\e[C' forward-word
-  bindkey '\e\e[D' backward-word
-  bindkey '\e[C' forward-word
-  bindkey '\e[D' backward-word
+  # bindkey '\e\e[C' forward-word
+  # bindkey '\e\e[D' backward-word
+  # bindkey '\e[C' forward-word
+  # bindkey '\e[D' backward-word
   bindkey '\M-f' forward-word
   bindkey '\M-b' backward-word
+  # Cycle through history based on characters already typed on the line
+  autoload -U up-line-or-beginning-search
+  autoload -U down-line-or-beginning-search
+  zle -N up-line-or-beginning-search
+  zle -N down-line-or-beginning-search
+  bindkey "$key[Up]" up-line-or-beginning-search
+  bindkey "$key[Down]" down-line-or-beginning-search
 fi
 
 # until we restarted
@@ -96,3 +103,4 @@ source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+

@@ -17,18 +17,17 @@ while read -r -d '' config; do
     stow --ignore './.git' --ignore '.DS_Store' -v -R -t "$HOME" "$config" 2>&1 | grep -iv "BUG in find_stowed_path"
 done < <(find . -maxdepth 1 ! \( -path ./.git -or -path . -or -path ./common -or -path ./linux -or -path ./macos \) -type d -exec sh -c 'printf "${0#./}\0"' '{}' \;)
 
-if [[ "$OSTYPE" == linux* ]]; then
+shopt -s globstar nullglob
+if [[ "$OSTYPE" =~ linux* ]]; then
     cd linux
-    while read -r -d '' config; do
-        # echo $config
+    for config in *; do
         stow --ignore './.git' --ignore '.DS_Store' -v -R -t "$HOME" "$config" 2>&1 | grep -iv "BUG in find_stowed_path"
-    done < <(find . -maxdepth 1 ! -path ./.git -or -path . -type d -exec sh -c 'printf "${0#./}\0"' '{}' \;)
+    done
     cd - >/dev/null
-elif [[ "$OSTYPE" == darwin* ]]; then
+elif [[ "$OSTYPE" =~ darwin* ]]; then
     cd macos
-    while read -r -d '' config; do
-        # echo $config
+    for config in *; do
         stow --ignore './.git' --ignore '.DS_Store' -v -R -t "$HOME" "$config" 2>&1 | grep -iv "BUG in find_stowed_path"
-    done < <(find . -maxdepth 1 ! -path ./.git -or -path . -type d -exec sh -c 'printf "${0#./}\0"' '{}' \;)
+    done
     cd - >/dev/null
 fi
